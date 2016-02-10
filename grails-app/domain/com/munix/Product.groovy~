@@ -1,0 +1,44 @@
+package com.munix
+
+class Product {
+    String identifier
+    String description
+    ProductBrand brand
+    ProductCategory category
+    ProductColor color
+    ProductMaterial material
+    ProductModel model
+    ProductSize size
+    ProductSubcategory subcategory
+    ProductType type
+    ProductUnit unit
+    String series
+    String partNumber
+    PromoGroup promoGroup
+    byte[] photo
+
+    static hasMany = [prices:ProductPricing, stocks:Stock, components:ProductComponent]
+
+    static constraints = {
+        identifier(nullable:false, unique:true)
+        description(nullable:false, unique:true)
+        brand(nullable:true)
+        category(nullable:true)
+        color(nullable:true)
+        material(nullable:true)
+        model(nullable:true)
+        size(nullable:true)
+        subcategory(nullable:true)
+        type(nullable:true)
+        unit(nullable:true)
+        series(nullable:true)
+        partNumber(nullable:true)
+        promoGroup(nullable:true)
+        photo(nullable:true,size:0..10000000)
+    }
+
+    String toString(){
+        identifier
+    }
+
+}

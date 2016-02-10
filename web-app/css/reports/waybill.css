@@ -1,0 +1,32 @@
+.waybill #head table tr td.col1{
+	width:10%;
+}
+.waybill #head table tr td.col2{
+	width:60%;
+}
+.waybill #head table tr td.col3{
+	width:15%;
+}
+.waybill #head table tr td.col4{
+	width:15%;
+}
+
+.waybill #body table tr td,.waybill #body table,.waybill #head table{
+	border:solid 2px black !important;
+}
+
+.waybill #body table tr th{
+	border:solid 2px black !important;
+}
+
+.waybill #body table tr th.qty{
+	width:8%;
+}
+
+.waybill #body table tr th.packaging{
+	width:8%;
+}
+
+.waybill #body table tr th.description{
+	width:84%;
+}

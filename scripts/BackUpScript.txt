@@ -1,0 +1,5 @@
+0 18 * * * mysqldump -u root -pmunix --hex-blob munix | gzip > /media/MUNIX_BACK/pc-`date '+\%m-\%d-\%Y'`-blob.sql.gz
+0 18 * * * mysqldump -u root -pmunix --hex-blob munix | gzip > ~/DBBackups/pc-`date '+\%m-\%d-\%Y'`-blob.sql.gz
+0 18 * * 0 find /media/MUNIX_BACK -name "pc-*-blob.sql.gz" -mtime +7 -exec rm {} \;
+0 18 * * 0 find ~/DBBackups -name "pc-*-blob.sql.gz" -mtime +7 -exec rm {} \;
+

@@ -1,0 +1,375 @@
+*** Settings ***
+Test Setup      Begin Test
+Test Teardown   End Test
+Force Tags      job_order
+Resource        ../munix_resource.html
+
+*** Test Cases ***
+Successful Creation
+    [Tags]  success  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Quantity
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify that Job Order is Successfully Created
+    Logout From System
+
+Create - Blank Product
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Enter Quantity
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify That Job Order is not Created
+    Verify That Error Message for Blank Product is Displayed
+    Logout From System
+
+Create - Blank Quantity
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify That Job Order is not Created
+    Verify That Error Message for Blank Quanitity is Displayed
+    Logout From System
+
+Create - Blank Start Date
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Quantity
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify that Job Order is Not Created
+    Verify That Error Message for Blank Start Date is Displayed
+    Logout From System
+
+Create - Blank Target Date
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Quantity
+    Enter Start Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify that Job Order is Not Created
+    Verify that Error Mesage for Blank Target Date is Displayed
+    Logout From System
+
+Create - Quantity - Numeric Only Test
+    [Tags]  numeric_test  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Enter Numeric (1)
+    Enter Non-Numeric
+    Field Quantity Should Still Have Value of 1
+    Logout From System
+
+Create - Choose Cancel on Confrimation
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Quantity
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button (to be cancelled)
+    Click Cancel on Prompt
+    Verify That Job Order is not Created
+    Logout From System
+
+Create - 0 Quantity
+    [Tags]  create
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter 0 Quantity
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+    Verify That Job Order is not Created
+    Logout From System
+
+Successful Edit
+    [Tags]  success  edit
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Click Edit Job Order Button
+    Edit Quantity
+    Edit Start Date
+    Edit Target Date
+    Change Assigned To
+    Edit Remarks
+    Click Update Button
+    Confirm Action
+    Verify Job Order is Successfully Updated
+    Logout From System
+
+Edit - Blank Quantity
+    [Tags]  edit  qty
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Click Edit Job Order Button
+    Leave Quantity as Blank
+    Edit Start Date
+    Edit Target Date
+    Change Assigned To
+    Edit Remarks
+    Click Update Button
+    Confirm Action
+    Verify Job Order is Not Updated
+    Verify That Error Message for Blank Quanitity is Displayed (Edit)
+    Logout From System
+
+Cancel - Choose Cancel on Confirmation
+    [Tags]  cancel
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Choose Cancel On Next Confirmation
+    Click Cancel Button
+    Confirm Action
+    Verify Job Order is Not Cancelled
+    Logout From System
+
+Successfully Cancelled Job Order
+    [Tags]  cancel
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Click Cancel Button
+    Confirm Action
+    Verify Job Order is Successfully Cancelled
+    Logout From System
+
+Approve - Choose Cancel on Confirmation
+    [Tags]  approve
+    Login to System as SuperAdmin
+    Create Job Order to be Approved
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Choose Cancel On Next Confirmation
+    Click Approve Button
+    Confirm Action
+    Verify Job Order is Not Approved
+    Logout From System
+
+Successfully Approve Job Order
+    [Tags]  approve
+    Login to System as SuperAdmin
+    Navigate to Transactions > Production > Job Order
+    Select a Job Order from List
+    Click Approve Button
+    Confirm Action
+    Verify Job Order is Successfully Approved
+    Logout From System
+
+*** Keywords ***
+Navigate to Transactions > Production > Job Order
+    Click Element  menuTransactions  don't wait
+    Click Element  menuTransactionsProduction  don't wait
+    Click Element  menuJobOrder
+
+Click New Job Order
+    Click Link  New Job Order
+
+Enter Numeric (1)
+    Press Key  qty  1
+
+Enter Non-Numeric
+    Focus  qty
+    Press Key Native  97
+
+Field Quantity Should Still Have Value of 1
+    Textfield Value Should Be  qty  1
+
+Select Product
+    Click Element  product  don't wait
+    Click Element  rowProductAssemblyIdentifier0  don't wait
+
+Enter Quantity
+    Input Text  qty  999
+
+Enter Start Date
+    Execute Javascript  window.document.getElementById('startDate').value='09/11/2011';
+    Execute Javascript  window.document.getElementById('startDate_value').value='09/11/2011';
+    Execute Javascript  window.document.getElementById('startDate_year').value='2011';
+    Execute Javascript  window.document.getElementById('startDate_month').value='09';
+    Execute Javascript  window.document.getElementById('startDate_day').value='11';
+
+Enter Target Date
+    Execute Javascript  window.document.getElementById('targetDate').value='09/11/2011';
+    Execute Javascript  window.document.getElementById('targetDate_value').value='09/11/2011';
+    Execute Javascript  window.document.getElementById('targetDate_year').value='2011';
+    Execute Javascript  window.document.getElementById('targetDate_month').value='09';
+    Execute Javascript  window.document.getElementById('targetDate_day').value='11';
+
+Select Assigned Asembler
+    Select From List  assignedTo.id  Assembly Office
+
+Enter Remarks
+    Random String Generator
+    Input Text  remark  ${random_string}
+
+Click Create Button
+    Click Button  Create
+
+Click OK on Prompt
+    Confirm Action
+
+Verify that Job Order is Successfully Created
+    Page Should Contain  Job Order created!
+    Page Should Contain  Show Job Order
+
+Verify That Job Order is not Created
+    Page Should Not Contain  Show Job Order
+
+Verify That Error Message for Blank Product is Displayed
+    Page Should Contain  Property [product] of class [Job Order] cannot be null
+
+Verify That Error Message for Blank Quanitity is Displayed
+    Page Should Contain  Quantity of Job Order should be at least [1]
+
+Verify That Error Message for Blank Start Date is Displayed
+    Page Should Contain  Property [startDate] of class [Job Order] cannot be null
+
+Verify that Error Mesage for Blank Target Date is Displayed
+    Page Should Contain  Property [targetDate] of class [Job Order] cannot be null
+
+Click Create Button (to be cancelled)
+    Choose Cancel On Next Confirmation
+    Click Button  Create  don't wait
+
+Click Cancel on Prompt
+    Confirm Action
+
+Enter 0 Quantity
+    Input Text  qty  0
+
+Select a Job Order from List
+    Select From List  searchStatus  Unapproved
+    Click Button  Search
+    Click Element  rowJobOrderId0
+
+Click Edit Job Order Button
+    Click Button  Edit Job Order
+
+Edit Quantity
+    Input Text  qty  555
+
+Edit Start Date
+    Execute Javascript  window.document.getElementById('startDate').value='10/15/2011';
+    Execute Javascript  window.document.getElementById('startDate_value').value='10/15/2011';
+    Execute Javascript  window.document.getElementById('startDate_year').value='2011';
+    Execute Javascript  window.document.getElementById('startDate_month').value='10';
+    Execute Javascript  window.document.getElementById('startDate_day').value='15';
+
+Edit Target Date
+    Execute Javascript  window.document.getElementById('targetDate').value='10/15/2011';
+    Execute Javascript  window.document.getElementById('targetDate_value').value='10/15/2011';
+    Execute Javascript  window.document.getElementById('targetDate_year').value='2011';
+    Execute Javascript  window.document.getElementById('targetDate_month').value='10';
+    Execute Javascript  window.document.getElementById('targetDate_day').value='15';
+
+Change Assigned To
+    Select From List  assignedTo.id  Roman
+
+Edit Remarks
+    Random String Generator
+    Input Text  remark  ${random_string}
+
+Click Update Button
+    Click Button  Update
+
+Verify Job Order is Successfully Updated
+    Element Should Contain  quantity  555
+    Element Should Contain  startDate  10/15/2011
+    Element Should Contain  targetDate  10/15/2011
+    Element Should Contain  assignedTo  Roman
+    Element Should Contain  remarks  ${random_string}
+
+Verify Job Order is Not Updated
+    Page Should Not Contain  Show Job Order
+
+Leave Quantity as Blank
+    Input Text  qty  ${EMPTY}
+
+Leave Start Date Blank
+    Execute Javascript  window.document.getElementById('startDate').value='';
+    Execute Javascript  window.document.getElementById('startDate_value').value='';
+    Execute Javascript  window.document.getElementById('startDate_year').value='';
+    Execute Javascript  window.document.getElementById('startDate_month').value='';
+    Execute Javascript  window.document.getElementById('startDate_day').value='';
+
+Click Cancel Button
+    Click Button  Cancel  don't wait
+
+Verify Job Order is Not Cancelled
+    Element Should Contain  status  Unapproved
+
+Verify Job Order is Successfully Cancelled
+    Element Should Contain  status  Cancelled
+
+Click Approve Button
+    Click Button  Approve  don't wait
+
+Verify Job Order is Not Approved
+    Element Should Contain  status  Unapproved
+
+Verify Job Order is Successfully Approved
+    Element Should Contain  status  Job Order Approved
+
+Create Job Order to be Approved
+    Navigate to Transactions > Production > Job Order
+    Click New Job Order
+    Select Product
+    Enter Quantity
+    Enter Start Date
+    Enter Target Date
+    Select Assigned Asembler
+    Enter Remarks
+    Click Create Button
+    Click OK on Prompt
+
+Verify That Error Message for Blank Quanitity is Displayed (Edit)
+    Page Should Contain  Property [qty] of class [Job Order] cannot be null
+

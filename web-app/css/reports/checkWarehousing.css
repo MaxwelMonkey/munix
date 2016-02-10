@@ -1,0 +1,15 @@
+.name{
+	width:100px;
+}
+.col2{
+	width: 60%;
+}
+.column2, .cell2{
+	text-align:left;
+}
+.column3, .cell3{
+	text-align:right;
+}
+.total2, .total3{
+	text-align:right;
+}

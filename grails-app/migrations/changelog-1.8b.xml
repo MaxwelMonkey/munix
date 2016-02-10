@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="alec (generated)" id="1318862512974-1">
+        <addColumn tableName="check_warehousing">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-2">
+        <addColumn tableName="payment_type">
+            <column name="deductible_from_sales" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-3">
+        <addColumn tableName="price_adjustment">
+            <column name="date_generated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-4">
+        <addColumn tableName="product_component">
+            <column name="components_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-5">
+        <addNotNullConstraint columnDataType="INT" columnName="qty" defaultNullValue="" tableName="job_order"/>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-6">
+        <modifyColumn tableName="material_release_item">
+            <column name="qty" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-7">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="qty" defaultNullValue="" tableName="material_release_item"/>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-8">
+        <modifyColumn tableName="material_requisition_item">
+            <column name="units_required" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-9">
+        <modifyColumn tableName="product_component">
+            <column name="qty" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-10">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="qty" defaultNullValue="" tableName="product_component"/>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-11">
+        <dropIndex indexName="FKFA732B09BFC8F21" tableName="balance_adjustment"/>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-12">
+        <dropTable tableName="balance_adjustment"/>
+    </changeSet>
+    <changeSet author="alec (generated)" id="1318862512974-13">
+        <addColumn tableName="customer_ledger_entry">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

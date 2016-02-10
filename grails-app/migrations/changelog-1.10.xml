@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1323162390336-2">
+        <addColumn tableName="inventory_adjustment_item">
+            <column name="adjustment_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-3">
+        <addColumn tableName="inventory_adjustment_item">
+            <column name="items_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-4">
+        <addColumn tableName="print_log_purchase_order">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-5">
+        <addColumn tableName="print_log_sales_delivery">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-6">
+        <addColumn tableName="product">
+            <column name="stock_card_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-7">
+        <addColumn tableName="stock_card_item">
+            <column name="balance" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-8">
+        <addColumn tableName="stock_card_item">
+            <column name="cost_foreign" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-9">
+        <addColumn tableName="stock_card_item">
+            <column name="cost_local" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-10">
+        <addColumn tableName="stock_card_item">
+            <column name="date_opened" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-11">
+        <addColumn tableName="stock_card_item">
+            <column name="date_posted" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-12">
+        <addColumn tableName="stock_card_item">
+            <column name="link_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-13">
+        <addColumn tableName="stock_card_item">
+            <column name="qty_in" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-14">
+        <addColumn tableName="stock_card_item">
+            <column name="qty_out" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-15">
+        <addColumn tableName="stock_card_item">
+            <column name="reference_id" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-16">
+        <addColumn tableName="stock_card_item">
+            <column name="selling_amount" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-17">
+        <addColumn tableName="stock_card_item">
+            <column name="stock_card_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-18">
+        <addColumn tableName="stock_card_item">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-19">
+        <addColumn tableName="stock_card_item">
+            <column name="warehouse_in" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-20">
+        <addColumn tableName="stock_card_item">
+            <column name="warehouse_out" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-21">
+        <addColumn tableName="stock_transfer_item">
+            <column name="destination_warehouse_qty" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-22">
+        <addColumn tableName="stock_transfer_item">
+            <column name="items_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-23">
+        <addColumn tableName="stock_transfer_item">
+            <column name="origin_warehouse_qty" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-24">
+        <addColumn tableName="supplier_item">
+            <column name="items_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-25">
+        <dropNotNullConstraint columnDataType="BIGINT" columnName="product_id" tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-26">
+        <modifyColumn tableName="supplier_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-27">
+        <createIndex indexName="FK74EBD9C2209B4ED0" tableName="inventory_adjustment_item" unique="false">
+            <column name="adjustment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-28">
+        <createIndex indexName="FKED8DCCEF88206E01" tableName="product" unique="false">
+            <column name="stock_card_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-29">
+        <createIndex indexName="FKEECAB0F988206E01" tableName="stock_card_item" unique="false">
+            <column name="stock_card_id"/>
+        </createIndex>
+    </changeSet>
+    
+    <renameTable oldTableName="stock_transfer" newTableName="inventory_transfer"/>
+    <renameTable oldTableName="stock_transfer_item" newTableName="inventory_transfer_item"/>
+
+    <changeSet author="jeje (generated)" id="1323162390336-56">
+        <addColumn tableName="stock_card_item">
+            <column name="currency_foreign_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-57">
+        <addColumn tableName="stock_card_item">
+            <column name="supplier_customer" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1323162390336-58">
+        <createIndex indexName="FKEECAB0F941D253C5" tableName="stock_card_item" unique="false">
+            <column name="currency_foreign_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1323162390336-54">
+	<sqlFile path="alter scripts/alter-scripts-29.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1323162390336-55">
+	<sqlFile path="alter scripts/stockReset.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1323162390336-30">
+        <dropIndex indexName="FK2862CE734E3BEC0E" tableName="inventory_adjustment_inventory_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-31">
+        <dropIndex indexName="FKFBF45DC5ADD15514" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-32">
+        <dropIndex indexName="FKFBF45DC5DC243AE3" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-33">
+        <dropIndex indexName="FK64D4A94DDD5205CD" tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-34">
+        <dropIndex indexName="FK64D4A94DFA625C14" tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-35">
+        <dropIndex indexName="FKE8A19B33ADD15514" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-36">
+        <dropIndex indexName="FKE8A19B33DC243AE3" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-37">
+        <dropIndex indexName="FK2F9AA09F1C4EFB04" tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-38">
+        <dropIndex indexName="FK2F9AA09FFA625C14" tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-39">
+        <dropIndex indexName="FKEECAB0F923C89113" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-40">
+        <dropIndex indexName="FKC768EF5396030AD4" tableName="stock_card_stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-41">
+        <dropColumn columnName="incoming_qty" tableName="stock"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-42">
+        <dropColumn columnName="outgoing_qty" tableName="stock"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-43">
+        <dropColumn columnName="date" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-44">
+        <dropColumn columnName="final_qty" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-45">
+        <dropColumn columnName="invoice_id" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-46">
+        <dropColumn columnName="price" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-47">
+        <dropColumn columnName="qty" tableName="stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-48">
+        <dropTable tableName="inventory_adjustment_inventory_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-49">
+        <dropTable tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-50">
+        <dropTable tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-51">
+        <dropTable tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-52">
+        <dropTable tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1323162390336-53">
+        <dropTable tableName="stock_card_stock_card_item"/>
+    </changeSet>
+</databaseChangeLog>

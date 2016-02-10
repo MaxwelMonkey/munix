@@ -1,0 +1,52 @@
+
+select b.identifier, concat(coalesce(b.category,''),'',coalesce(b.subcategory,''), ' ', coalesce(b.brand,''), ' ', coalesce(b.model,''),' ',coalesce(b.model_number,''),' ', coalesce(b.material,''), ' ', coalesce(b.size,''), ' ', coalesce(b.added_description,''),' ', coalesce(b.color,'')), b.part_number, b.unit, a.currency, a.cost_foreign, a.exchange_rate, a.cost_local, 
+bul_in.qty, kap_in.qty, bal_in.qty, kapdmg_in.qty, buldmg_in.qty, baldmg_in.qty, fourth_in.qty, 
+bul_out.qty, kap_out.qty, bal_out.qty, kapdmg_out.qty, buldmg_out.qty, baldmg_out.qty, fourth_out.qty 
+from PRODUCT_LIST_COST_REPORT a inner join PRODUCT_LIST b on a.id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='BUL' group by sc.product_id) bul_in on bul_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='KAP' group by sc.product_id) kap_in on kap_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='BAL' group by sc.product_id) bal_in on bal_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='KAP-DMG' group by sc.product_id) kapdmg_in on kapdmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='BUL-DMG' group by sc.product_id) buldmg_in on buldmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='BAL-DMG' group by sc.product_id) baldmg_in on baldmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='4TH' group by sc.product_id) fourth_in on fourth_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='BUL' group by sc.product_id) bul_out on bul_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='KAP' group by sc.product_id) kap_out on kap_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='BAL' group by sc.product_id) bal_out on bal_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='KAP-DMG' group by sc.product_id) kapdmg_out on kapdmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='BUL-DMG' group by sc.product_id) buldmg_out on buldmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='BAL-DMG' group by sc.product_id) baldmg_out on baldmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='4TH' group by sc.product_id) fourth_out on fourth_out.product_id=b.id
+where a.id=b.id
+and b.status='Active'
+INTO OUTFILE '/tmp/inventory_report_bikers.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+;  
+
+select b.identifier, concat(coalesce(b.category,''),'',coalesce(b.subcategory,''), ' ', coalesce(b.brand,''), ' ', coalesce(b.model,''),' ',coalesce(b.model_number,''),' ', coalesce(b.material,''), ' ', coalesce(b.size,''), ' ', coalesce(b.added_description,''),' ', coalesce(b.color,'')), b.part_number, b.unit, a.currency, a.cost_foreign, a.exchange_rate, a.cost_local, 
+dnu1_in.qty, dnu2_in.qty, dnu3_in.qty, dnu4_in.qty, main_in.qty, maindmg_in.qty,dnu1_out.qty, dnu2_out.qty, dnu3_out.qty, dnu4_out.qty, main_out.qty, maindmg_out.qty 
+from PRODUCT_LIST_COST_REPORT a inner join PRODUCT_LIST b on a.id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='do not use1' group by sc.product_id) dnu1_in on dnu1_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='do not use2' group by sc.product_id) dnu2_in on dnu2_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='do not use3' group by sc.product_id) dnu3_in on dnu3_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='do not use4' group by sc.product_id) dnu4_in on dnu4_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='.MAIN' group by sc.product_id) main_in on main_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_in='MAIN-DMG' group by sc.product_id) maindmg_in on maindmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='do not use1' group by sc.product_id) dnu1_out on dnu1_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='do not use2' group by sc.product_id) dnu2_out on dnu2_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='do not use3' group by sc.product_id) dnu3_out on dnu3_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='do not use4' group by sc.product_id) dnu4_out on dnu4_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='.MAIN' group by sc.product_id) main_out on main_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-02-01' and warehouse_out='MAIN-DMG' group by sc.product_id) maindmg_out on maindmg_out.product_id=b.id
+where a.id=b.id
+and b.status='Active'
+INTO OUTFILE '/tmp/inventory_report.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+;  
+
+
+

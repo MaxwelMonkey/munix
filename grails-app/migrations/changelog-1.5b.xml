@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1311072618867-1">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-2">
+        <dropNotNullConstraint columnDataType="BIGINT" columnName="direct_payment_invoice_id" tableName="bounced_check_direct_payment_invoice"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-3">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="credit_memo"/>
+    </changeSet>
+<!--
+    <changeSet author="jeje (generated)" id="1311072618867-4">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="bil_addr_city_id" defaultNullValue="null" tableName="customer"/>
+    </changeSet>-->
+    <changeSet author="jeje (generated)" id="1311072618867-5">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-6">
+        <addNotNullConstraint columnDataType="DATETIME" columnName="effective_date" defaultNullValue="" tableName="price_adjustment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-7">
+        <modifyColumn tableName="price_adjustment_item">
+            <column name="new_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-8">
+        <dropIndex indexName="FK24217FDE7ADF94DC" tableName="customer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1311072618867-9">
+        <dropIndex indexName="identifier" tableName="invoice_type"/>
+    </changeSet>
+<!--
+    <changeSet author="jeje (generated)" id="1311072618867-10">
+        <dropColumn columnName="branch_id" schemaName="customer" tableName="customer"/>
+    </changeSet>
+-->
+    <changeSet author="jeje (generated)" id="1311072618867-11">
+        <dropTable tableName="invoice_type"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1311072618867-12">
+        <modifyColumn tableName="purchase_delivery_item">
+            <column name="final_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1311072618867-13">
+        <renameColumn columnDataType="DATETIME" tableName="supplier_payment_item" oldColumnName ="check_date" newColumnName="date"/>
+    </changeSet>
+</databaseChangeLog>
+

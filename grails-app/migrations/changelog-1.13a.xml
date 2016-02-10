@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1328049895584-2">
+        <createTable tableName="reason">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-3">
+        <addColumn tableName="credit_memo">
+            <column name="reason_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-4">
+        <modifyColumn tableName="material_release_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-5">
+        <modifyColumn tableName="product">
+            <column name="running_cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-6">
+        <modifyColumn tableName="sales_delivery_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-7">
+        <modifyColumn tableName="sales_delivery_item">
+            <column name="price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-8">
+        <modifyColumn tableName="sales_order_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-9">
+        <modifyColumn tableName="sales_order_item">
+            <column name="final_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-10">
+        <dropNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="final_price" tableName="sales_order_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-11">
+        <modifyColumn tableName="sales_order_item">
+            <column name="price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-12">
+        <createIndex indexName="FKEDE916C0EFFED740" tableName="credit_memo" unique="false">
+            <column name="reason_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328049895584-13">
+        <createIndex indexName="identifier" tableName="reason" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

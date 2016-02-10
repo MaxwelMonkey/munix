@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="jeje (generated)" id="1324887408653-2">
+        <addColumn tableName="material_release_item">
+            <column name="cost" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-3">
+        <addColumn tableName="purchase_order">
+            <column name="discount_rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-4">
+        <addColumn tableName="sales_delivery_item">
+            <column name="cost" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-5">
+        <addColumn tableName="sales_order">
+            <column name="net_discount" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887408653-33">
+	<sqlFile path="alter scripts/alter-scripts-31.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887408653-34">
+	<sqlFile path="alter scripts/alter-scripts-32.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887408653-6">
+        <dropIndex indexName="FK2862CE734E3BEC0E" tableName="inventory_adjustment_inventory_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-7">
+        <dropIndex indexName="FKFBF45DC5ADD15514" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-8">
+        <dropIndex indexName="FKFBF45DC5DC243AE3" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-9">
+        <dropIndex indexName="FK64D4A94DDD5205CD" tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-10">
+        <dropIndex indexName="FK64D4A94DFA625C14" tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-11">
+        <dropIndex indexName="FKE8A19B33ADD15514" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-12">
+        <dropIndex indexName="FKE8A19B33DC243AE3" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-13">
+        <dropIndex indexName="FK2F9AA09F1C4EFB04" tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-14">
+        <dropIndex indexName="FK2F9AA09FFA625C14" tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-15">
+        <dropIndex indexName="FKC6EB71C7DE0C54EF" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-16">
+        <dropIndex indexName="FKC6EB71C7EE220F11" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-17">
+        <dropIndex indexName="FKC768EF5396030AD4" tableName="stock_card_stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-18">
+        <dropIndex indexName="FKE0E88AF4A5EF5D8D" tableName="stock_transfer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-19">
+        <dropIndex indexName="FKE0E88AF4FB1A01A5" tableName="stock_transfer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-20">
+        <dropIndex indexName="FK92A8617EF5B89C4A" tableName="stock_transfer_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-21">
+        <dropIndex indexName="FK92A8617EFA625C14" tableName="stock_transfer_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-22">
+        <dropColumn columnName="discount" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-23">
+        <dropColumn columnName="discount_group_id" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-24">
+        <dropColumn columnName="net_discount_group_id" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-25">
+        <dropTable tableName="inventory_adjustment_inventory_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-26">
+        <dropTable tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-27">
+        <dropTable tableName="inventory_increase_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-28">
+        <dropTable tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-29">
+        <dropTable tableName="inventory_shrinkage_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-30">
+        <dropTable tableName="stock_card_stock_card_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-31">
+        <dropTable tableName="stock_transfer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887408653-32">
+        <dropTable tableName="stock_transfer_item"/>
+    </changeSet>
+</databaseChangeLog>
+

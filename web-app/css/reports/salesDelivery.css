@@ -1,0 +1,127 @@
+table.salesDelivery{
+	width:100%;
+}
+
+table.salesDelivery div.head table tr td.col1{
+	width:10%;
+}
+table.salesDelivery div.head table tr td.col2{
+	width:60%;
+}
+table.salesDelivery div.head table tr td.col3{
+	width:15%;
+}
+table.salesDelivery div.head table tr td.col4{
+	width:15%;
+}
+
+table.salesDelivery div.head table{
+	border:solid 0px black !important;
+}
+table.salesDelivery div.body table tr th{
+	border:solid 0px black !important;
+}
+
+table.salesDelivery div.body table tr th.qty{
+	width:8%;
+}
+
+table.salesDelivery div.body table tr th.unit{
+	width:8%;
+}
+
+table.salesDelivery div.body table tr th.code{
+	width:10%;
+}
+
+table.salesDelivery div.body table tr th.description{
+	width:74%;
+}
+
+table.salesDelivery div.body{
+	min-height:750px;
+}
+
+table.pageBreak{
+	page-break-before:always;
+}
+
+div.head table{
+    width: 100%;
+    border: 1px solid;
+    margin-bottom: 25px;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+div.head td{
+    padding: 4px;
+}
+
+div.head td.name{
+    font-weight: bold;
+    vertical-align: top;
+}
+
+div.body table{
+    width: 100%;
+    /*border: 1px solid;*/
+    text-align: left;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+div.body th{
+    border: 1px solid;
+    padding: 4px;
+}
+
+div.body td{
+  /*  border: 1px solid;*/
+    padding: 4px;
+}
+
+div.footer table{
+    font-size: 12px;
+    margin-top: 25px;
+    width: 100%;
+    border-collapse:collapse;
+}
+
+div.footer td{
+    padding-bottom: 5px;
+}
+
+div.footer td.name{
+    font-weight: bold;
+    width: 15%;
+}
+
+div.footer td.value{
+    width: 50%;
+}
+
+table.withPrice div.body table tr th.qty{
+	width:8%;
+}
+
+table.withPrice div.body table tr th.unit{
+	width:8%;
+}
+
+table.withPrice div.body table tr th.code{
+	width:10%;
+}
+
+table.withPrice div.body table tr th.description{
+	width:54%;
+}
+
+table.withPrice div.body table tr th.price{
+	width:10%;
+}
+
+table.withPrice div.body table tr th.amount{
+	width:10%;
+}
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1327569440317-2">
+        <addColumn tableName="customer_discount">
+            <column name="log_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-3">
+        <addColumn tableName="customer_discount_log_item">
+            <column name="customer_discount_log_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-4">
+        <addColumn tableName="customer_discount_log_item">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-5">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="name" defaultNullValue="" tableName="supplier"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-6">
+        <createIndex indexName="FK4D7B2082F262A935" tableName="customer_discount" unique="false">
+            <column name="log_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-7">
+        <createIndex indexName="FK65BB7E4B1BEC4F92" tableName="customer_discount_log_item" unique="false">
+            <column name="customer_discount_log_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1327569440317-40">
+	<sqlFile path="alter scripts/alter-scripts-34.sql"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-41">
+	<sqlFile path="alter scripts/alter-scripts-35.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1327569440317-8">
+        <dropIndex indexName="FKE23FE20719062F30" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-9">
+        <dropIndex indexName="FKE23FE20761A0B66E" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-10">
+        <dropIndex indexName="FKE23FE207F334F09E" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-11">
+        <dropIndex indexName="FK776AC78337EDEA71" tableName="customer_discount_log_customer_discount_log_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-12">
+        <dropIndex indexName="FK776AC78379645481" tableName="customer_discount_log_customer_discount_log_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-13">
+        <dropColumn columnName="current_log_id" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-14">
+        <dropColumn columnName="discount_id" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-15">
+        <dropColumn columnName="previous_log_id" tableName="customer_discount_log"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1327569440317-16">
+        <dropTable tableName="customer_discount_log_customer_discount_log_item"/>
+    </changeSet>
+</databaseChangeLog>

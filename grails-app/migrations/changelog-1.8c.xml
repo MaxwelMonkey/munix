@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1319610903511-1">
+        <createTable tableName="balance_adjustment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-2">
+        <createTable tableName="check_payment_bounced_checks">
+            <column name="check_payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bounced_check_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-3">
+        <createTable tableName="check_payment_check_deposits">
+            <column name="check_deposit_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="check_payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-4">
+        <createTable tableName="counter_receipt_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-5">
+        <addColumn tableName="collection_schedule_item">
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-6">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="units_required" defaultNullValue="" tableName="material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-7">
+        <addPrimaryKey columnNames="check_payment_id, bounced_check_id" tableName="check_payment_bounced_checks"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-8">
+        <addPrimaryKey columnNames="check_payment_id, check_deposit_id" tableName="check_payment_check_deposits"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-9">
+        <createIndex indexName="FKFA732B09BFC8F21" tableName="balance_adjustment" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-10">
+        <createIndex indexName="FKCEA12F9E4F1C80C7" tableName="check_payment_bounced_checks" unique="false">
+            <column name="bounced_check_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-11">
+        <createIndex indexName="FKCEA12F9EE8C000EF" tableName="check_payment_bounced_checks" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-12">
+        <createIndex indexName="FKC6AA335C2C6A99EF" tableName="check_payment_check_deposits" unique="false">
+            <column name="check_deposit_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-13">
+        <createIndex indexName="FKC6AA335CE8C000EF" tableName="check_payment_check_deposits" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-14">
+        <createIndex indexName="FKAF5D121D326A7547" tableName="counter_receipt_item" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1319610903511-31">
+	<sqlFile path="alter scripts/alter-scripts-26.sql"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-32">
+	<sqlFile path="alter scripts/alter-scripts-27.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1319610903511-15">
+        <dropIndex indexName="FK9BA86738326A7547" tableName="bounced_check_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-16">
+        <dropIndex indexName="FK9BA867384F1C80C7" tableName="bounced_check_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-17">
+        <dropIndex indexName="FKE9BE35CF2C6A99EF" tableName="check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-18">
+        <dropIndex indexName="FKE9BE35CF4F1C80C7" tableName="check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-19">
+        <dropIndex indexName="FK27ED4FBD326A7547" tableName="credit_memo_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-20">
+        <dropIndex indexName="FK27ED4FBD87E03BD3" tableName="credit_memo_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-21">
+        <dropIndex indexName="FK6E4D74E8191BA59D" tableName="customer_charge_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-22">
+        <dropIndex indexName="FK6E4D74E8326A7547" tableName="customer_charge_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-23">
+        <dropIndex indexName="FK6E898396326A7547" tableName="sales_delivery_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-24">
+        <dropIndex indexName="FK6E898396CF8A4ED" tableName="sales_delivery_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-25">
+        <dropColumn columnName="bounced_check_id" schemaName="check_payment" tableName="check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-26">
+        <dropColumn columnName="check_deposit_id" schemaName="check_payment" tableName="check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-27">
+        <dropTable tableName="bounced_check_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-28">
+        <dropTable tableName="credit_memo_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-29">
+        <dropTable tableName="customer_charge_counter_receipts"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1319610903511-30">
+        <dropTable tableName="sales_delivery_counter_receipts"/>
+    </changeSet>
+</databaseChangeLog>

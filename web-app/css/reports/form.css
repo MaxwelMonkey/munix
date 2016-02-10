@@ -1,0 +1,18 @@
+table.main{
+	width:100%;
+}
+
+#head table{
+	border:solid 0px black !important;
+}
+#body table.form tr th{
+    border: 0px solid !important;
+}
+
+tr.totals td{
+	font-weight:bold;
+}
+
+.col4{
+	text-align:right;
+}

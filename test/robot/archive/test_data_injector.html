@@ -1,0 +1,5043 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="RIDE" /> 
+<meta name="rf-template" content="False" /> 
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Test Data Injector</title>
+</head>
+<body>
+<h1>Test Data Injector</h1>
+<table id="settings" border="1">
+<tr>
+<th class="name">Setting</th>
+<th colspan="4">Value</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>Begin Test</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Teardown</td>
+<td>End Test</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Force Tags</td>
+<td>test_data_injector</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../munix_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="variables" border="1">
+<tr>
+<th class="name">Variable</th>
+<th colspan="4">Value</th>
+</tr>
+<tr>
+<td class="name">${description}</td>
+<td>Robot_Injected_Data</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${identifier}</td>
+<td>Robot_Injected_Data</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="testcases" border="1">
+<tr>
+<th class="name">Test Case</th>
+<th>Action</th>
+<th colspan="3">Arguments</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Bank">Bank</a></td>
+<td>[Tags]</td>
+<td>customer_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Accounting &gt; Bank</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Bank</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Check Type">Check Type</a></td>
+<td>[Tags]</td>
+<td>check_type</td>
+<td>accounting</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Accounting &gt; Check Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Check Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Routing Number</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Branch</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Verify Check Type is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Edit Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Edit Check Type Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Update Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Verify Check Type is Updated</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Delete Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Confirm Action</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Verify Check Type is Deleted</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Currency">Currency</a></td>
+<td>[Tags]</td>
+<td>supplier_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Accounting &gt; Currecny Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Currency Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Assemble">Assemble</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Assemble</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Assemble</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Brand">Brand</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Brand</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Product Brand</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Category">Category</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Category</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Product Category</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Color">Color</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Color</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Product Color</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Model">Model</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Model</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Model</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Material">Material</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Material</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Material</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Subcategory">Subcategory</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Subcategory</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Product Subcategory</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Discount Type">Discount Type</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Discount Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Discount Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Unit">Unit</a></td>
+<td>[Tags]</td>
+<td>product_data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Production &gt; Unit</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Product Unit</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Cutstomer Type">Cutstomer Type</a></td>
+<td>[Tags]</td>
+<td>customer_type</td>
+<td>sales</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Sales &gt; Customer Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Customer Type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Packaging">Packaging</a></td>
+<td>[Tags]</td>
+<td>packaging</td>
+<td>misc</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Maintenance &gt; Misc &gt; Packaging</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Packaging</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Forwarder">Forwarder</a></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Master &gt; Forwarder</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Forwarder</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Forwarder Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Sales Agent">Sales Agent</a></td>
+<td>Login to System as SuperAdmin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Navigate to Master &gt; Sales Agent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click New Sales Agent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Sales Agent Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Create Button</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Logout From System</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="keywords" border="1">
+<tr>
+<th class="name">Keyword</th>
+<th>Action</th>
+<th colspan="3">Arguments</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Admin &gt; User">Navigate to Maintenance &gt; Admin &gt; User</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuUser</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New User">Click New User</a></td>
+<td>Click Link</td>
+<td>New User</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Login Name">Enter Login Name</a></td>
+<td>Input Text</td>
+<td>username</td>
+<td>robot.test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Full Name">Enter Full Name</a></td>
+<td>Input Text</td>
+<td>userRealName</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Password">Enter Password</a></td>
+<td>Input Text</td>
+<td>passwd</td>
+<td>robottest</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Tick Enabled Check Box">Tick Enabled Check Box</a></td>
+<td>Select Checkbox</td>
+<td>enabled</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Description">Enter Description</a></td>
+<td>Input Text</td>
+<td>description</td>
+<td>${description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Email">Enter Email</a></td>
+<td>Input Text</td>
+<td>email</td>
+<td>zigma-sales-project@orangeandbronze.com</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Tick Show Email Check Box">Tick Show Email Check Box</a></td>
+<td>Select Checkbox</td>
+<td>emailShow</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Assign Roles">Assign Roles</a></td>
+<td>Select Checkbox</td>
+<td>ROLE_MANAGER_SALES</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Create Button">Click Create Button</a></td>
+<td>Click Button</td>
+<td>Create</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify if User is Successfully Created">Verify if User is Successfully Created</a></td>
+<td>Element Should Contain</td>
+<td>loginName</td>
+<td>robot.test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>fullName</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>enabledCheckbox</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>userDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>userEmail</td>
+<td>zigma-sales-project@orangeandbronze.com</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>showEmail</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>userRoles</td>
+<td>ROLE_MANAGER_SALES</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Edit Button">Click Edit Button</a></td>
+<td>Click Button</td>
+<td>Edit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit User Details">Edit User Details</a></td>
+<td>Input Text</td>
+<td>username</td>
+<td>test.robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>userRealName</td>
+<td>Test Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>passwd</td>
+<td>changethis</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Checkbox</td>
+<td>ROLE_MANAGER_PURCHASING</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unselect Checkbox</td>
+<td>enabled</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Update Button">Click Update Button</a></td>
+<td>Click Button</td>
+<td>Update</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify that User is Edited Successfully">Verify that User is Edited Successfully</a></td>
+<td>Element Should Contain</td>
+<td>loginName</td>
+<td>test.robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>fullName</td>
+<td>Test Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>userDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>userRoles</td>
+<td>ROLE_MANAGER_PURCHASING</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>enabledCheckbox</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Delete Button">Click Delete Button</a></td>
+<td>Click Button</td>
+<td>Delete</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify that User is Deleted">Verify that User is Deleted</a></td>
+<td>Page Should Not Contain</td>
+<td>test.robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot.test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Contain</td>
+<td>deleted.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Choose OK on Confirmation">Choose OK on Confirmation</a></td>
+<td>Confirm Action</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Admin &gt; Role">Navigate to Maintenance &gt; Admin &gt; Role</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuRole</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Role">Click New Role</a></td>
+<td>Click Link</td>
+<td>New Role</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Role Name">Enter Role Name</a></td>
+<td>Input Text</td>
+<td>authority</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Role is Created">Verify Role is Created</a></td>
+<td>Element Should Contain</td>
+<td>roleName</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>roleDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Role Details">Edit Role Details</a></td>
+<td>Input Text</td>
+<td>authority</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Role is Updated">Verify Role is Updated</a></td>
+<td>Element Should Contain</td>
+<td>roleName</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>roleDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Role is Deleted">Verify Role is Deleted</a></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Contain</td>
+<td>deleted.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Admin &gt; Requestmap">Navigate to Maintenance &gt; Admin &gt; Requestmap</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuRequestMap</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Requestmap">Click New Requestmap</a></td>
+<td>Click Link</td>
+<td>New Requestmap</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter URL Pattern">Enter URL Pattern</a></td>
+<td>Input Text</td>
+<td>url</td>
+<td>/robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Role (requestmap)">Enter Role (requestmap)</a></td>
+<td>Input Text</td>
+<td>configAttribute</td>
+<td>/robot_test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Requestmap is Created">Verify Requestmap is Created</a></td>
+<td>Element Should Contain</td>
+<td>requestmapUrl</td>
+<td>/robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>requestmapRoles</td>
+<td>/robot_test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_View a Requestmap">View a Requestmap</a></td>
+<td>Click Link</td>
+<td>7</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>rowUrl0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Requestmap Details">Edit Requestmap Details</a></td>
+<td>Input Text</td>
+<td>url</td>
+<td>/test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>configAttribute</td>
+<td>/test_robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Requestmap is Updated">Verify Requestmap is Updated</a></td>
+<td>Element Should Contain</td>
+<td>requestmapUrl</td>
+<td>/test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>requestmapRoles</td>
+<td>/test_robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Requestmap is Deleted">Verify Requestmap is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>deleted.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>/robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Bank">Navigate to Maintenance &gt; Accounting &gt; Bank</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuBank</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Bank">Click New Bank</a></td>
+<td>Click Link</td>
+<td>New Bank</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Identifier">Enter Identifier</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank is Created">Verify Bank is Created</a></td>
+<td>Element Should Contain</td>
+<td>bankIdentifier</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>bankDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Bank Details">Edit Bank Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank is Updated">Verify Bank is Updated</a></td>
+<td>Element Should Contain</td>
+<td>bankIdentifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>bankDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank is Deleted">Verify Bank is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Bank deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Bank Account">Navigate to Maintenance &gt; Accounting &gt; Bank Account</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuBankAccount</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Bank Account">Click New Bank Account</a></td>
+<td>Click Link</td>
+<td>New Bank Account</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Account Number">Enter Account Number</a></td>
+<td>Input Text</td>
+<td>accountNumber</td>
+<td>1234-5678-90</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Account Name">Enter Account Name</a></td>
+<td>Input Text</td>
+<td>accountName</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank Account is Created">Verify Bank Account is Created</a></td>
+<td>Element Should Contain</td>
+<td>accountNumber</td>
+<td>1234-5678-90</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>accountName</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Bank Account Details">Edit Bank Account Details</a></td>
+<td>Input Text</td>
+<td>accountNumber</td>
+<td>9876543210</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>accountName</td>
+<td>Test Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank Account is Edited">Verify Bank Account is Edited</a></td>
+<td>Element Should Contain</td>
+<td>accountNumber</td>
+<td>9876543210</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>accountName</td>
+<td>Test Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Bank Acount is Deleted">Verify Bank Acount is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Bank Account deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>Test Robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>Robot Test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Charge">Navigate to Maintenance &gt; Accounting &gt; Charge</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCharge</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Charge">Click New Charge</a></td>
+<td>Click Link</td>
+<td>New Charge</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Charge is Created">Verify Charge is Created</a></td>
+<td>Element Should Contain</td>
+<td>chargeIdentifier</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>chargeDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Contain</td>
+<td>Charge created!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Charge Details">Edit Charge Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Charge is Updated">Verify Charge is Updated</a></td>
+<td>Element Should Contain</td>
+<td>chargeIdentifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>chargeDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Contain</td>
+<td>Charge updated successfully!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Charge is Deleted">Verify Charge is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Charge deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Check Type">Navigate to Maintenance &gt; Accounting &gt; Check Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCheckType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Check Type">Click New Check Type</a></td>
+<td>Click Link</td>
+<td>New Check Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Routing Number">Enter Routing Number</a></td>
+<td>Input Text</td>
+<td>routingNumber</td>
+<td>1234567890</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Branch">Enter Branch</a></td>
+<td>Input Text</td>
+<td>branch</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select Description">Select Description</a></td>
+<td>Select From List</td>
+<td>description</td>
+<td>Regional</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Check Type Details">Edit Check Type Details</a></td>
+<td>Input Text</td>
+<td>routingNumber</td>
+<td>9876543210</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>branch</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select From List</td>
+<td>description</td>
+<td>Local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Check Type is Created">Verify Check Type is Created</a></td>
+<td>Element Should Contain</td>
+<td>routingNumber</td>
+<td>1234567890</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>checkTypeBranch</td>
+<td>Robot Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>checkDescription</td>
+<td>Regional</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Check Type is Updated">Verify Check Type is Updated</a></td>
+<td>Element Should Contain</td>
+<td>routingNumber</td>
+<td>9876543210</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>checkTypeBranch</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>checkDescription</td>
+<td>Local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Check Type is Deleted">Verify Check Type is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Check Type deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Collector">Navigate to Maintenance &gt; Accounting &gt; Collector</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCollector</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Collector">Click New Collector</a></td>
+<td>Click Link</td>
+<td>New Collector</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Collector is Created">Verify Collector is Created</a></td>
+<td>Element Should Contain</td>
+<td>collectorIdentifier</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>collectorDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Collector Details">Edit Collector Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Collector is Updated">Verify Collector is Updated</a></td>
+<td>Element Should Contain</td>
+<td>collectorIdentifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>collectorDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Collector is Deleted">Verify Collector is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Collector deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Currecny Type">Navigate to Maintenance &gt; Accounting &gt; Currecny Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCurrency</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Currency Type">Click New Currency Type</a></td>
+<td>Click Link</td>
+<td>New Currency Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Currency is Created">Verify Currency is Created</a></td>
+<td>Element Should Contain</td>
+<td>currencyIdentifier</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>currencyDescription</td>
+<td>This is a freakin Automated Robot Framework test data.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Contain</td>
+<td>Currency Type created!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Currency Details">Edit Currency Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Currency is Updated">Verify Currency is Updated</a></td>
+<td>Element Should Contain</td>
+<td>currencyIdentifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>currencyDescription</td>
+<td>edited description</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Currency is Deleted">Verify Currency is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Currency Type deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Accounting &gt; Payment Type">Navigate to Maintenance &gt; Accounting &gt; Payment Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuPaymentType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Payment Type">Click New Payment Type</a></td>
+<td>Click Link</td>
+<td>New Payment Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Payment Type is Created">Verify Payment Type is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>robot test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>isCheckCheckbox</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select This is a Check">Select This is a Check</a></td>
+<td>Select Checkbox</td>
+<td>isCheck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Payment Type Details">Edit Payment Type Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Unselect Checkbox</td>
+<td>isCheck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Payment Type is Updated">Verify Payment Type is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>test robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>isCheckCheckbox</td>
+<td>False</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Payment Type is Deleted">Verify Payment Type is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Payment Type deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>robot test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>test robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Assemble">Navigate to Maintenance &gt; Production &gt; Assemble</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAssemble</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Assemble">Click New Assemble</a></td>
+<td>Click Link</td>
+<td>New Assemble</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Production is Created">Verify Production is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Production Details">Edit Production Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Prodution is Updated">Verify Prodution is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Production is Deleted">Verify Production is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${edited_identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Brand">Navigate to Maintenance &gt; Production &gt; Brand</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuBrand</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Product Brand">Click New Product Brand</a></td>
+<td>Click Link</td>
+<td>New Product Brand</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Category">Navigate to Maintenance &gt; Production &gt; Category</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCategory</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Product Category">Click New Product Category</a></td>
+<td>Click Link</td>
+<td>New Product Category</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Color">Navigate to Maintenance &gt; Production &gt; Color</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Product Color">Click New Product Color</a></td>
+<td>Click Link</td>
+<td>New Product Color</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Model">Navigate to Maintenance &gt; Production &gt; Model</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuModel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Model">Click New Model</a></td>
+<td>Click Link</td>
+<td>New Product Model</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Material">Navigate to Maintenance &gt; Production &gt; Material</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMaterial</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Material">Click New Material</a></td>
+<td>Click Link</td>
+<td>New Product Material</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Subcategory">Navigate to Maintenance &gt; Production &gt; Subcategory</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuSubcategory</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Product Subcategory">Click New Product Subcategory</a></td>
+<td>Click Link</td>
+<td>New Product Subcategory</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Discount Type">Navigate to Maintenance &gt; Production &gt; Discount Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuDiscountType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Discount Type">Click New Discount Type</a></td>
+<td>Click Link</td>
+<td>New Discount Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Production &gt; Unit">Navigate to Maintenance &gt; Production &gt; Unit</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuAdmin</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuUnit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Product Unit">Click New Product Unit</a></td>
+<td>Click Link</td>
+<td>New Product Unit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Sales &gt; Customer Type">Navigate to Maintenance &gt; Sales &gt; Customer Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuSales</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCustomerType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Customer Type">Click New Customer Type</a></td>
+<td>Click Link</td>
+<td>New Customer Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Sales is Created">Verify Sales is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Sales Details">Edit Sales Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Sales is Updated">Verify Sales is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Sales is Deleted">Verify Sales is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${edited_identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Sales &gt; Invoice Type">Navigate to Maintenance &gt; Sales &gt; Invoice Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuSales</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuInvoiceType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Invoice Type">Click New Invoice Type</a></td>
+<td>Click Link</td>
+<td>New InvoiceType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Sales &gt; Discount Group">Navigate to Maintenance &gt; Sales &gt; Discount Group</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuSales</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuDiscountGroup</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Discount Group">Click New Discount Group</a></td>
+<td>Click Link</td>
+<td>New Discount Group</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Rate">Enter Rate</a></td>
+<td>Input Text</td>
+<td>rate</td>
+<td>50.00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Discount Group is Created">Verify Discount Group is Created</a></td>
+<td>Verify Sales is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>rate</td>
+<td>50.00%</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Discount Group Details">Edit Discount Group Details</a></td>
+<td>Edit Sales Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>rate</td>
+<td>70.00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Discount Group is Updated">Verify Discount Group is Updated</a></td>
+<td>Verify Sales is Updated</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>rate</td>
+<td>70.00%</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; City">Navigate to Maintenance &gt; Misc &gt; City</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCity</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New City">Click New City</a></td>
+<td>Click Link</td>
+<td>New City</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Misc is Created">Verify Misc is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Misc Details">Edit Misc Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Misc is Updated">Verify Misc is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>description</td>
+<td>${edited_description}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Misc is Deleted">Verify Misc is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>${edited_identifier}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select Province">Select Province</a></td>
+<td>Select From List</td>
+<td>province.id</td>
+<td>Tarlac</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify City is Created">Verify City is Created</a></td>
+<td>Verify Misc is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>province</td>
+<td>Tarlac</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit City Details">Edit City Details</a></td>
+<td>Edit Misc Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select From List</td>
+<td>province.id</td>
+<td>Pampanga</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify City is Updated">Verify City is Updated</a></td>
+<td>Verify Misc is Updated</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>province</td>
+<td>Pampanga</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Country">Navigate to Maintenance &gt; Misc &gt; Country</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuCountry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Country">Click New Country</a></td>
+<td>Click Link</td>
+<td>New Country</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Packaging">Navigate to Maintenance &gt; Misc &gt; Packaging</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuPackaging</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Packaging">Click New Packaging</a></td>
+<td>Click Link</td>
+<td>New Packaging</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Personnel">Navigate to Maintenance &gt; Misc &gt; Personnel</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuPersonnel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Personnel">Click New Personnel</a></td>
+<td>Click Link</td>
+<td>New Personnel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Last Name">Enter Last Name</a></td>
+<td>Input Text</td>
+<td>lastName</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter First Name">Enter First Name</a></td>
+<td>Input Text</td>
+<td>firstName</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select Personnel Type">Select Personnel Type</a></td>
+<td>Select From List</td>
+<td>type.id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Personnel is Created">Verify Personnel is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>lastName</td>
+<td>Belerma</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>firstName</td>
+<td>Ika</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>personnelType</td>
+<td>Web Administrator</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Personnel Details">Edit Personnel Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>lastName</td>
+<td>Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>firstName</td>
+<td>Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Personnel is Updated">Verify Personnel is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>lastName</td>
+<td>Test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>firstName</td>
+<td>Robot</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>personnelType</td>
+<td>Web Administrator</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Personnel is Deleted">Verify Personnel is Deleted</a></td>
+<td>Page Should Contain</td>
+<td>Personnel deleted!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>Belerma</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Page Should Not Contain</td>
+<td>Robot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Personnel Type">Navigate to Maintenance &gt; Misc &gt; Personnel Type</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuPersonnelType</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Personnel Type">Click New Personnel Type</a></td>
+<td>Click Link</td>
+<td>New Personnel Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select Region">Select Region</a></td>
+<td>Select From List</td>
+<td>region.id</td>
+<td>NCR</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Province">Navigate to Maintenance &gt; Misc &gt; Province</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuProvince</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Province">Click New Province</a></td>
+<td>Click Link</td>
+<td>New Province</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Province is Created">Verify Province is Created</a></td>
+<td>Verify Misc is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>region</td>
+<td>NCR</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Region">Navigate to Maintenance &gt; Misc &gt; Region</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuRegion</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Region">Click New Region</a></td>
+<td>Click Link</td>
+<td>New Region</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select Country">Select Country</a></td>
+<td>Select From List</td>
+<td>country.id</td>
+<td>Philippines</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Country is Created">Verify Country is Created</a></td>
+<td>Verify Misc is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>country</td>
+<td>Philippines</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Term">Navigate to Maintenance &gt; Misc &gt; Term</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuTerms</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Term">Click New Term</a></td>
+<td>Click Link</td>
+<td>New Term</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Day Value">Enter Day Value</a></td>
+<td>Input Text</td>
+<td>dayValue</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Term is Created">Verify Term is Created</a></td>
+<td>Verify Misc is Created</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>dayValue</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Term Details">Edit Term Details</a></td>
+<td>Edit Misc Details</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>dayValue</td>
+<td>500</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Term is Updated">Verify Term is Updated</a></td>
+<td>Verify Misc is Updated</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>dayValue</td>
+<td>500</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Maintenance &gt; Misc &gt; Truck">Navigate to Maintenance &gt; Misc &gt; Truck</a></td>
+<td>Click Element</td>
+<td>menuMaintenance</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuMisc</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuTruck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Truck">Click New Truck</a></td>
+<td>Click Link</td>
+<td>New Truck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Model">Enter Model</a></td>
+<td>Input Text</td>
+<td>model</td>
+<td>Optimus Prime</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Plate Number">Enter Plate Number</a></td>
+<td>Input Text</td>
+<td>plateNumber</td>
+<td>TOP 888</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Truck is Created">Verify Truck is Created</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>model</td>
+<td>Optimus Prime</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>plateNumber</td>
+<td>TOP 888</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Edit Truck Details">Edit Truck Details</a></td>
+<td>Input Text</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>model</td>
+<td>Megatron</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>plateNumber</td>
+<td>BOT 999</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Verify Truck is Updated">Verify Truck is Updated</a></td>
+<td>Element Should Contain</td>
+<td>identifier</td>
+<td>${edited_identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>model</td>
+<td>Megatron</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Should Contain</td>
+<td>plateNumber</td>
+<td>BOT 999</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Forwarder Details">Enter Forwarder Details</a></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Description</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Contact</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Contact Position</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Street</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select City</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter ZIP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Landline</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Sales Agent Details">Enter Sales Agent Details</a></td>
+<td>Enter Identifier</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Last Name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter First Name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Street</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select City</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter ZIP</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Landline</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Mobile</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Email</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Skype</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Enter Yahoo</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Contact">Enter Contact</a></td>
+<td>Input Text</td>
+<td>contact</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Contact Position">Enter Contact Position</a></td>
+<td>Input Text</td>
+<td>contactPosition</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Street">Enter Street</a></td>
+<td>Input Text</td>
+<td>street</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Select City">Select City</a></td>
+<td>Select From List</td>
+<td>city.id</td>
+<td>Aborlan, Palawan</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter ZIP">Enter ZIP</a></td>
+<td>Input Text</td>
+<td>zip</td>
+<td>1229</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Landline">Enter Landline</a></td>
+<td>Input Text</td>
+<td>landline</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Mobile">Enter Mobile</a></td>
+<td>Input Text</td>
+<td>mobile</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Skype">Enter Skype</a></td>
+<td>Input Text</td>
+<td>skype</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Enter Yahoo">Enter Yahoo</a></td>
+<td>Input Text</td>
+<td>yahoo</td>
+<td>${identifier}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Master &gt; Forwarder">Navigate to Master &gt; Forwarder</a></td>
+<td>Click Element</td>
+<td>menuMaster</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuForwarder</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Forwarder">Click New Forwarder</a></td>
+<td>Click Link</td>
+<td>New Forwarder</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Navigate to Master &gt; Sales Agent">Navigate to Master &gt; Sales Agent</a></td>
+<td>Click Element</td>
+<td>menuMaster</td>
+<td>don't wait</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>menuSalesAgent</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click New Sales Agent">Click New Sales Agent</a></td>
+<td>Click Link</td>
+<td>New Sales Agent</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

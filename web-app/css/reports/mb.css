@@ -1,0 +1,79 @@
+table.main{
+	width:580px;
+}
+
+#pad{
+	padding-top:140px;
+	height:195px;
+	font-size:11px;
+}
+
+#head table{
+	margin-top:-30px;
+	border:solid 0px black !important;
+}
+
+#head table tr td.col2{
+	text-align:right;
+}
+
+#accountNumber{
+	padding-left:130px;
+	font-size:18px;
+	letter-spacing:18px;
+}
+
+#accountName{
+	padding-left:130px;
+	font-size:14px;
+	padding-bottom:10px;
+}
+
+#bp{
+	padding-left:-30px;
+}
+
+#body {
+	padding-top:60px;
+	min-height:140px;
+}
+#body table.form tr th{
+    border: 0px solid !important;
+}
+
+#body table.form tr{
+    height:20px;
+}
+
+#body table.form tr td{
+    font-size:10px;
+}
+
+td.cell0{
+	width:50%;
+}
+
+td.cell1{
+	width:30%;
+}
+
+td.cell2{
+	width:20%;
+}
+
+#body table.form tr td.cell2,#body table.form tr th.cell2{
+    text-align:right;
+}
+
+#footer table tr td{
+	text-align:right;
+    font-size:10px;
+}
+
+#footer table tr td.total1{
+	width:60%;
+}
+
+#footer table tr td.total2{
+	width:40%;
+}

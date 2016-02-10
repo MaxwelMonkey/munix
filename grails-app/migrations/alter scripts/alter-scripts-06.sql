@@ -1,0 +1,4 @@
+UPDATE sales_delivery SET sales_delivery_id = CONCAT('SD-SC-', '000', SUBSTRING(sales_delivery_id, 7, 5)) where sales_delivery_id REGEXP 'SD-SC-[0-9]{5}$';
+UPDATE sales_delivery SET sales_delivery_id = CONCAT('SD-C-', '000', SUBSTRING(sales_delivery_id, 6, 5)) where sales_delivery_id REGEXP 'SD-C-[0-9]{5}$';
+UPDATE sales_delivery SET sales_delivery_id = CONCAT('SD-M-', '000', SUBSTRING(sales_delivery_id, 6, 5)) where sales_delivery_id REGEXP 'SD-M-[0-9]{5}$';
+UPDATE sales_delivery SET sales_delivery_id = CONCAT('SD-EE-', '000', SUBSTRING(sales_delivery_id, 7, 5)) where sales_delivery_id REGEXP 'SD-EE-[0-9]{5}$';

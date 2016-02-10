@@ -1,0 +1,229 @@
+alter table stock_card add balance integer;
+update stock_card set balance = 0;    
+ 
+delete from stock_card_item where type<>'INITIAL_ENTRY' and type='APPROVED_INVENTORY_ADJUSTMENT' and stock_card_id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date, str_to_date(substring(approved_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, null, b.qty, a.sales_delivery_id, b.price, c.id, 'APPROVED_SALES_DELIVERY', null, d.identifier, null, e.name from sales_delivery a, sales_delivery_item b, stock_card c, warehouse d, customer e where approved_by <> '' and a.id=b.delivery_id and b.product_id=c.product_id and a.warehouse_id=d.id and a.customer_id=e.id and b.qty<>0 and c.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date, str_to_date(substring(a.approved_two_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, b.old_qty-b.new_qty, null, concat('CM-',lpad(a.id, 5,'0')), b.new_price, e.id, 'APPROVED_CREDIT_MEMO', f.identifier, null, null, g.name from credit_memo a, credit_memo_item b, sales_delivery_item c, sales_delivery d, stock_card e, warehouse f, customer g where a.approved_two_by <> '' and a.id=b.credit_memo_id and b.delivery_item_id = c.id and c.product_id=e.product_id and c.delivery_id = d.id and a.warehouse_id= f.id and d.customer_id=g.id and e.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, b.cost,  a.date, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, null, b.qty, concat('ML-',lpad(a.id, 8,'0')), null, d.id, 'APPROVED_MATERIAL_RELEASE', null, e.identifier, null, null from material_release a, material_release_item b, material_requisition_item c, stock_card d, warehouse e where a.approved_by <> '' and a.id=b.material_release_id and b.material_requisition_item_id =c.id and c.component_id=d.product_id and a.warehouse_id=e.id and d.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, b.final_price * a.exchange_rate, b.final_price, a.date, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, b.qty, null, concat(a.reference, concat(' / ',  a.supplier_reference)), null, d.id, 'APPROVED_PURCHASE_INVOICE', f.identifier, null, e.currency_id, g.name from purchase_invoice a, purchase_invoice_item b, purchase_order_item c, stock_card d, purchase_order e, warehouse f, supplier g where a.approved_by <> '' and b.purchase_invoice_id=a.id and b.purchase_order_item_id = c.id and c.product_id=d.product_id and c.po_id=e.id and b.purchase_invoice_id=a.id and a.warehouse_id=f.id and e.supplier_id=g.id and d.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, a.qty, null, concat('JT-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_JOB_OUT', d.identifier, null, null, null from job_out a, job_order b, stock_card c, warehouse d where a.approved_by <> '' and a.job_order_id = b.id and b.product_id=c.product_id and a.warehouse_id=d.id and c.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date, str_to_date(substring(a.received_by,-24), '%b. %d, %Y - %h:%i %p'), a.id, b.qty, b.qty, concat('ST-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_INVENTORY_TRANSFER', e.identifier, d.identifier, null, null from inventory_transfer a, inventory_transfer_item b, stock_card c, warehouse d, warehouse e where received_by <> '' and a.id=b.transfer_id and b.product_id=c.product_id and a.origin_warehouse_id = d.id and a.destination_warehouse_id = e.id and c.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date_generated, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), b.id, b.new_stock, null, concat('IA-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_INVENTORY_ADJUSTMENT', d.identifier, null, null, null from inventory_adjustment a, inventory_adjustment_item b, stock_card c, warehouse d where approved_by <> '' and a.id=b.adjustment_id and b.product_id=c.product_id and a.warehouse_id=d.id and (b.new_stock-b.old_stock)>=0 and c.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date_generated, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), b.id, null, b.new_stock, concat('IA-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_INVENTORY_ADJUSTMENT', null, d.identifier, null, null from inventory_adjustment a, inventory_adjustment_item b, stock_card c, warehouse d where approved_by <> '' and a.id=b.adjustment_id and b.product_id=c.product_id and a.warehouse_id=d.id and (b.new_stock-b.old_stock)<0 and c.id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active');
+
+
+// to find inconsistencies
+select c.*, f.qty, f.warehouse_id, d.product_id from product p, stock_card d, warehouse e, stock f, (select stock_card_id, wh, sum(qty_total) q from (select stock_card_id, warehouse_in wh, sum(coalesce(qty_in,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_in union select stock_card_id, warehouse_out wh, -1*sum(coalesce(qty_out,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_out) b group by stock_card_id, wh) c where c.stock_card_id=d.id and d.product_id=f.product_id and e.identifier=c.wh and f.qty<>c.q and e.id=f.warehouse_id and f.product_id=p.id and p.status='Active';
+
+
+create table temp_stock_card2(stock_card_id integer not null, wh varchar(10), qty decimal(10,2), warehouse_id integer, product_id integer);
+insert into temp_stock_card2 select c.*, f.warehouse_id, d.product_id from product p, stock_card d, warehouse e, stock f, (select stock_card_id, wh, sum(qty_total) q from (select stock_card_id, warehouse_in wh, sum(coalesce(qty_in,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_in union select stock_card_id, warehouse_out wh, -1*sum(coalesce(qty_out,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_out) b group by stock_card_id, wh) c where c.stock_card_id=d.id and d.product_id=f.product_id and e.identifier=c.wh and f.qty<>c.q and e.id=f.warehouse_id and f.product_id=p.id and p.status='Active';
+create index temp_sc2_product_id_index on temp_stock_card2(product_id);
+create index temp_sc2_warehouse_id_index on temp_stock_card2(warehouse_id);
+create index stock_warehouse_id_index on stock(warehouse_id);
+create index stock_product_id_index on stock(product_id);
+update stock inner join temp_stock_card2 z on stock.product_id = z.product_id and z.warehouse_id=stock.warehouse_id set stock.qty = z.qty;
+
+update stock inner join temp_stock_card2 z on stock.product_id = z.product_id and z.warehouse_id=stock.warehouse_id set stock.qty = z.qty; 
+
+
+
+
+DROP PROCEDURE update_stock_card;
+DELIMITER $$
+CREATE PROCEDURE update_stock_card()
+BEGIN
+	DECLARE v_count INT;
+	DECLARE cursor_ID INT;
+	DECLARE v_qty INT;
+	DECLARE v_qty_in INT;
+	DECLARE v_qty_out INT;
+	DECLARE v_stock_card_id INT;
+	DECLARE v_warehouse_in VARCHAR(100);
+	DECLARE v_warehouse_out VARCHAR(100);
+	DECLARE v_type VARCHAR(100);
+	DECLARE v_date_posted DATETIME;
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE cursor_i CURSOR FOR select id, stock_card_id, date_posted, warehouse_in, warehouse_out, type from stock_card_item where type<>'INITIAL_ENTRY' and balance=0 and stock_card_id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active') order by date_posted asc;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+	OPEN cursor_i;
+	set v_count=0;
+  read_loop: LOOP
+    FETCH cursor_i INTO cursor_ID, v_stock_card_id, v_date_posted, v_warehouse_in, v_warehouse_out, v_type;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    set v_count=v_count+1;
+	    select v_count;
+
+    select sum(coalesce(qty_in,0)-coalesce(qty_out,0)) into v_qty from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted;
+    update stock_card_item set balance=v_qty where id=cursor_ID;
+  END LOOP;
+	 
+END$$
+DELIMITER ;
+
+DROP PROCEDURE update_ia;
+DELIMITER $$
+CREATE PROCEDURE update_ia()
+BEGIN
+	DECLARE v_count INT;
+	DECLARE cursor_ID INT;
+	DECLARE v_qty INT;
+	DECLARE v_qty_in INT;
+	DECLARE v_qty_out INT;
+	DECLARE v_stock_card_id INT;
+	DECLARE v_warehouse_in VARCHAR(100);
+	DECLARE v_warehouse_out VARCHAR(100);
+	DECLARE v_type VARCHAR(100);
+	DECLARE v_date_posted DATETIME;
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE cursor_i CURSOR FOR select id, stock_card_id, date_posted, warehouse_in, warehouse_out, type from stock_card_item where type='APPROVED_INVENTORY_ADJUSTMENT' and stock_card_id in (select sc.id from stock_card sc, product p where sc.product_id=p.id and p.status='Active') order by date_posted asc;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+	OPEN cursor_i;
+	set v_count=0;
+  read_loop: LOOP
+    FETCH cursor_i INTO cursor_ID, v_stock_card_id, v_date_posted, v_warehouse_in, v_warehouse_out, v_type;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    set v_count=v_count+1;
+	    select v_count;
+    IF v_type = 'APPROVED_INVENTORY_ADJUSTMENT' THEN
+	    IF v_warehouse_in is not null THEN
+	    	select sum(coalesce(qty_in,0)) into v_qty_in from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted and warehouse_in=v_warehouse_in and id<>cursor_ID;
+	    	select sum(coalesce(qty_out,0)) into v_qty_out from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted and warehouse_out=v_warehouse_in and id<>cursor_ID;
+	    ELSEIF v_warehouse_out is not null THEN
+	    	select sum(coalesce(qty_in,0)) into v_qty_in from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted and warehouse_in=v_warehouse_out and id<>cursor_ID;
+	    	select sum(coalesce(qty_out,0)) into v_qty_out from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted and warehouse_out=v_warehouse_out and id<>cursor_ID;
+	    END IF;
+	    set v_qty = coalesce(v_qty_in,0)-coalesce(v_qty_out,0);
+	    update stock_card_item set qty_in=qty_in-v_qty where type='APPROVED_INVENTORY_ADJUSTMENT' and qty_in is not null and id=cursor_ID; 
+	    update stock_card_item set qty_out=-1*(qty_out-v_qty) where type='APPROVED_INVENTORY_ADJUSTMENT' and qty_out is not null and id=cursor_ID;
+	END IF; 
+  END LOOP;
+	 
+END$$
+DELIMITER ;
+
+
+
+select coalesce(balance, 0) bal from stock_card_item a, stock_card b where a.stock_card_id = b.id and product_id = 7765 and date_posted < '2015-01-16' order by date_posted desc limit 1;
+
+select sc.product_id, warehouse_in, sum(coalesce(qty_in,0)) from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in is not null group by sc.product_id, warehouse_in;
+select sc.product_id, warehouse_out, sum(coalesce(qty_out,0)) from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out is not null group by sc.product_id, warehouse_out;
+
+select b.identifier, concat(coalesce(b.category,''),'',coalesce(b.subcategory,''), ' ', coalesce(b.brand,''), ' ', coalesce(b.model,''),' ',coalesce(b.model_number,''),' ', coalesce(b.material,''), ' ', coalesce(b.size,''), ' ', coalesce(b.added_description,''),' ', coalesce(b.color,'')), b.part_number, b.unit, a.currency, a.cost_foreign, a.exchange_rate, a.cost_local, 
+bul_in.qty, kap_in.qty, bal_in.qty, kapdmg_in.qty, buldmg_in.qty, baldmg_in.qty, fourth_in.qty, 
+bul_out.qty, kap_out.qty, bal_out.qty, kapdmg_out.qty, buldmg_out.qty, baldmg_out.qty, fourth_out.qty 
+from PRODUCT_LIST_COST_REPORT a inner join PRODUCT_LIST b on a.id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='BUL' group by sc.product_id) bul_in on bul_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='KAP' group by sc.product_id) kap_in on kap_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='BAL' group by sc.product_id) bal_in on bal_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='KAP-DMG' group by sc.product_id) kapdmg_in on kapdmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='BUL-DMG' group by sc.product_id) buldmg_in on buldmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='BAL-DMG' group by sc.product_id) baldmg_in on baldmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='4TH' group by sc.product_id) fourth_in on fourth_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='BUL' group by sc.product_id) bul_out on bul_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='KAP' group by sc.product_id) kap_out on kap_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='BAL' group by sc.product_id) bal_out on bal_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='KAP-DMG' group by sc.product_id) kapdmg_out on kapdmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='BUL-DMG' group by sc.product_id) buldmg_out on buldmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='BAL-DMG' group by sc.product_id) baldmg_out on baldmg_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='4TH' group by sc.product_id) fourth_out on fourth_out.product_id=b.id
+where a.id=b.id
+and b.status='Active'
+INTO OUTFILE '/tmp/inventory_report_bikers.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+;  
+
+select b.identifier, concat(coalesce(b.category,''),'',coalesce(b.subcategory,''), ' ', coalesce(b.brand,''), ' ', coalesce(b.model,''),' ',coalesce(b.model_number,''),' ', coalesce(b.material,''), ' ', coalesce(b.size,''), ' ', coalesce(b.added_description,''),' ', coalesce(b.color,'')), b.part_number, b.unit, a.currency, a.cost_foreign, a.exchange_rate, a.cost_local, 
+dnu1_in.qty, dnu2_in.qty, dnu3_in.qty, dnu4_in.qty, main_in.qty, maindmg_in.qty,dnu1_out.qty, dnu2_out.qty, dnu3_out.qty, dnu4_out.qty, main_out.qty, maindmg_out.qty 
+from PRODUCT_LIST_COST_REPORT a inner join PRODUCT_LIST b on a.id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='do not use1' group by sc.product_id) dnu1_in on dnu1_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='do not use2' group by sc.product_id) dnu2_in on dnu2_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='do not use3' group by sc.product_id) dnu3_in on dnu3_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='do not use4' group by sc.product_id) dnu4_in on dnu4_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='.MAIN' group by sc.product_id) main_in on main_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_in='MAIN-DMG' group by sc.product_id) maindmg_in on maindmg_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='do not use1' group by sc.product_id) dnu1_out on dnu1_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='do not use2' group by sc.product_id) dnu2_out on dnu2_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='do not use3' group by sc.product_id) dnu3_out on dnu3_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='do not use4' group by sc.product_id) dnu4_out on dnu4_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='.MAIN' group by sc.product_id) main_out on main_out.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='MAIN-DMG' group by sc.product_id) maindmg_out on maindmg_out.product_id=b.id
+where a.id=b.id
+and b.status='Active'
+INTO OUTFILE '/tmp/inventory_report.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+;  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select b.identifier, 
+kap_in.qty, 
+kap_out.qty 
+from PRODUCT_LIST b
+left outer join (select sc.product_id, sum(coalesce(qty_in,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='KAP' group by sc.product_id) kap_in on kap_in.product_id=b.id
+left outer join (select sc.product_id, sum(coalesce(qty_out,0)) qty from stock_card_item sci, stock_card sc where sci.stock_card_id=sc.id and date_posted<='2016-01-16' and warehouse_out='KAP' group by sc.product_id) kap_out on kap_out.product_id=b.id
+where b.identifier='ACLE01';
+
+
+
+
+// IGNORE
+
+select c.*, f.qty, f.warehouse_id, d.product_id from product p, stock_card d, warehouse e, stock f, 
+(select stock_card_id, wh, sum(qty_total) q from (select stock_card_id, warehouse_in wh, sum(coalesce(qty_in,0)) qty_total from stock_card_item a where date_posted<='2016-01-21'
+group by stock_card_id, warehouse_in union select stock_card_id, warehouse_out wh, -1*sum(coalesce(qty_out,0)) qty_total from stock_card_item a where date_posted<='2016-01-21'
+group by stock_card_id, warehouse_out) b group by stock_card_id, wh) c where c.stock_card_id=d.id and d.product_id=f.product_id and e.identifier=c.wh and e.id=f.warehouse_id and f.product_id=p.id and p.status='Active' and c.stock_card_id=16;
+
+DROP PROCEDURE update_stock_card;
+DELIMITER $$
+CREATE PROCEDURE update_stock_card()
+BEGIN
+	DECLARE v_count INT;
+	DECLARE cursor_ID INT;
+	DECLARE v_qty INT;
+	DECLARE v_qty_in INT;
+	DECLARE v_qty_out INT;
+	DECLARE v_stock_card_id INT;
+	DECLARE v_warehouse_in VARCHAR(100);
+	DECLARE v_warehouse_out VARCHAR(100);
+	DECLARE v_type VARCHAR(100);
+	DECLARE v_date_posted DATETIME;
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE cursor_i CURSOR FOR select id, stock_card_id, date_posted, warehouse_in, warehouse_out, type from stock_card_item where type<>'INITIAL_ENTRY' and stock_card_id in (select stock_card_id from stock_card_item where type='INITIAL_ENTRY' and qty_in>0 and warehouse_in<>'KAP') order by date_posted asc;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+	OPEN cursor_i;
+	set v_count=0;
+  read_loop: LOOP
+    FETCH cursor_i INTO cursor_ID, v_stock_card_id, v_date_posted, v_warehouse_in, v_warehouse_out, v_type;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+    set v_count=v_count+1;
+	    select v_count;
+
+    select sum(coalesce(qty_in,0)-coalesce(qty_out,0)) into v_qty from stock_card_item where stock_card_id=v_stock_card_id and date_posted<=v_date_posted;
+    update stock_card_item set balance=v_qty where id=cursor_ID;
+  END LOOP;
+	 
+END$$
+DELIMITER ;
+

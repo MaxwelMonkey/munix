@@ -1,0 +1,1 @@
+select b.identifier, date, cost_foreign, currency, b.exchange_rate from product_list_cost a, product b where a.id=b.id and b.status='Active' order by b.identifier, date desc INTO OUTFILE '/tmp/product_cost_history.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';

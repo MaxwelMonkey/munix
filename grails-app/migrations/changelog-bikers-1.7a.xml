@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1316674081487-1">
+        <createTable tableName="labor_cost">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316674081487-2">
+        <modifyColumn tableName="counter_receipt">
+            <column name="status" type="VARCHAR(255)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316674081487-3">
+        <modifyColumn tableName="direct_payment_item">
+            <column name="amount" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316674081487-4">
+        <modifyColumn tableName="purchase_invoice_item">
+            <column name="final_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316674081487-5">
+        <createIndex indexName="FKB8E2867CFA625C14" tableName="labor_cost" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1316674081487-6">
+	<sqlFile path="alter scripts/alter-scripts-21.sql"/>
+    </changeSet>
+</databaseChangeLog>

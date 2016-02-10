@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1316675151614-1">
+        <modifyColumn tableName="counter_receipt">
+            <column name="status" type="VARCHAR(255)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-2">
+        <modifyColumn tableName="direct_payment_item">
+            <column name="amount" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-3">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="old_price" defaultNullValue="0.0000" tableName="price_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-4">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="type" defaultNullValue="" tableName="print_log_check_deposit"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-5">
+        <modifyColumn tableName="product">
+            <column name="photo" type="BLOB"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-6">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="purchase_invoice"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-7">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="warehouse_id" defaultNullValue="" tableName="purchase_invoice"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-8">
+        <modifyColumn tableName="purchase_invoice_item">
+            <column name="final_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-9">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="supplier_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-10">
+        <addNotNullConstraint columnDataType="DATETIME" columnName="date" defaultNullValue="" tableName="supplier_payment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-11">
+        <dropIndex indexName="FK2CA761F795970993" tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-12">
+        <dropIndex indexName="FK2CA761F7E8C000EF" tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-13">
+        <dropTable tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1316675151614-14">
+	<sqlFile path="alter scripts/alter-scripts-21.sql"/>
+    </changeSet>
+</databaseChangeLog>

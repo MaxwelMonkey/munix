@@ -1,0 +1,38 @@
+body {
+    border-top: 0px solid #000;
+    background: white;
+    color: black;
+    font: normal normal normal 13px/1.4 Verdana, 'Lucida Grande', Arial, Helvetica, sans-serif;
+    line-height: 1.7em;
+}
+
+h2{
+	color:black;
+}
+
+.prop .name {
+	background-color:white;
+	color:black;
+}
+
+.subTable th, .subTable td {
+    border-left: 1px solid #ddd;
+    border: 1px solid #E5EFF8;
+}
+
+.subTable th {
+	color:black;
+    padding: 8px;
+    background: white;
+
+}
+
+.total{
+    border-top: 1px solid #CCC;
+    background: white;
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 17px;
+    padding: 2px 6px;
+}

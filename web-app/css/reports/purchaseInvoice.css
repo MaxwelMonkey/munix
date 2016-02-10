@@ -1,0 +1,39 @@
+.column0, .cell0{
+	width:170px;
+}
+
+.column1, .cell1{
+	width:100px;
+	text-align:right;
+}
+.column2, .cell2{
+	width:80px;
+	text-align:right;
+}
+.column3, .cell3{
+	width:170px;
+	text-align:center;
+}
+.column5, .cell5{
+	width:120px;
+	text-align:right;
+}
+
+.column6, .cell6{
+	width:120px;
+	text-align:right;
+}
+
+.column7, .cell7{
+	width:120px;
+	text-align:right;
+}
+
+.column8, .cell8{
+	width:120px;
+	text-align:right;
+}
+
+.total5, .total6, .total7, .total8{
+	text-align:right;
+}

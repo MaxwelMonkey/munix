@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="salesDelivery" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3310000000000028"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Long"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     sales_delivery.`id` AS sales_delivery_id,
+     sales_delivery_item.`qty` AS sales_delivery_item_qty,
+     product_unit.`identifier` AS product_unit_identifier,
+     product.`identifier` AS product_identifier,
+     product.`description` AS product_description,
+     sales_delivery_item.`price` AS sales_delivery_item_price,
+     customer.`name` AS customer_name,
+     customer.`bil_addr_street` AS customer_bil_addr_street,
+     city.`description` AS city_description,
+     province.`description` AS province_description,
+     region.`description` AS region_description,
+     customer.`bil_addr_zip` AS customer_bil_addr_zip,
+     country.`description` AS country_description,
+     sales_delivery.`date` AS sales_delivery_date,
+     sales_agent.`last_name` AS sales_agent_last_name,
+     sales_agent.`first_name` AS sales_agent_first_name,
+     sales_delivery.`discount` AS sales_delivery_discount,
+     sales_delivery.`term_day` AS sales_delivery_term_day,
+     discount_group.`identifier` AS discount_group_identifier
+FROM
+     `sales_delivery` sales_delivery INNER JOIN `sales_delivery_item` sales_delivery_item ON sales_delivery.`id` = sales_delivery_item.`delivery_id`
+     LEFT JOIN `product` product ON sales_delivery_item.`product_id` = product.`id`
+     LEFT JOIN `product_unit` product_unit ON product.`unit_id` = product_unit.`id`
+     LEFT JOIN `customer` customer ON sales_delivery.`customer_id` = customer.`id`
+     LEFT JOIN `sales_agent` sales_agent ON sales_delivery.`sales_agent_id` = sales_agent.`id`
+     LEFT JOIN `discount_group` discount_group ON sales_delivery.`discount_group_id` = discount_group.`id`
+     LEFT JOIN `city` city ON customer.`bil_addr_city_id` = city.`id`
+     LEFT JOIN `province` province ON city.`province_id` = province.`id`
+     LEFT JOIN `region` region ON province.`region_id` = region.`id`
+     LEFT JOIN `country` country ON region.`country_id` = country.`id`
+WHERE
+     sales_delivery.`id` = $P{id}]]>
+	</queryString>
+	<field name="sales_delivery_id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_delivery_item_qty" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="product_unit_identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="product_identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="product_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_delivery_item_price" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="customer_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="customer_bil_addr_street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="city_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="province_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="region_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="customer_bil_addr_zip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="country_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_delivery_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_agent_last_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_agent_first_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_delivery_discount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sales_delivery_term_day" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="discount_group_identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="amount" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[($F{sales_delivery_item_qty})*($F{sales_delivery_item_price})]]></variableExpression>
+	</variable>
+	<variable name="total_amount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{amount}]]></variableExpression>
+	</variable>
+	<variable name="discount" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[($V{total_amount})*($F{sales_delivery_discount}/100)]]></variableExpression>
+	</variable>
+	<variable name="grand_total" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[($V{total_amount})-($V{discount})]]></variableExpression>
+	</variable>
+	<group name="subreport" footerPosition="CollateAtBottom">
+		<groupExpression><![CDATA[$F{sales_delivery_id}]]></groupExpression>
+		<groupFooter>
+			<band height="100">
+				<subreport isUsingCache="true">
+					<reportElement key="subreport-1" positionType="Float" x="1" y="0" width="554" height="100"/>
+					<subreportParameter name="id">
+						<subreportParameterExpression><![CDATA[$P{id}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR}]]></subreportExpression>
+				</subreport>
+				<textField pattern="#,##0.00">
+					<reportElement x="416" y="5" width="139" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{total_amount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="339" y="5" width="77" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[SUBTOTAL :]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="465" y="20" width="90" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{discount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="339" y="20" width="77" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[DISCOUNT :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="339" y="35" width="77" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[TOTAL :]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="416" y="35" width="139" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{grand_total}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement isPrintRepeatedValues="false" x="416" y="20" width="49" height="15"/>
+					<box rightPadding="5"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{discount_group_identifier}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="division">
+		<groupExpression><![CDATA[$F{sales_delivery_id}]]></groupExpression>
+		<groupFooter>
+			<band height="22">
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="10" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="554" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Sales Delivery]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="60" y="57" width="306" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{customer_name}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="60" y="77" width="306" height="15"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{customer_bil_addr_street}.toUpperCase()+" "+$F{city_description}.toUpperCase()+", "+$F{province_description}.toUpperCase()+" "+$F{region_description}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="57" width="60" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLD TO :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="60" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADDRESS : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="57" width="75" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+				<reportElement x="441" y="57" width="114" height="20"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{sales_delivery_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="366" y="77" width="75" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALESMAN : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="441" y="77" width="114" height="15">
+					<printWhenExpression><![CDATA[$F{sales_agent_last_name}&&$F{sales_agent_first_name}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sales_agent_last_name}+", "+$F{sales_agent_first_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="92" width="20" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[SD-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="00000000">
+				<reportElement isPrintRepeatedValues="false" x="436" y="92" width="64" height="15"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{sales_delivery_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="92" y="42" width="40" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{sales_delivery_term_day}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="42" width="32" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Terms:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="42" width="212" height="15" forecolor="#000000"/>
+				<box leftPadding="2"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Days]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="35" height="15" forecolor="#000000"/>
+				<box leftPadding="5"/>
+				<textElement>
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[UNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="102" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ITEM CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="0" width="188" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="90" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[UNIT PRICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="0" width="90" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="30"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="0" y="15" width="50" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{sales_delivery_item_qty}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="50" y="15" width="35" height="15"/>
+					<box leftPadding="5"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_unit_identifier}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToBandHeight" x="85" y="15" width="102" height="15"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_identifier}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToBandHeight" x="187" y="15" width="188" height="15"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{product_description}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="375" y="15" width="90" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{sales_delivery_item_price}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="465" y="15" width="90" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{amount}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,5 @@
+DefaultPackage
+grails-app.conf
+grails-app.taglib.com.grailsrocks.jqueryui
+scripts
+test.unit.com.grailsrocks.jqueryui

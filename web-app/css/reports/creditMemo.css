@@ -1,0 +1,24 @@
+#head table tr td.col1{
+	width:20%;
+}
+#head table tr td.col2{
+	width:40%;
+}
+#head table tr td.col3{
+	width:15%;
+}
+#head table tr td.col4{
+	width:25%;
+}
+
+.column0, .column2, .column4{
+	text-align:center;
+}
+
+.cell0, .cell2, .cell4{
+	text-align:center;
+}
+
+html * {
+	font-size:9pt !important;
+}

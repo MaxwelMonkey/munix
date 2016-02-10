@@ -1,0 +1,647 @@
+*** Settings ***
+Test Setup      Begin Test
+Test Teardown   End Test
+Force Tags      smoke_test
+Resource        munix_resource.html
+
+*** Test Cases ***
+Maintenance
+    [Tags]  master
+    Login to System as SuperAdmin
+    User
+    Role
+    Requestmap
+    Bank
+    Bank Account
+    Charge
+    Check Type
+    Check Status
+    Check Warehouse
+    Collector
+    Currency
+    Payment Type
+    Assembler
+    Brand
+    Category
+    Color
+    Item Type
+    Material
+    Model
+    Subcategory
+    Discount Type
+    Unit
+    Item Location
+    Customer Type
+    Discount Group
+    City
+    Country
+    Packaging
+    Personnel
+    Personnel Type
+    Province
+    Region
+    Term
+    Truck
+    Logout From System
+
+Master
+    [Tags]  maintenance
+    Login to System as SuperAdmin
+    Customer
+    Forwarder
+    Product
+    Sales Agent
+    Supplier
+    Check
+    Inventory Warehouse
+    Logout From System
+
+Transactions-Accounting
+    [Tags]  accounting
+    Login to System as SuperAdmin
+    Customer Charge
+    Direct Payment
+    Counter Receipt
+    Collection Schedule
+    Deposit Checks
+    Bounced Check
+    Check Warehousing
+    Supplier Payment
+    Price Adjustment
+    Logout From System
+
+Transactions-Delivery
+    [Tags]  delivery
+    Login to System as SuperAdmin
+    Trip Ticket
+    Direct Delivery
+    Waybill
+    Logout From System
+
+Transactions-Purchasing
+    [Tags]  purchasing
+    Login to System as SuperAdmin
+    Purchase Order
+    Purchase Invoice
+    Logout From System
+
+Transactions-Sales
+    [Tags]  sales
+    Login to System as SuperAdmin
+    Sales Order
+    Sales Delivery
+    Credit Memo
+    Logout From System
+
+*** Keywords ***
+Click Edit Button
+    Click Button  Edit
+
+User
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAdmin  don't wait
+    Click Element  menuUser
+    Click Element  rowUserName0
+    Click Edit Button
+    Click Link  New User
+    Click Link  User List
+
+Role
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAdmin  don't wait
+    Click Element  menuRole
+    Click Element  rowRoleName0
+    Click Edit Button
+    Click Link  New Role
+    Click Link  Role List
+
+Requestmap
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuRequestMap
+    Click Element  rowUrl0
+    Click Edit Button
+    Click Link  New Requestmap
+    Click Link  Requestmap List
+
+Bank
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuBank
+    Click Element  rowBank0
+    Click Edit Button
+    Click Link  New Bank
+    Click Link  Bank List
+
+Bank Account
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuBankAccount
+    Click Element  rowBankAccount0
+    Click Edit Button
+    Click Link  New Bank Account
+    Click Link  Bank Account List
+
+Charge
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCharge
+    Click Element  rowCharge0
+    Click Edit Button
+    Click Link  New Charge
+    Click Link  Charge List
+
+Check Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckType
+    Click Element  rowCheckType0
+    Click Edit Button
+    Click Link  New Check Type
+    Click Link  Check Type List
+
+Check Status
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckStatus
+    Click Element  rowCheckStatus0
+    Click Edit Button
+    Click Link  New Check Status
+    Click Link  Check Status List
+
+Check Warehouse
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckWarehouse
+    Click Element  rowCheckWarehouse0
+    Click Edit Button
+    Click Link  New Check Warehouse
+    Click Link  Check Warehouse List
+
+Collector
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCollector
+    Click Element  rowCollector0
+    Click Edit Button
+    Click Link  New Collector
+    Click Link  Collector List
+
+Currency
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCurrency
+    Click Element  rowCurrencyType0
+    Click Edit Button
+    Click Link  New Currency Type
+    Click Link  Currency Type List
+
+Payment Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuPaymentType
+    Click Element  rowPaymentType0
+    Click Edit Button
+    Click Link  New Payment Type
+    Click Link  Payment Type List
+
+Assembler
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuAssembler
+    Click Element  rowAssembler0
+    Click Edit Button
+    Click Link  New Assembler
+    Click Link  Assembler List
+
+Brand
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuBrand
+    Click Element  rowBrand0
+    Click Edit Button
+    Click Link  New Product Brand
+    Click Link  Product Brand List
+
+Category
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuCategory
+    Click Element  rowCategory0
+    Click Edit Button
+    Click Link  New Product Category
+    Click Link  Product Category List
+
+Color
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuColor
+    Click Element  rowColor0
+    Click Edit Button
+    Click Link  New Product Color
+    Click Link  Product Color List
+
+Item Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuItemType
+    Click Element  rowItemType0
+    Click Edit Button
+    Click Link  New Item Type
+    Click Link  Item Type List
+
+Material
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuMaterial
+    Click Element  rowMaterial0
+    Click Edit Button
+    Click Link  New Product Material
+    Click Link  Product Material List
+
+Model
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuModel
+    Click Element  rowModel0
+    Click Edit Button
+    Click Link  New Product Model
+    Click Link  Product Model List
+
+Subcategory
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuSubcategory
+    Click Element  rowSubcategory0
+    Click Edit Button
+    Click Link  New Product Subcategory
+    Click Link  Product Subcategory List
+
+Discount Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuDiscountType
+    Click Element  rowDiscountType0
+    Click Edit Button
+    Click Link  New Discount Type
+    Click Link  Discount Type List
+
+Unit
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuUnit
+    Click Element  rowUnit0
+    Click Edit Button
+    Click Link  New Product Unit
+    Click Link  Product Unit List
+
+Item Location
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuItemLocation
+    Click Element  rowItemLocation0
+    Click Edit Button
+    Click Link  New Item Location
+    Click Link  Item Location List
+
+Customer Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuCustomerType
+    Click Element  rowCustomerType0
+    Click Edit Button
+    Click Link  New Customer Type
+    Click Link  Customer Type List
+
+Discount Group
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuDiscountGroup
+    Click Element  rowDiscountGroup0
+    Click Edit Button
+    Click Link  New Discount Group
+    Click Link  Discount Group List
+
+City
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuCity
+    Click Element  rowCity0
+    Click Edit Button
+    Click Link  New City
+    Click Link  City List
+
+Country
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuCountry
+    Click Element  rowCountry0
+    Click Edit Button
+    Click Link  New Country
+    Click Link  Country List
+
+Packaging
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPackaging
+    Click Element  rowPackaging0
+    Click Edit Button
+    Click Link  New Packaging
+    Click Link  Packaging List
+
+Personnel
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPersonnel
+    Click Element  rowPersonnel0
+    Click Edit Button
+    Click Link  New Personnel
+    Click Link  Personnel List
+
+Personnel Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPersonnelType
+    Click Element  rowPersonnelType0
+    Click Edit Button
+    Click Link  New Personnel Type
+    Click Link  Personnel Type List
+
+Province
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuProvince
+    Click Element  rowProvince0
+    Click Edit Button
+    Click Link  New Province
+    Click Link  Province List
+
+Region
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuRegion
+    Click Element  rowRegion0
+    Click Edit Button
+    Click Link  New Region
+    Click Link  Region List
+
+Term
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuTerms
+    Click Element  rowTerm0
+    Click Edit Button
+    Click Link  New Term
+    Click Link  Term List
+
+Truck
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuTruck
+    Click Element  rowTruck0
+    Click Edit Button
+    Click Link  New Truck
+    Click Link  Truck List
+
+Customer
+    Click Element  menuMaster  don't wait
+    Click Element  menuCustomer
+    Click Element  rowCustomerIdentifier0
+    Click Link  viewCustomerLedger
+    Click Link  Back
+    Click Link  addCustomerDiscount
+    Click Link  customerLink
+    Click Edit Button
+    Click Link  New Customer
+    Click Link  Customer List
+    Click Link  New Customer
+
+Forwarder
+    Click Element  menuMaster  don't wait
+    Click Element  menuForwarder
+    Click Element  rowForwarderIdentifier0
+    Click Edit Button
+    Click Link  New Forwarder
+    Click Link  Forwarder List
+    Click Link  New Forwarder
+
+Product
+    Click Element  menuMaster  don't wait
+    Click Element  menuProduct
+    Click Element  rowProductIdentifier0
+    Click Link  showPhoto
+    Click Button  Back
+    Click Link  addLaborCost
+    Go Back
+    Click Button  viewPriceAdjustmentHistory
+    Click Button  Back
+    Click Edit Button
+    Click Link  Change Picture
+    Go Back
+    Click Link  New Product
+    Click Link  Product List
+    Click Link  New Product
+
+Sales Agent
+    Click Element  menuMaster  don't wait
+    Click Element  menuSalesAgent
+    Click Element  rowSalesAgentIdentifier0
+    Click Edit Button
+    Click Link  New Sales Agent
+    Click Link  Sales Agent List
+    Click Link  New Sales Agent
+
+Supplier
+    Click Element  menuMaster  don't wait
+    Click Element  menuSupplier
+    Click Element  rowSupplierIdentifier0
+    Click Edit Button
+    Click Link  New Supplier
+    Click Link  Supplier List
+    Click Link  New Supplier
+
+Check
+    Click Element  menuMaster  don't wait
+    Click Element  menuCheck
+    Click Element  rowCheckPayment0
+    Go Back
+    Click Link  showDirectPayment
+
+Inventory Warehouse
+    Click Element  menuMaster  don't wait
+    Click Element  menuWarehouse
+    Click Element  rowWarehouseIdentifier0
+    Click Edit Button
+    Click Link  New Inventory Warehouse
+    Click Link  Inventory Warehouse List
+    Click Link  New Inventory Warehouse
+
+Customer Charge
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCustomerCharge
+    Click Element  rowCustomerChargeId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Customer Charge
+    Click Link  Customer Charge List
+    Click Link  New Customer Charge
+
+Direct Payment
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuDirectPayment
+    Click Element  rowDirectPaymentId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Direct Payment
+    Click Link  Direct Payment List
+    Click Link  New Direct Payment
+
+Counter Receipt
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCounterReceipt
+    Click Element  rowCounterReceiptId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Counter Receipt
+    Click Link  Counter Receipt List
+    Click Link  New Counter Receipt
+
+Collection Schedule
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCollectionSchedule
+    Click Element  rowCollectionScheduleId0
+    Click Link  New Collection Schedule
+    Click Link  Collection Schedule List
+    Click Link  New Collection Schedule
+
+Deposit Checks
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuDepositCheck
+    Click Element  rowCheckDepositId0
+    Click Link  New Check Deposit
+    Click Link  Check Deposit List
+    Click Link  New Check Deposit
+
+Bounced Check
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuBouncedCheck
+    Click Element  rowBouncedCheckId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Bounced Check
+    Click Link  Bounced Check List
+    Click Link  New Bounced Check
+
+Check Warehousing
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuWarehousing
+    Click Link  New Check Warehousing
+    Click Link  Check Warehousing List
+    Click Link  New Check Warehousing
+
+Supplier Payment
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuSupplierPayment
+    Click Element  rowSupplierPaymentId0
+    Click Link  supplierShowLink
+    Go Back
+    Click Link  New Supplier Payment
+    Click Link  Supplier Payment List
+    Click Link  New Supplier Payment
+
+Price Adjustment
+    Click Element  menuTransactions  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuPriceAdjustment
+    Click Element  rowPriceAdjustmentId0
+    Click Link  New Price Adjustment
+    Click Link  Price Adjustment List
+    Click Link  New Price Adjustment
+
+Trip Ticket
+    Click Element  menuTransactions  don't wait
+    Click Element  menuDelivery  don't wait
+    Click Element  menuTripTicket
+    Click Link  New Trip Ticket
+    Click Link  Trip Ticket List
+    Click Link  New Trip Ticket
+
+Direct Delivery
+    Click Element  menuTransactions  don't wait
+    Click Element  menuDelivery  don't wait
+    Click Element  menuDirectDelivery
+    Click Link  New Direct Delivery
+    Click Link  Direct Delivery List
+    Click Link  New Direct Delivery
+
+Waybill
+    Click Element  menuTransactions  don't wait
+    Click Element  menuDelivery  don't wait
+    Click Element  menuWaybill
+    Click Link  New Waybill
+    Click Link  Waybill List
+    Click Link  New Waybill
+
+Purchase Order
+    Click Element  menuTransactions  don't wait
+    Click Element  menuPurchasing  don't wait
+    Click Element  menuPurchaseOrder
+    Click Element  rowPurchaseOrderIdentifier0
+    Click Link  supplierShowLink
+    Go Back
+    Click Link  New Purchase Order
+    Click Link  Purchase Order List
+    Click Link  New Purchase Order
+
+Purchase Invoice
+    Click Element  menuTransactions  don't wait
+    Click Element  menuPurchasing  don't wait
+    Click Element  menuPurchaseInvoice
+    Click Element  rowPurchaseInvoiceReference0
+    Click Link  supplierShowLink
+    Go Back
+    Click Link  New Purchase Invoice
+    Click Link  Purchase Invoice List
+    Click Link  New Purchase Invoice
+
+Sales Order
+    Click Element  menuTransactions  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuSalesOrder
+    Click Element  rowSalesOrderId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Sales Order
+    Click Link  Sales Order List
+    Click Link  New Sales Order
+
+Sales Delivery
+    Click Element  menuTransactions  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuSalesDelivery
+    Click Element  rowSalesDeliveryId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  salesOrderShowLink
+    Go Back
+    Click Link  Sales Delivery List
+
+Credit Memo
+    Click Element  menuTransactions  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuCreditMemo
+    Click Element  rowCreditMemoId0
+    Click Link  customerShowLink
+    Go Back
+    Click Link  New Credit Memo
+    Click Link  Credit Memo List
+    Click Link  New Credit Memo
+

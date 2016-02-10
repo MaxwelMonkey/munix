@@ -1,0 +1,15 @@
+*** Settings ***
+Force Tags      credit_memo
+Library         CreditMemoRobotKeywords
+
+*** Test Cases ***
+First
+    Credit Memo Item With Values  10  100  0  100
+    Credit Should Be  1000
+
+*** Keywords ***
+Credit Should Be
+    [Arguments]  ${expectedCredit}
+    ${actualCredit}  Compute Credit
+    Should Be Equal  ${actualCredit}  ${expectedCredit}
+

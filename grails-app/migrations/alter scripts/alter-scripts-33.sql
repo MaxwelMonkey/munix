@@ -1,0 +1,2 @@
+insert into requestmap (version, url, config_attribute) values (0,	"/salesOrder/unapprove","ROLE_SALES, ROLE_ACCOUNTING");
+insert into requestmap (version, url, config_attribute) values (0,	"/checkDeposit/approve","ROLE_MANAGER_ACCOUNTING");

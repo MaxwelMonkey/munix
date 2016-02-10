@@ -1,0 +1,53 @@
+.tripTicket #head table tr td.col1{
+	width:15%;
+}
+.tripTicket #head table tr td.col2{
+	width:35%;
+}
+.tripTicket #head table tr td.col3{
+	width:15%;
+}
+.tripTicket #head table tr td.col4{
+	width:35%;
+}
+
+.tripTicket #head table, .tripTicket #body table{
+	border: solid 2px black;
+}
+
+.tripTicket #body table tr th{
+	border: solid 2px black;
+}
+
+.tripTicket #body table tr td{
+	border: solid 2px black;
+}
+
+.tripTicket #body table tr th.customer{
+	width:40%;
+}
+
+.tripTicket #body table tr th.wb{
+	width:10%;
+}
+
+.tripTicket #body table tr th.sd{
+	width:10%;
+}
+
+.tripTicket #body table tr th.package{
+	width:10%;
+}
+
+.tripTicket #body table tr th.timeIn{
+	width:10%;
+}
+
+.tripTicket #body table tr th.timeOut{
+	width:10%;
+}
+
+.tripTicket #body table tr th.signature{
+	width:10%;
+}
+

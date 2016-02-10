@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    
+    <changeSet author="charles (generated)" id="1303972996158-1">
+        <renameTable oldTableName="product_type" newTableName="discount_type"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-2">
+        <createTable tableName="item_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-3">
+        <renameColumn columnDataType="BIGINT(20)" tableName="check_payment" oldColumnName ="direct_payment_id" newColumnName="direct_payment_item_id"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-4">
+        <addColumn tableName="credit_memo">
+            <column name="approved_two_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-5">
+	<renameColumn columnDataType="BIGINT(20)" tableName="credit_memo" oldColumnName ="product_type_id" newColumnName="discount_type_id"/>
+    </changeSet>
+    
+    <changeSet author="charles (generated)" id="1303972996158-6">
+        <addColumn tableName="credit_memo_item">
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-7">
+       	<renameColumn columnDataType="BIGINT(20)" tableName="credit_memo_item" oldColumnName ="delivery_id" newColumnName="delivery_item_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-8">
+	<renameColumn columnDataType="VARCHAR(255)" tableName="customer" oldColumnName ="account_name" newColumnName="account_name1"/> 
+    </changeSet>
+    
+    <changeSet author="charles (generated)" id="1303972996158-9">
+        <addColumn tableName="customer">
+            <column name="account_name2" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-10">
+        <addColumn tableName="customer">
+            <column name="account_name3" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-11">
+        <renameColumn columnDataType="VARCHAR(255)" tableName="customer" oldColumnName ="account_number" newColumnName="account_number1"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-12">
+        <addColumn tableName="customer">
+            <column name="account_number2" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-13">
+        <addColumn tableName="customer">
+            <column name="account_number3" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-14">
+        <renameColumn columnDataType="BIGINT(20)" tableName="customer" oldColumnName ="bank_id" newColumnName="bank1_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-15">
+        <addColumn tableName="customer">
+            <column name="bank2_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-16">
+        <addColumn tableName="customer">
+            <column name="bank3_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-17">
+        <renameColumn columnDataType="VARCHAR(255)" tableName="customer" oldColumnName ="branch" newColumnName="branch1"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-18">
+        <addColumn tableName="customer">
+            <column name="branch2" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-19">
+        <addColumn tableName="customer">
+            <column name="branch3" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-20">
+        <renameColumn columnDataType="BIGINT(20)" tableName="customer_discount" oldColumnName ="product_type_id" newColumnName="discount_type_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-21">
+	<renameColumn columnDataType="BIGINT(20)" tableName="customer_discount_log_item" oldColumnName ="product_type_id" newColumnName="discount_type_id"/> 
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-22">
+	<renameColumn columnDataType="BIGINT(20)" tableName="inventory_increase" oldColumnName ="product_type_id" newColumnName="discount_type_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-23">
+        <renameColumn columnDataType="BIGINT(20)" tableName="inventory_shrinkage" oldColumnName ="product_type_id" newColumnName="discount_type_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-24">
+        <addColumn tableName="product">
+            <column name="item_type_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-25">
+        <addColumn tableName="product">
+            <column name="package_details" type="VARCHAR(250)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-26">
+	<renameColumn columnDataType="BIGINT(20)" tableName="sales_order" oldColumnName ="product_type_id" newColumnName="discount_type_id"/> 
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-28">
+        <modifyColumn tableName="bounced_check">
+            <column name="status" type="VARCHAR(10)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-29">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="branch" defaultNullValue="" tableName="check_type"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-30">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="description" defaultNullValue="" tableName="city"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-31">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="collector_id" defaultNullValue="" tableName="collection_schedule"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-32">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="collection_schedule"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-33">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="type" defaultNullValue="" tableName="collection_schedule_item"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-34">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="counter_receipt"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-35">
+        <modifyColumn tableName="counter_receipt">
+            <column name="status" type="VARCHAR(10)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-36">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="identifier" defaultNullValue="" tableName="country"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-38">
+        <modifyColumn tableName="credit_memo">
+            <column name="status" type="VARCHAR(23)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-39">
+        <addNotNullConstraint columnDataType="BIT" columnName="auto_second_approve" defaultNullValue="" tableName="customer"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-41">
+        <modifyColumn tableName="customer_charge">
+            <column name="status" type="VARCHAR(10)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-42">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="bounced_check_id" defaultNullValue="" tableName="direct_payment_invoice_bounced_check"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-43">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="customer_charge_id" defaultNullValue="" tableName="direct_payment_invoice_charge"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-44">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="credit_memo_id" defaultNullValue="" tableName="direct_payment_invoice_credit_memo"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-45">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="sales_delivery_id" defaultNullValue="" tableName="direct_payment_invoice_delivery"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-46">
+        <addNotNullConstraint columnDataType="DATETIME" columnName="date" defaultNullValue="" tableName="ledger_entry"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-47">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="product"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-48">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="whole_sale_price" defaultNullValue="" tableName="product"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-49">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="description" defaultNullValue="" tableName="province"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-50">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="identifier" defaultNullValue="" tableName="province"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-51">
+        <modifyColumn tableName="purchase_delivery">
+            <column name="exchange_rate" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-52">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="purchase_delivery"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-53">
+        <modifyColumn tableName="purchase_delivery_item">
+            <column name="final_price" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-54">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="final_price" defaultNullValue="" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-55">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="po_item_id" defaultNullValue="" tableName="purchase_delivery_item"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-56">
+        <addNotNullConstraint columnDataType="DATETIME" columnName="delivery_date" defaultNullValue="" tableName="purchase_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-57">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="discount_rate" defaultNullValue="" tableName="purchase_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-58">
+        <modifyColumn tableName="purchase_invoice">
+            <column name="exchange_rate" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-59">
+        <modifyColumn tableName="purchase_invoice">
+            <column name="status" type="VARCHAR(10)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-60">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="final_price" defaultNullValue="" tableName="purchase_order_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-61">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="price" defaultNullValue="" tableName="purchase_order_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-62">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="identifier" defaultNullValue="" tableName="region"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-63">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="commission_rate" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-64">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="delivery_type" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-65">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="sales_delivery_id" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-66">
+        <modifyColumn tableName="sales_delivery">
+            <column name="status" type="VARCHAR(10)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-67">
+        <modifyColumn tableName="sales_order">
+            <column name="status" type="VARCHAR(23)"/>
+        </modifyColumn>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-68">
+        <modifyColumn tableName="supplier">
+            <column name="locale_type" type="VARCHAR(7)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-69">
+        <addNotNullConstraint columnDataType="VARCHAR(7)" columnName="locale_type" defaultNullValue="" tableName="supplier"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-70">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)" columnName="yahoo" tableName="supplier"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-71">
+        <modifyColumn tableName="supplier_item">
+            <column name="cost" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-72">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="trip_ticket"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-73">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="item_id" defaultNullValue="" tableName="trip_ticket_delivery_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-74">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="item_id" defaultNullValue="" tableName="trip_ticket_waybill_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-75">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="waybill"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-1">
+        <addNotNullConstraint columnDataType="VARCHAR(10)" columnName="status" defaultNullValue="" tableName="bounced_check"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-2">
+        <addNotNullConstraint columnDataType="VARCHAR(10)" columnName="status" defaultNullValue="" tableName="counter_receipt"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-3">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="discount_type_id" defaultNullValue="" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-4">
+        <addNotNullConstraint columnDataType="VARCHAR(23)" columnName="status" defaultNullValue="" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-5">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="delivery_item_id" defaultNullValue="" tableName="credit_memo_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-6">
+        <addNotNullConstraint columnDataType="VARCHAR(10)" columnName="status" defaultNullValue="" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-7">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="discount_type_id" defaultNullValue="" tableName="customer_discount"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-8">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="discount_type_id" defaultNullValue="" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-9">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="discount_type_id" defaultNullValue="" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-10">
+        <addNotNullConstraint columnDataType="VARCHAR(10)" columnName="status" defaultNullValue="" tableName="purchase_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-11">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="prepared_by" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-12">
+        <addNotNullConstraint columnDataType="VARCHAR(10)" columnName="status" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-13">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="discount_type_id" defaultNullValue="" tableName="sales_order"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1304065572293-14">
+        <addNotNullConstraint columnDataType="VARCHAR(23)" columnName="status" defaultNullValue="" tableName="sales_order"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-76">
+        <addPrimaryKey columnNames="sales_delivery_id, counter_receipt_id" tableName="sales_delivery_counter_receipts"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-77">
+        <createIndex indexName="FKE9BE35CFA644C96" tableName="check_payment" unique="false">
+            <column name="direct_payment_item_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-78">
+        <createIndex indexName="FKEDE916C0DC243AE3" tableName="credit_memo" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-79">
+        <createIndex indexName="FK336355329B404909" tableName="credit_memo_item" unique="false">
+            <column name="delivery_item_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-80">
+        <createIndex indexName="FK24217FDE47994BE7" tableName="customer" unique="false">
+            <column name="bank1_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-81">
+        <createIndex indexName="FK24217FDE4799C046" tableName="customer" unique="false">
+            <column name="bank2_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-82">
+        <createIndex indexName="FK24217FDE479A34A5" tableName="customer" unique="false">
+            <column name="bank3_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-83">
+        <createIndex indexName="FK4D7B2082DC243AE3" tableName="customer_discount" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-84">
+        <createIndex indexName="FK776AC78337EDEA71" tableName="customer_discount_log_customer_discount_log_item" unique="false">
+            <column name="customer_discount_log_items_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-85">
+        <createIndex indexName="FK65BB7E4BDC243AE3" tableName="customer_discount_log_item" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-86">
+        <createIndex indexName="identifier" tableName="discount_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-87">
+        <createIndex indexName="FKFBF45DC5DC243AE3" tableName="inventory_increase" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-88">
+        <createIndex indexName="FKE8A19B33DC243AE3" tableName="inventory_shrinkage" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-89">
+        <createIndex indexName="identifier" tableName="item_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-90">
+        <createIndex indexName="FKED8DCCEFA821CE87" tableName="product" unique="false">
+            <column name="item_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-91">
+        <createIndex indexName="FK67203A5BDC243AE3" tableName="sales_order" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-92">
+        <dropIndex indexName="FK4C408DE5E8F7FB72" tableName="bounced_check"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-93">
+        <dropIndex indexName="FKD217E0F5A533AAA7" tableName="bounced_check_check_payment"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-94">
+        <dropIndex indexName="FKD217E0F5E8C000EF" tableName="bounced_check_check_payment"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-95">
+        <dropIndex indexName="FKE9BE35CF6D153868" tableName="check_payment"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-96">
+        <dropIndex indexName="FKCFE28EB191BA59D" tableName="counter_receipt_customer_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-97">
+        <dropIndex indexName="FKCFE28EBE9819F47" tableName="counter_receipt_customer_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-98">
+        <dropIndex indexName="FK72B544513396FBC0" tableName="counter_receipt_sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-99">
+        <dropIndex indexName="FK72B54451CF8A4ED" tableName="counter_receipt_sales_delivery"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-100">
+        <dropIndex indexName="description" tableName="country"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-101">
+        <dropIndex indexName="FKEDE916C07AC68D73" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-102">
+        <dropIndex indexName="FKEDE916C0E8F7FB72" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-103">
+        <dropIndex indexName="FKEDE916C0EE220F11" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-104">
+        <dropIndex indexName="FK33635532538B2FA0" tableName="credit_memo_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-105">
+        <dropIndex indexName="FK33635532FA625C14" tableName="credit_memo_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-106">
+        <dropIndex indexName="FK24217FDEA261FDC0" tableName="customer"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-107">
+        <dropIndex indexName="FK3F8DAA35E8F7FB72" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-108">
+        <dropIndex indexName="FKE41A7DFC191BA59D" tableName="customer_charge_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-109">
+        <dropIndex indexName="FKE41A7DFC326A7547" tableName="customer_charge_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-110">
+        <dropIndex indexName="FKE41A7DFC9BFC8F21" tableName="customer_charge_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-111">
+        <dropIndex indexName="customer_charge_id" tableName="customer_charge_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-112">
+        <dropIndex indexName="FK4D7B20827AC68D73" tableName="customer_discount"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-113">
+        <dropIndex indexName="FK65BB7E4B7AC68D73" tableName="customer_discount_log_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-114">
+        <dropIndex indexName="FK57369AA5326A7547" tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-115">
+        <dropIndex indexName="FK57369AA5538B2FA0" tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-116">
+        <dropIndex indexName="FK57369AA59BFC8F21" tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-117">
+        <dropIndex indexName="FK57369AA5A122CF80" tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-118">
+        <dropIndex indexName="FK57369AA5E8C000EF" tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-119">
+        <dropIndex indexName="FKA3D5786D3F5DED21" tableName="customer_payment_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-120">
+        <dropIndex indexName="FKA3D5786DFFCA78F6" tableName="customer_payment_item"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-121">
+        <dropIndex indexName="FKA32BE90440FD5CD9" tableName="direct_payment_invoice_bounced_check"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-122">
+        <dropIndex indexName="FK84287C75D08ABFFF" tableName="direct_payment_invoice_charge"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-123">
+        <dropIndex indexName="FKEBDEAD9F1E3312A0" tableName="direct_payment_invoice_credit_memo"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-124">
+        <dropIndex indexName="FKF7770975A2C8821" tableName="direct_payment_invoice_delivery"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-125">
+        <dropIndex indexName="FKFBF45DC57AC68D73" tableName="inventory_increase"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-126">
+        <dropIndex indexName="FKE8A19B337AC68D73" tableName="inventory_shrinkage"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-127">
+        <dropIndex indexName="FK52A9FF565A7D0261" tableName="ledger_entry_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-128">
+        <dropIndex indexName="FK94E966B26AAB427" tableName="print_log"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-129">
+        <dropIndex indexName="FK94E966B2ADBCDF60" tableName="print_log"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-130">
+        <dropIndex indexName="FK94E966B2CF8A4ED" tableName="print_log"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-131">
+        <dropIndex indexName="FKED8DCCEF99A9EF63" tableName="product"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-132">
+        <dropIndex indexName="identifier" tableName="product_size"/>
+    </changeSet>
+    <!--<changeSet author="charles (generated)" id="1303972996158-133">
+        <dropIndex indexName="identifier" tableName="product_type"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-134">
+        <dropIndex indexName="description" tableName="province"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-135">
+        <dropIndex indexName="description" tableName="region"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-136">
+        <dropIndex indexName="FKC6EB71C7326A7547" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-137">
+        <dropIndex indexName="FKC6EB71C7E8F7FB72" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-138">
+        <dropIndex indexName="FK6EC0101E326A7547" tableName="sales_delivery_counter_reciepts"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-139">
+        <dropIndex indexName="FK6EC0101ECF8A4ED" tableName="sales_delivery_counter_reciepts"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-140">
+        <dropIndex indexName="FKDCC466FA13E004C7" tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-141">
+        <dropIndex indexName="FKDCC466FA7AC68D73" tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-142">
+        <dropIndex indexName="FKDCC466FAA122CF80" tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-143">
+        <dropIndex indexName="FKDCC466FAADD15514" tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-144">
+        <dropIndex indexName="FKDCC466FAEE220F11" tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-145">
+        <dropIndex indexName="FK3C1319388EE36F74" tableName="sales_invoice_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-146">
+        <dropIndex indexName="FK3C131938FA625C14" tableName="sales_invoice_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-147">
+        <dropIndex indexName="FK67203A5B7AC68D73" tableName="sales_order"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-148">
+        <dropIndex indexName="FK3084ACC36E21C3F8" tableName="sales_order_item_sales_delivery_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-149">
+        <dropIndex indexName="FK3084ACC3E8591BDC" tableName="sales_order_item_sales_delivery_item"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-150">
+        <dropIndex indexName="FK7C4079A68C2ADE7A" tableName="supplier_item"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-151">
+        <dropIndex indexName="FK563A121B6BCE2256" tableName="supplier_payment_purchase_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-152">
+        <dropIndex indexName="FK563A121BA10A6711" tableName="supplier_payment_purchase_invoice"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-153">
+        <dropColumn columnName="direct_payment_invoice_id" tableName="bounced_check"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-154">
+        <dropColumn columnName="bills_payment"  tableName="check_deposit"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-155">
+        <dropColumn columnName="direct_payment_id" schemaName="check_payment" tableName="check_payment"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-156">
+        <dropColumn columnName="logo" tableName="company"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-157">
+        <dropColumn columnName="direct_payment_invoice_id"  tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-158">
+        <dropColumn columnName="discount_group_id"  tableName="credit_memo"/>
+    </changeSet>
+<!--    <changeSet author="charles (generated)" id="1303972996158-159">
+        <dropColumn columnName="product_type_id" schemaName="credit_memo" tableName="credit_memo"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-160">
+        <dropColumn columnName="delivery_id" schemaName="credit_memo_item" tableName="credit_memo_item"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-162">
+        <dropColumn columnName="account_name" schemaName="customer" tableName="customer"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-163">
+        <dropColumn columnName="account_number" schemaName="customer" tableName="customer"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-164">
+        <dropColumn columnName="bank_id" schemaName="customer" tableName="customer"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-165">
+        <dropColumn columnName="branch" schemaName="customer" tableName="customer"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-167">
+        <dropColumn columnName="product_type_id" schemaName="customer_discount" tableName="customer_discount"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-161">
+        <dropColumn columnName="product_id"  tableName="credit_memo_item"/>
+    </changeSet>
+    
+    
+    <changeSet author="charles (generated)" id="1303972996158-166">
+        <dropColumn columnName="direct_payment_invoice_id"  tableName="customer_charge"/>
+    </changeSet>
+ <!--   
+    <changeSet author="charles (generated)" id="1303972996158-168">
+        <dropColumn columnName="items_idx" schemaName="customer_discount_log_customer_discount_log_item" tableName="customer_discount_log_customer_discount_log_item"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-169">
+        <dropColumn columnName="product_type_id" schemaName="customer_discount_log_item" tableName="customer_discount_log_item"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-174">
+        <dropColumn columnName="product_type_id" schemaName="inventory_increase" tableName="inventory_increase"/>
+    </changeSet>
+	<changeSet author="charles (generated)" id="1303972996158-175">
+        <dropColumn columnName="product_type_id" schemaName="inventory_shrinkage" tableName="inventory_shrinkage"/>
+    </changeSet>
+	
+	 <changeSet author="charles (generated)" id="1303972996158-181">
+        <dropColumn columnName="direct_payment_invoice_id" schemaName="sales_delivery" tableName="sales_delivery"/>
+    </changeSet>
+	 <changeSet author="charles (generated)" id="1303972996158-185">
+        <dropColumn columnName="product_type_id" schemaName="sales_order" tableName="sales_order"/>
+    </changeSet>
+
+
+   <changeSet author="charles (generated)" id="1303972996158-177">
+        <dropColumn columnName="series"  tableName="product"/>
+    </changeSet> 
+
+    <changeSet author="charles (generated)" id="1303972996158-170">
+        <dropColumn columnName="item_id"  tableName="direct_payment_invoice_bounced_check"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-171">
+        <dropColumn columnName="item_id"  tableName="direct_payment_invoice_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-172">
+        <dropColumn columnName="item_id"  tableName="direct_payment_invoice_credit_memo"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-173">
+        <dropColumn columnName="item_id"  tableName="direct_payment_invoice_delivery"/>
+    </changeSet>
+   
+    
+    <changeSet author="charles (generated)" id="1303972996158-176">
+        <dropColumn columnName="description"  tableName="ledger_entry"/>
+    </changeSet>
+     
+    <changeSet author="charles (generated)" id="1303972996158-178">
+        <dropColumn columnName="size_id"  tableName="product"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-179">
+        <dropColumn columnName="amount_paid"  tableName="purchase_invoice"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-180">
+        <dropColumn columnName="counter_receipt_id"  tableName="sales_delivery"/>
+    </changeSet>
+   
+    <changeSet author="charles (generated)" id="1303972996158-182">
+        <dropColumn columnName="counter_receipts_idx"  tableName="sales_delivery_counter_receipts"/>
+    </changeSet>
+<!--
+    <changeSet author="charles (generated)" id="1303972996158-183">
+        <dropColumn columnName="customer_received_qty"  tableName="sales_delivery_item"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-184">
+        <dropColumn columnName="delivered_items_idx"  tableName="sales_delivery_item"/>
+    </changeSet>
+   
+    <changeSet author="charles (generated)" id="1303972996158-186">
+        <dropColumn columnName="amount"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-187">
+        <dropColumn columnName="date"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-188">
+        <dropColumn columnName="entity"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-189">
+        <dropColumn columnName="entity_type"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-190">
+        <dropColumn columnName="reference"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-191">
+        <dropColumn columnName="stock_balance"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-192">
+        <dropColumn columnName="stock_in"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-193">
+        <dropColumn columnName="stock_out"  tableName="stock_card"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-194">
+        <dropColumn columnName="type"  tableName="stock_card"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-195">
+        <dropColumn columnName="currency_id"  tableName="supplier_item"/>
+    </changeSet>
+
+    <changeSet author="charles (generated)" id="1303972996158-196">
+        <dropColumn columnName="exchange_rate"  tableName="supplier_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-197">
+        <dropColumn columnName="last_transaction_date" tableName="supplier_item"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-198">
+        <dropTable tableName="audit_log"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-199">
+        <dropTable tableName="bounced_check_check_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-200">
+        <dropTable tableName="counter_receipt_customer_charge"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-201">
+        <dropTable tableName="counter_receipt_sales_delivery"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-202">
+        <dropTable tableName="customer_charge_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-203">
+        <dropTable tableName="customer_payment"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-204">
+        <dropTable tableName="customer_payment_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-205">
+        <dropTable tableName="ledger_entry_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-206">
+        <dropTable tableName="print_log"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-207">
+        <dropTable tableName="product_size"/>
+    </changeSet>
+    <!--
+    <changeSet author="charles (generated)" id="1303972996158-208">
+        <dropTable tableName="product_type"/>
+    </changeSet>
+-->
+    <changeSet author="charles (generated)" id="1303972996158-209">
+        <dropTable tableName="sales_delivery_counter_reciepts"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-210">
+        <dropTable tableName="sales_invoice"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-211">
+        <dropTable tableName="sales_invoice_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-212">
+        <dropTable tableName="sales_order_item_sales_delivery_item"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303972996158-213">
+        <dropTable tableName="supplier_payment_purchase_invoice"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1317805965710-1">
+	<renameTable oldTableName="assemble" newTableName="assembler"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-2">
+        <createTable tableName="job_out">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="labor_cost_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-3">
+        <createTable tableName="schedule_job_order">
+            <column name="schedule_job_orders_id" type="BIGINT"/>
+            <column name="job_order_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-4">
+        <addColumn tableName="job_order">
+            <column name="mark_as_complete_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-5">
+        <addColumn tableName="job_order">
+            <column name="material_releases_approved_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-6">
+        <addColumn tableName="material_release">
+            <column name="job_order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-7">
+        <addColumn tableName="material_release_item">
+            <column name="items_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-8">
+        <addColumn tableName="material_release_item">
+            <column name="material_requisition_item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-9">
+        <addColumn tableName="material_requisition">
+            <column name="approved_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-10">
+        <addColumn tableName="material_requisition_item">
+            <column name="units_required" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-11">
+        <addColumn tableName="product">
+            <column name="running_cost" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-12">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="status" defaultNullValue="" tableName="counter_receipt"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-13">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="amount" defaultNullValue="" tableName="direct_payment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-14">
+        <modifyColumn tableName="job_order">
+            <column name="qty" type="INT"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-15">
+        <modifyColumn tableName="material_release_item">
+            <column name="qty" type="INT"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-16">
+        <dropNotNullConstraint columnDataType="BIGINT" columnName="requisition_id" tableName="material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-17">
+        <modifyColumn tableName="product_component">
+            <column name="qty" type="INT"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-18">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="final_price" defaultNullValue="" tableName="purchase_invoice_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-20">
+        <createIndex indexName="FKAA5053CC17471605" tableName="job_out" unique="false">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-21">
+        <createIndex indexName="FKAA5053CC1B9F1415" tableName="job_out" unique="false">
+            <column name="labor_cost_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-22">
+        <createIndex indexName="FKAA5053CCADD15514" tableName="job_out" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-23">
+        <createIndex indexName="FKF29C1CEF17471605" tableName="material_release" unique="false">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-24">
+        <createIndex indexName="FKB3D7D4638841506E" tableName="material_release_item" unique="false">
+            <column name="material_requisition_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-25">
+        <createIndex indexName="FKCE8780A417471605" tableName="schedule_job_order" unique="false">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-26">
+        <createIndex indexName="FKCE8780A450BAC28" tableName="schedule_job_order" unique="false">
+            <column name="schedule_job_orders_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-28">
+        <dropIndex indexName="FK2CA761F795970993" tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-29">
+        <dropIndex indexName="FK2CA761F7E8C000EF" tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-30">
+        <dropIndex indexName="FK3F8DAA35326A7547" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-31">
+        <dropIndex indexName="FKA32BE9044F1C80C7" tableName="direct_payment_invoice_bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-32">
+        <dropIndex indexName="FK84287C75191BA59D" tableName="direct_payment_invoice_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-33">
+        <dropIndex indexName="FKEBDEAD9F87E03BD3" tableName="direct_payment_invoice_credit_memo"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-34">
+        <dropIndex indexName="FKF7770975CF8A4ED" tableName="direct_payment_invoice_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-35">
+        <dropIndex indexName="identifier" tableName="invoice_type"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-36">
+        <dropIndex indexName="FK5789044CC785A8E0" tableName="job_order"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-37">
+        <dropIndex indexName="FKA7C2DCDB17471605" tableName="job_order_out"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-38">
+        <dropIndex indexName="FKA7C2DCDBADD15514" tableName="job_order_out"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-39">
+        <dropIndex indexName="FKA7C2DCDBFA625C14" tableName="job_order_out"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-40">
+        <dropIndex indexName="FK2D05FE8A714D4AA9" tableName="job_order_out_material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-41">
+        <dropIndex indexName="FK2D05FE8A8841506E" tableName="job_order_out_material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-42">
+        <dropIndex indexName="FKF29C1CEFA102E4D" tableName="material_release"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-43">
+        <dropIndex indexName="FKB3D7D46374256946" tableName="material_release_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-44">
+        <dropIndex indexName="FK8305972324F8B62" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-45">
+        <dropIndex indexName="FK8305972665060C0" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-46">
+        <dropIndex indexName="FK83059728C2ADE7A" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-47">
+        <dropIndex indexName="FK8305972A10A6711" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-48">
+        <dropIndex indexName="FK3D13F1C010E8EF41" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-49">
+        <dropIndex indexName="FK3D13F1C023C89113" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-50">
+        <dropIndex indexName="FK3D13F1C05B4A41E1" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-51">
+        <dropIndex indexName="FK3D13F1C0FA625C14" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-52">
+        <dropIndex indexName="FK67203A5BADD15514" tableName="sales_order"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-53">
+        <dropColumn columnName="is_taken" tableName="bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-54">
+        <dropColumn columnName="is_taken" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-55">
+        <dropColumn columnName="counter_receipt_id" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-56">
+        <dropColumn columnName="is_taken" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-57">
+        <dropColumn columnName="schedule_id" tableName="job_order"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-58">
+        <dropColumn columnName="requisition_id" tableName="material_release"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-59">
+        <dropColumn columnName="component_id" tableName="material_release_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-60">
+        <dropColumn columnName="status" tableName="material_requisition"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-61">
+        <dropColumn columnName="qty" tableName="material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-62">
+        <dropColumn columnName="qty_received" tableName="material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-63">
+        <dropColumn columnName="description" tableName="product"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-64">
+        <dropColumn columnName="is_taken" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-65">
+        <dropColumn columnName="warehouse_id" tableName="sales_order"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-66">
+        <dropColumn columnName="check_date" tableName="supplier_payment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-68">
+        <dropTable tableName="check_deposit_check_payment"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-69">
+        <dropTable tableName="direct_payment_invoice_bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-70">
+        <dropTable tableName="direct_payment_invoice_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-71">
+        <dropTable tableName="direct_payment_invoice_credit_memo"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-72">
+        <dropTable tableName="direct_payment_invoice_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-73">
+        <dropTable tableName="invoice_type"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-74">
+        <dropTable tableName="job_order_out"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-75">
+        <dropTable tableName="job_order_out_material_requisition_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-76">
+        <dropTable tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1317805965710-77">
+        <dropTable tableName="purchase_delivery_item"/>
+    </changeSet>
+</databaseChangeLog>

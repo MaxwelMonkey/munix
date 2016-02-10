@@ -1,0 +1,1 @@
+UPDATE product SET running_cost = 0.00;

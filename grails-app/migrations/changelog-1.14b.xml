@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1329299202297-1">
+        <addColumn tableName="discount_type">
+            <column name="exclude_in_commission" type="BIT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-2">
+        <addColumn tableName="discount_type">
+            <column name="discounted_item_margin" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-3">
+        <addColumn tableName="discount_type">
+            <column name="net_item_margin" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-4">
+        <addColumn tableName="supplier_payment_item">
+            <column name="check_branch" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-5">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="cost" defaultNullValue="" tableName="material_release_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-6">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="price" defaultNullValue="" tableName="sales_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-7">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="price" defaultNullValue="" tableName="sales_order_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-8">
+        <addNotNullConstraint columnDataType="INT" columnName="counter_id" defaultNullValue="" tableName="purchase_order"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-9">
+	<sqlFile path="alter scripts/alter-scripts-38.sql"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1329299202297-10">
+	<sqlFile path="alter scripts/alter-scripts-39.sql"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,663 @@
+*** Settings ***
+Test Setup      Begin Test
+Test Teardown   End Test
+Force Tags      master
+Resource        ../munix_resource.html
+
+*** Variables ***
+${common_identifier}  Robot_Injected_Data
+
+*** Test Cases ***
+Customer Create-Edit
+    [Tags]  customer
+    Login to System as SuperAdmin
+    Navigate to Master > Customer
+    Click New Customer
+    Enter Customer Details
+    Click Create Button
+    Verify Customer is Saved
+    Click Edit Button
+    Edit Customer Details
+    Click Update Button
+    Verify Customer is Updated
+    Logout From System
+
+Forwarder - Create-Edit
+    [Tags]  forwarder
+    Login to System as SuperAdmin
+    Navigate to Master > Forwarder
+    Click New Forwarder
+    Enter Forwarder Details
+    Click Create Button
+    Verify Forwarder is Created
+    Click Edit Button
+    Edit Forwarder Details
+    Click Update Button
+    Verify Forwarder is Updated
+    Logout From System
+
+Sales Agent - Create-Edit
+    [Tags]  sales_agent
+    Login to System as SuperAdmin
+    Navigate to Master > Sales Agent
+    Click New Sales Agent
+    Enter Sales Agent Details
+    Click Create Button
+    Verify Sales Agent is Created
+    Click Edit Button
+    Edit Sales Agent Details
+    Click Update Button
+    Verify Sales Agent is Updated
+    Logout From System
+
+Warehouse - Create-Edit
+    [Tags]  warehouse
+    Login to System as SuperAdmin
+    Navigate to Master > Warehouse
+    Click New Warehouse
+    Enter Warehouse Details
+    Click Create Button
+    Verify Warehous is Created
+    Click Edit Button
+    Edit Warehouse Details
+    Click Update Button
+    Verify Warehouse is Updated
+    Logout From System
+
+Product - Create-Edit
+    [Tags]  product
+    Login to System as SuperAdmin
+    Navigate to Master > Product
+    Click New Product
+    Enter Product Details
+    Click Create Button
+    Verify Product is Created
+    Click Edit Button
+    Edit Product Details
+    Click Update Button
+    Verify Product is Updated
+    Logout From System
+
+Supplier - Create-Edit
+    [Tags]  supplier
+    Login to System as SuperAdmin
+    Navigate to Master > Supplier
+    Click New Supplier
+    Enter Supplier Details
+    Click Create Button
+    Verify Supplier is Created
+    Click Edit Button
+    Edit Supplier Details
+    Click Update Button
+    Verify Supplier is Updated
+    Logout From System
+
+*** Keywords ***
+Navigate to Master > Customer
+    Click Link  menuMaster  don't wait
+    Click Link  menuCustomer
+
+Click New Customer
+    Click Link  New Customer
+
+Enter Customer Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Name  ${random_string}
+    Enter TIN  ${random_string}
+    Select Customer Type  Regular Customer
+    Enter Owner  ${random_string}
+    Enter Street (Business)  ${random_string}
+    Select City (Business)  Aborlan, Palawan
+    Enter ZIP (Business)  1229
+    Enter Street (Blling)  ${random_string}
+    Select City (Billing)  Aborlan, Palawan
+    Enter ZIP (Billing)  1229
+    Select Forwarder  ${common_identifier}
+    Select Sales Agent  ${common_identifier}
+    Enter Declared Value  5
+    Enter Comission Rate  5
+    Enter Credit Limit  5
+    Select Terms  COD
+    Enter Bank Details #  1
+    Enter Bank Details #  2
+    Enter Bank Details #  3
+    Enter Collection Mode  ${random_string}
+    Enter Collection Preference  ${random_string}
+    Enter Collection Schedule  ${random_string}
+    Enter Main Contact  ${random_string}
+    Enter Position  ${random_string}
+    Enter Secondary Contact  ${random_string}
+    Enter Secondary Contact Position  ${random_string}
+    Enter Landline  ${random_string}
+    Enter Mobile  ${random_string}
+    Enter Fax  ${random_string}
+    Enter Email  test@test.com
+    Enter Yahoo  ${random_string}
+    Enter Skype  ${random_string}
+    Enter Website  http://www.test.com
+    Enter Credit Remarks  ${random_string}
+    Enter General Remark  ${random_string}
+
+Enter Identifier
+    [Arguments]  ${input}
+    Input Text  identifier  ${input}
+
+Enter Name
+    [Arguments]  ${input}
+    Input Text  name  ${input}
+
+Enter TIN
+    [Arguments]  ${input}
+    Input Text  tin  ${input}
+
+Select Customer Type
+    [Arguments]  ${input}
+    Select From List  type.id  ${input}
+
+Enter Owner
+    [Arguments]  ${input}
+    Input Text  owner  ${input}
+
+Enter Street (Business)
+    [Arguments]  ${input}
+    Input Text  busAddrStreet  ${input}
+
+Select City (Business)
+    [Arguments]  ${input}
+    Select From List  busAddrCity.id  ${input}
+
+Enter ZIP (Business)
+    [Arguments]  ${input}
+    Input Text  busAddrZip  ${input}
+
+Enter Street (Blling)
+    [Arguments]  ${input}
+    Input Text  bilAddrStreet  ${input}
+
+Select City (Billing)
+    [Arguments]  ${input}
+    Select From List  bilAddrCity.id  ${input}
+
+Enter ZIP (Billing)
+    [Arguments]  ${input}
+    Input Text  busAddrZip  ${input}
+
+Select Forwarder
+    [Arguments]  ${input}
+    Select From List  forwarder.id  1
+
+Select Sales Agent
+    [Arguments]  ${input}
+    Select From List  salesAgent.id  6
+
+Enter Declared Value
+    [Arguments]  ${input}
+    Input Text  declaredValue  ${input}
+
+Enter Comission Rate
+    [Arguments]  ${input}
+    Input Text  commissionRate  ${input}
+
+Enter Credit Limit
+    [Arguments]  ${input}
+    Input Text  creditLimit  ${input}
+
+Select Terms
+    [Arguments]  ${input}
+    Select From List  term.id  ${input}
+
+Enter Collection Mode
+    [Arguments]  ${input}
+    Input Text  collectionMode  ${input}
+
+Enter Collection Preference
+    [Arguments]  ${input}
+    Input Text  collectionPreference  ${input}
+
+Enter Collection Schedule
+    [Arguments]  ${input}
+    Input Text  collectionSchedule  ${input}
+
+Enter Main Contact
+    [Arguments]  ${input}
+    Input Text  contact  ${input}
+
+Enter Position
+    [Arguments]  ${input}
+    Input Text  contactPosition  ${input}
+
+Enter Landline
+    [Arguments]  ${input}
+    Input Text  landline  ${input}
+
+Enter Secondary Contact
+    [Arguments]  ${input}
+    Input Text  secondaryContactPosition  ${input}
+
+Enter Secondary Contact Position
+    [Arguments]  ${input}
+    Input Text  secondaryContactPosition  ${input}
+
+Enter Mobile
+    [Arguments]  ${input}
+    Input Text  mobile  ${input}
+
+Enter Fax
+    [Arguments]  ${input}
+    Input Text  fax  ${input}
+
+Enter Email
+    [Arguments]  ${input}
+    Input Text  email  ${input}
+
+Enter Yahoo
+    [Arguments]  ${input}
+    Input Text  yahoo  ${input}
+
+Enter Skype
+    [Arguments]  ${input}
+    Input Text  skype  ${input}
+
+Enter Website
+    [Arguments]  ${input}
+    Input Text  website  ${input}
+
+Enter Credit Remarks
+    [Arguments]  ${input}
+    Input Text  creditRemark  ${input}
+
+Enter General Remark
+    [Arguments]  ${input}
+    Input Text  generalRemark  ${input}
+
+Click Create Button
+    Click Button  Create
+
+Verify Customer is Saved
+    Page Should Contain  Customer created!
+
+Click Edit Button
+    Click Button  Edit
+
+Click Update Button
+    Click Button  Update
+
+Verify Customer is Updated
+    Page Should Contain  Customer updated successfully!
+
+Edit Customer Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Name  ${random_string}
+    Enter TIN  ${random_string}
+    Select Customer Type  Regular Customer
+    Enter Owner  ${random_string}
+    Enter Street (Business)  ${random_string}
+    Select City (Business)  Aborlan, Palawan
+    Enter ZIP (Business)  1229
+    Enter Street (Blling)  ${random_string}
+    Select City (Billing)  Aborlan, Palawan
+    Enter ZIP (Billing)  1229
+    Select Forwarder  ${common_identifier}
+    Select Sales Agent  ${common_identifier}
+    Enter Declared Value  5
+    Enter Comission Rate  5
+    Enter Credit Limit  5
+    Select Terms  COD
+    Enter Bank Details #  1
+    Enter Bank Details #  2
+    Enter Bank Details #  3
+    Enter Collection Mode  ${random_string}
+    Enter Collection Preference  ${random_string}
+    Enter Collection Schedule  ${random_string}
+    Enter Main Contact  ${random_string}
+    Enter Position  ${random_string}
+    Enter Secondary Contact  ${random_string}
+    Enter Secondary Contact Position  ${random_string}
+    Enter Landline  ${random_string}
+    Enter Mobile  ${random_string}
+    Enter Fax  ${random_string}
+    Enter Email  test@test.com
+    Enter Yahoo  ${random_string}
+    Enter Skype  ${random_string}
+    Enter Website  http://www.test.com
+    Enter Credit Remarks  ${random_string}
+    Enter General Remark  ${random_string}
+
+Navigate to Master > Forwarder
+    Click Element  menuMaster  don't wait
+    Click Element  menuForwarder
+
+Click New Forwarder
+    Click Link  New Forwarder
+
+Enter Forwarder Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Description  ${random_string}
+    Enter Contact  ${random_string}
+    Enter Contact Position  ${random_string}
+    Enter Street  ${random_string}
+    Select City  Aborlan, Palawan
+    Enter ZIP  1229
+    Enter Landline  1234567890
+
+Enter Description
+    [Arguments]  ${input}
+    Input Text  description  ${input}
+
+Enter Contact
+    [Arguments]  ${input}
+    Input Text  contact  ${input}
+
+Enter Contact Position
+    [Arguments]  ${input}
+    Input Text  contactPosition  ${input}
+
+Enter Street
+    [Arguments]  ${input}
+    Input Text  street  ${input}
+
+Select City
+    [Arguments]  ${input}
+    Select From List  city.id  ${input}
+
+Enter ZIP
+    [Arguments]  ${input}
+    Input Text  zip  ${input}
+
+Verify Forwarder is Created
+    Page Should Contain  Forwarder created!
+
+Edit Forwarder Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Description  ${random_string}
+    Enter Contact  ${random_string}
+    Enter Contact Position  ${random_string}
+    Enter Street  ${random_string}
+    Select City  Aborlan, Palawan
+    Enter ZIP  1229
+    Enter Landline  1234567890
+
+Verify Forwarder is Updated
+    Page Should Contain  Forwarder updated successfully!
+
+Navigate to Master > Sales Agent
+    Click Element  menuMaster  don't wait
+    Click Element  menuSalesAgent
+
+Click New Sales Agent
+    Click Link  New Sales Agent
+
+Enter Sales Agent Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Last Name  ${random_string}
+    Enter First Name  ${random_string}
+    Enter Street  ${random_string}
+    Select City  Aborlan, Palawan
+    Enter ZIP  1229
+    Enter Landline  1234567890
+    Enter Mobile  1234567890
+    Enter Email  test@test.com
+    Enter Skype  ${random_string}
+    Enter Yahoo  ${random_string}
+
+Enter Last Name
+    [Arguments]  ${arg1}
+    Input Text  lastName  ${arg1}
+
+Enter First Name
+    [Arguments]  ${arg1}
+    Input Text  firstName  ${arg1}
+
+Verify Sales Agent is Created
+    Page Should Contain  Sales Agent created!
+
+Edit Sales Agent Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Last Name  ${random_string}
+    Enter First Name  ${random_string}
+    Enter Street  ${random_string}
+    Select City  Aborlan, Palawan
+    Enter ZIP  1229
+    Enter Landline  1234567890
+    Enter Mobile  1234567890
+    Enter Email  test@test.com
+    Enter Skype  ${random_string}
+    Enter Yahoo  ${random_string}
+
+Verify Sales Agent is Updated
+    Page Should Contain  Sales Agent updated successfully!
+
+Navigate to Master > Warehouse
+    Click Element  menuMaster  don't wait
+    Click Element  menuWarehouse
+
+Click New Warehouse
+    Click Link  New Inventory Warehouse
+
+Enter Warehouse Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Description  ${random_string}
+
+Verify Warehous is Created
+    Page Should Contain  Warehouse created!
+
+Edit Warehouse Details
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Description  ${random_string}
+
+Verify Warehouse is Updated
+    Page Should Contain  Warehouse updated successfully
+
+Navigate to Master > Product
+    Click Element  menuMaster  don't wait
+    Click Element  menuProduct
+
+Click New Product
+    Click Link  New Product
+
+Enter Product Details
+    Random String Generator
+    Random Integer Generator
+    Enter Identifier  ${random_string}
+    Select Discount Type  Accessories
+    Select Unit  pc
+    Select Category  Assorted Items
+    Select Subcategory  BMX
+    Select Brand  ACTION
+    Select Model  SLX
+    Enter Model Number  ${random_string}
+    Select Material  Alloy
+    Enter Size  ${random_string}
+    Enter Added Description  ${random_string}
+    Select Color  Black
+    Enter Part Number  ${random_string}
+    Enter Reorder Point  ${random_integer}
+    Enter EOQ  ${random_integer}
+    Set Net Price to True
+    Set For Assembly to True
+
+Select Discount Type
+    [Arguments]  ${arg1}
+    Select From List  type.id  1
+
+Select Unit
+    [Arguments]  ${arg1}
+    Select From List  unit.id  ${arg1}
+
+Select Category
+    [Arguments]  ${arg1}
+    Select From List  category.id  ${arg1}
+
+Select Subcategory
+    [Arguments]  ${arg1}
+    Select From List  subcategory.id  ${arg1}
+
+Select Brand
+    [Arguments]  ${arg1}
+    Select From List  brand.id  ${arg1}
+
+Select Model
+    [Arguments]  ${arg1}
+    Select From List  model.id  ${arg1}
+
+Enter Model Number
+    [Arguments]  ${arg1}
+    Input Text  modelNumber  ${arg1}
+
+Select Material
+    [Arguments]  ${arg1}
+    Select From List  material.id  ${arg1}
+
+Enter Size
+    [Arguments]  ${arg1}
+    Input Text  size  ${arg1}
+
+Enter Added Description
+    [Arguments]  ${arg1}
+    Input Text  addedDescription  ${arg1}
+
+Select Color
+    [Arguments]  ${arg1}
+    Select From List  color.id  ${arg1}
+
+Enter Part Number
+    [Arguments]  ${arg1}
+    Input Text  partNumber  ${arg1}
+
+Enter Reorder Point
+    [Arguments]  ${arg1}
+    Input Text  reorderPoint  ${arg1}
+
+Enter EOQ
+    [Arguments]  ${arg1}
+    Input Text  eoq  ${arg1}
+
+Set Net Price to True
+    Select Checkbox  isNet
+
+Set For Assembly to True
+    Select Checkbox  isForAssembly
+
+Verify Product is Created
+    Page Should Contain  Product created!
+
+Edit Product Details
+    Random String Generator
+    Random Integer Generator
+    Enter Identifier  ${random_string}
+    Select Discount Type  Accessories
+    Select Unit  pc
+    Select Category  Assorted Items
+    Select Subcategory  BMX
+    Select Brand  ACTION
+    Select Model  SLX
+    Enter Model Number  ${random_string}
+    Select Material  Alloy
+    Enter Size  ${random_string}
+    Enter Added Description  ${random_string}
+    Select Color  Black
+    Enter Part Number  ${random_string}
+    Enter Reorder Point  ${random_integer}
+    Enter EOQ  ${random_integer}
+    Set Net Price to False
+    Set For Assembly to False
+    Set Use as Compnent to False
+    Set For Sale to False
+
+Set Net Price to False
+    Unselect Checkbox  isNet
+
+Set For Assembly to False
+    Unselect Checkbox  isForAssembly
+
+Set Use as Compnent to False
+    Unselect Checkbox  isComponent
+
+Set For Sale to False
+    Unselect Checkbox  isForSale
+
+Verify Product is Updated
+    Page Should Contain  Product updated successfully!
+
+Navigate to Master > Supplier
+    Click Element  menuMaster  don't wait
+    Click Element  menuSupplier
+
+Click New Supplier
+    Click Link  New Supplier
+
+Enter Supplier Details
+    Random Integer Generator
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Name  ${random_string}
+    Select Locale Type  Local
+    Select Country  Philippines
+    Enter Address  ${random_string}
+    Enter TIN  ${random_string}
+    Select Terms  COD
+    Select Currency  EUR
+    Enter Contact  ${random_string}
+    Enter Landline  ${random_string}
+    Enter Fax  ${random_string}
+    Enter Email  test@test.com
+    Enter Skype  ${random_string}
+    Enter Yahoo  ${random_string}
+    Enter Website  http:///www.test.com
+
+Select Locale Type
+    [Arguments]  ${arg1}
+    Select From List  localeType  ${arg1}
+
+Select Country
+    [Arguments]  ${arg1}
+    Select From List  country.id  ${arg1}
+
+Enter Address
+    [Arguments]  ${arg1}
+    Input Text  address  ${arg1}
+
+Select Currency
+    [Arguments]  ${arg1}
+    Select From List  currency.id  ${arg1}
+
+Verify Supplier is Created
+    Page Should Contain  Supplier created!
+
+Edit Supplier Details
+    Random Integer Generator
+    Random String Generator
+    Enter Identifier  ${random_string}
+    Enter Name  ${random_string}
+    Select Locale Type  Local
+    Select Country  Philippines
+    Enter Address  ${random_string}
+    Enter TIN  ${random_string}
+    Select Terms  COD
+    Select Currency  JPY
+    Enter Contact  ${random_string}
+    Enter Landline  ${random_string}
+    Enter Fax  ${random_string}
+    Enter Email  test@test.com
+    Enter Skype  ${random_string}
+    Enter Yahoo  ${random_string}
+    Enter Website  http:///www.test.com
+
+Verify Supplier is Updated
+    Page Should Contain  Supplier updated successfully!
+
+Enter Bank Details #
+    [Arguments]  ${arg1}
+    Select From List  bank${arg1}.id  Allied Bank
+    Input Text  branch${arg1}  ${random_string}
+    Input Text  accountName${arg1}  ${random_string}
+    Input Text  accountNumber${arg1}  ${random_string}
+

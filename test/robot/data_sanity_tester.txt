@@ -1,0 +1,38 @@
+*** Settings ***
+Resource        munix_resource.html
+
+*** Test Cases ***
+Transactions
+    [Setup]  Begin Test
+    Login to System as SuperAdmin
+    Run Keyword And Continue On Failure  Test in Show  salesOrder  2
+    Run Keyword And Continue On Failure  Test in Show  salesDelivery  2
+    Run Keyword And Continue On Failure  Test in Show  creditMemo  2
+    Run Keyword And Continue On Failure  Test in Show  purchaseOrder  2
+    Run Keyword And Continue On Failure  Test in Show  purchaseInvoice  2
+    Run Keyword And Continue On Failure  Test in Show  jobOrder  2
+    Run Keyword And Continue On Failure  Test in Show  materialRelease  2
+    Run Keyword And Continue On Failure  Test in Show  jobOut  2
+    Run Keyword And Continue On Failure  Test in Show  directPayment  2
+    Run Keyword And Continue On Failure  Test in Show  supplierPayment  2
+    Run Keyword And Continue On Failure  Test in Show  waybill  2
+    Run Keyword And Continue On Failure  Test in Show  directDelivery  2
+    Run Keyword And Continue On Failure  Test in Show  tripTicket  2
+    Run Keyword And Continue On Failure  Test in Show  inventoryAdjustment  2
+    Run Keyword And Continue On Failure  Test in Show  inventoryTransfer  2
+    Run Keyword And Continue On Failure  Test in Show  customerCharge  2
+    Run Keyword And Continue On Failure  Test in Show  counterReceipt  2
+    Run Keyword And Continue On Failure  Test in Show  checkDeposit  2
+    Run Keyword And Continue On Failure  Test in Show  collectionSchedule  2
+    Run Keyword And Continue On Failure  Test in Show  bouncedCheck  2
+    Run Keyword And Continue On Failure  Test in Show  priceAdjustment  2
+    Run Keyword And Continue On Failure  Test in Show  checkWarehousing  2
+    [Teardown]  End Test
+
+*** Keywords ***
+Test in Show
+    [Arguments]  ${target}  ${lastID}
+    : FOR  ${index}  IN RANGE  1  ${lastID}
+    \  Go to  http://${HOST}/munix/${target}/show/${index}
+    \  Run Keyword And Continue On Failure  Page Should Not Contain  Grails Runtime Exception
+

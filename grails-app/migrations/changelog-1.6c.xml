@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1313991502205-1">
+        <createTable tableName="purchase_invoice_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="final_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_invoice_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_order_item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="received_items_idx" type="INT"/>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-2">
+        <addColumn tableName="check_payment">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-3">
+        <addColumn tableName="direct_payment_item">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-4">
+        <addColumn tableName="supplier_payment">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-5">
+        <addColumn tableName="supplier_payment_item">
+            <column name="remark" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-6">
+        <modifyColumn tableName="purchase_invoice">
+            <column name="status" type="VARCHAR(255)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-7">
+        <createIndex indexName="FKFBF63363A0352AD2" tableName="purchase_invoice_item" unique="false">
+            <column name="purchase_order_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-8">
+        <createIndex indexName="FKFBF63363A10A6711" tableName="purchase_invoice_item" unique="false">
+            <column name="purchase_invoice_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1313991502205-9">
+	<sqlFile path="alter scripts/alter-scripts-18.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1313991502205-10">
+        <dropIndex indexName="FK8305972324F8B62" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-11">
+        <dropIndex indexName="FK8305972665060C0" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-12">
+        <dropIndex indexName="FK83059728C2ADE7A" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-13">
+        <dropIndex indexName="FK8305972A10A6711" tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-14">
+        <dropIndex indexName="FK3D13F1C010E8EF41" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-15">
+        <dropIndex indexName="FK3D13F1C023C89113" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-16">
+        <dropIndex indexName="FK3D13F1C05B4A41E1" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-17">
+        <dropIndex indexName="FK3D13F1C0FA625C14" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-18">
+        <dropTable tableName="purchase_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1313991502205-19">
+        <dropTable tableName="purchase_delivery_item"/>
+    </changeSet>
+</databaseChangeLog>

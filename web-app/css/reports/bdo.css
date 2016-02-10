@@ -1,0 +1,96 @@
+@page{
+	margin-top:-0.5in;
+}
+
+table.main{
+	width:1300px;
+	border-collapse:collapse;
+}
+table.main tr td{
+}
+
+#transaction-date{
+	padding-left:550px;
+	padding-top:10px;
+}
+
+#totalAmount{
+	padding-top:40px;
+	padding-left:120px;
+}
+
+#head table{
+	border:solid 0px black !important;
+}
+
+#head table tr td{
+	padding-left:28px;
+}
+
+#accountNumber{
+	padding-top:15px;
+	font-size:18px;
+	letter-spacing:3px;
+}
+
+#accountName{
+	padding-top:10px;
+}
+
+#body {
+	padding-top:40px;
+	min-height:225px;
+	width:100%;
+}
+#body table.form tr th{
+    border: 0px solid !important;
+}
+
+#body table.form tr{
+    height:22px;
+}
+
+#body table.form tr td{
+    font-size:12px;
+}
+
+td.accountBreakdown{
+	width:40%;
+	padding-top:55px;
+}
+
+td.accountDetails{
+	vertical-align:top;
+	padding-top:70px;
+}
+
+td.cell0{
+	width:40%;
+}
+
+td.cell1{
+	width:40%;
+}
+
+td.cell2{
+	width:20%;
+}
+
+#body table.form tr td.cell2,#body table.form tr th.cell2{
+    text-align:right;
+}
+
+#footer{
+	margin-top:43px;
+}
+
+#footer table tr td.total1{
+	width:65%;
+	text-align:right;
+}
+
+#footer table tr td.total2{
+	width:35%;
+	font-size:12px;
+	text-align:right;
+}

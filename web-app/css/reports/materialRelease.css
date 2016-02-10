@@ -1,0 +1,21 @@
+#head table tr td.col1{
+	width:20%;
+}
+#head table tr td.col2{
+	width:40%;
+}
+#head table tr td.col3{
+	width:25%;
+}
+#head table tr td.col4{
+	width:15%;
+}
+
+.column0, .cell0{
+	text-align:right;
+}
+
+.column1, .cell1{
+	text-align:center;
+}
+

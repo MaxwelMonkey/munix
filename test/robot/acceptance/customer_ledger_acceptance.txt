@@ -1,0 +1,108 @@
+*** Settings ***
+Force Tags      customer_ledger
+Library         CustomerLedgerRobotKeywords
+
+*** Test Cases ***
+Sales Delivery
+    Given Running Balance of  1000.00
+    When I Approve a Sales Delivery With Final Amount of  100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Bounced Check
+    Given Running Balance of  1000.00
+    When I Approve a Bounced Check With Final Amount of  100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Customer Charge
+    Given Running Balance of  1000.00
+    When I Approve a Customer Charge With Final Amount of  100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Check Deposit
+    Given Running Balance of  1000.00
+    When I Clear a Check Deposit With Final Amount of  100.00
+    Customer Ledger Should Show Credit of   100.00
+    And Running Balance Should Be  900.00
+
+Credit Memo
+    Given Running Balance of  1000.00
+    When I Approve a Credit Memo With Final Amount of  100.00
+    And Running Balance Should Be  1000.00
+
+Credit Memo (Debit Memo)
+    Given Running Balance of  1000.00
+    When I Approve a Credit Memo With Final Amount of  -100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Direct Payment (Cash)
+    Given Running Balance of  1000.00
+    When I Approve a Direct Payment with Cash of  100.00
+    Customer Ledger Should Show Credit of   100.00
+    And Running Balance Should Be  900.00
+
+Direct Payment (Credit Memo)
+    Given Running Balance of  1000.00
+    When I Approve a Direct Payment with Credit Memo of  100.00
+    Customer Ledger Should Show Credit of   100.00
+    And Running Balance Should Be  900.00
+
+Direct Payment (Check)
+    Given Running Balance of  1000.00
+    When I Approve a Direct Payment with Credit Memo of  100.00
+    And Running Balance Should Be  1000.00
+
+Sales Delivery (Unapproved)
+    Given Running Balance of  1000.00
+    When I Unapprove a Sales Delivery With Final Amount of  100.00
+    Customer Ledger Should Show Credit of   100.00
+    And Running Balance Should Be  900.00
+
+Customer Charge (Unapproved)
+    Given Running Balance of  1000.00
+    When I Unapprove a Customer Charge With Final Amount of  100.00
+    Customer Ledger Should Show Credit of   100.00
+    And Running Balance Should Be  900.00
+
+Direct Payment (Cash - Unnapproved)
+    Given Running Balance of  1000.00
+    When I Unapprove a Direct Payment with Cash of  100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Direct Payment (Credit Memo - Unnapproved)
+    Given Running Balance of  1000.00
+    When I Unapprove a Direct Payment with Cash of  100.00
+    Customer Ledger Should Show Debit of   100.00
+    And Running Balance Should Be  1100.00
+
+Direct Payment (Check - Unapproved)
+    Given Running Balance of  1000.00
+    When I Unapprove a Direct Payment with Credit Memo of  100.00
+    And Running Balance Should Be  1000.00
+
+Direct Payment (Combination of Cash, Check and Credit Memo)
+    Given Running Balance of  1000.00
+    When I Unapprove a Direct Payment with Cash, Check and Credit Memo with Values  10.00  20.00  50.00
+    Customer Ledger Should Show Debit of   60.00
+    And Running Balance Should Be  1060.00
+
+*** Keywords ***
+Customer Ledger Should Show Debit of
+    [Arguments]  ${arg1}
+    ${finalDebit}  Compute Final Debit
+    Should Be Equal  ${arg1}  ${finalDebit}
+
+Customer Ledger Should Show Credit of
+    [Arguments]  ${arg1}
+    ${finalCredit}  Compute Final Credit
+    Should Be Equal  ${arg1}  ${finalCredit}
+
+And Running Balance Should Be
+    [Arguments]  ${arg1}
+    ${finalRunningBalance}  Compute Final Running Balance
+    Should Be Equal  ${arg1}  ${finalRunningBalance}
+

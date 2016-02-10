@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1325587734369-1">
+        <createTable tableName="customer_account">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_unpaid_bounced_checks" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_unpaid_check_payments" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_unpaid_customer_charges" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_unpaid_debit_memos" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_unpaid_sales_deliveries" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1325587734369-2">
+        <addColumn tableName="customer">
+            <column name="customer_account_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1325587734369-3">
+        <createIndex indexName="FK24217FDE13B21297" tableName="customer" unique="false">
+            <column name="customer_account_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1325587734369-4">
+        <dropColumn columnName="cost" tableName="supplier_item"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-2">
+        <addColumn tableName="material_release_item">
+            <column name="cost" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-3">
+        <addColumn tableName="purchase_order">
+            <column name="discount_rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-4">
+        <addColumn tableName="sales_delivery_item">
+            <column name="cost" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-5">
+        <addColumn tableName="sales_order">
+            <column name="net_discount" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-11">
+	<sqlFile path="alter scripts/alter-scripts-31.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-12">
+	<sqlFile path="alter scripts/alter-scripts-32.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-13">
+	<sqlFile path="alter scripts/alter-scripts-33.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-14">
+	<sqlFile path="alter scripts/cleanSDItemData.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1324887674898-6">
+        <dropIndex indexName="FKC6EB71C7DE0C54EF" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-7">
+        <dropIndex indexName="FKC6EB71C7EE220F11" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-8">
+        <dropColumn columnName="discount" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-9">
+        <dropColumn columnName="discount_group_id" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1324887674898-10">
+        <dropColumn columnName="net_discount_group_id" tableName="sales_delivery"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,1220 @@
+*** Settings ***
+Test Setup      Begin Test
+Test Teardown   End Test
+Force Tags      maintenance
+Resource        ../munix_resource.html
+
+*** Variables ***
+${description}  This is a freakin Automated Robot Framework test data.
+${edited_description}  edited description
+${identifier}  robot test
+${edited_identifier}  test robot
+
+*** Test Cases ***
+User - Create-Edit
+    [Tags]  user  admin
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Admin > User
+    Click New User
+    Enter Login Name
+    Enter Full Name
+    Enter Password
+    Tick Enabled Check Box
+    Enter Description
+    Enter Email
+    Tick Show Email Check Box
+    Assign Roles
+    Click Create Button
+    Verify if User is Successfully Created
+    Click Edit Button
+    Edit User Details
+    Click Update Button
+    Verify that User is Edited Successfully
+    Logout From System
+
+Role - Create-Edit
+    [Tags]  role  admin
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Admin > Role
+    Click New Role
+    Enter Role Name
+    Enter Description
+    Click Create Button
+    Verify Role is Created
+    Click Edit Button
+    Edit Role Details
+    Click Update Button
+    Verify Role is Updated
+    Logout From System
+
+Requestmap - Create-Edit
+    [Tags]  requestmap  admin
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Admin > Requestmap
+    Click New Requestmap
+    Enter URL Pattern
+    Enter Role (requestmap)
+    Click Create Button
+    Verify Requestmap is Created
+    Click Edit Button
+    Edit Requestmap Details
+    Click Update Button
+    Verify Requestmap is Updated
+    Logout From System
+
+Bank - Create-Edit
+    [Tags]  bank  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Bank
+    Click New Bank
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Bank is Created
+    Click Edit Button
+    Edit Bank Details
+    Click Update Button
+    Verify Bank is Updated
+    Logout From System
+
+Bank Account - Create-Edit
+    [Tags]  bank_account  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Bank Account
+    Click New Bank Account
+    Enter Account Number
+    Enter Account Name
+    Click Create Button
+    Verify Bank Account is Created
+    Click Edit Button
+    Edit Bank Account Details
+    Click Update Button
+    Verify Bank Account is Edited
+    Logout From System
+
+Charge - Create-Edit
+    [Tags]  charge  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Charge
+    Click New Charge
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Charge is Created
+    Click Edit Button
+    Edit Charge Details
+    Click Update Button
+    Verify Charge is Updated
+    Logout From System
+
+Check Type - Create-Edit
+    [Tags]  check_type  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Check Type
+    Click New Check Type
+    Enter Routing Number
+    Enter Branch
+    Select Description
+    Click Create Button
+    Verify Check Type is Created
+    Click Edit Button
+    Edit Check Type Details
+    Click Update Button
+    Verify Check Type is Updated
+    Logout From System
+
+Check Status - Create-Edit
+    [Tags]  check_status  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Check Status
+    Click New Check Status
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Check Status is Created
+    Click Edit Button
+    Edit Check Status Details
+    Click Update Button
+    Verify Check Status is Updated
+    Logout From System
+
+Check Warehouse - Create-Edit
+    [Tags]  check_warehouse  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Check Warehouse
+    Click New Check Warehouse
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Check Warehouse is Created
+    Click Edit Button
+    Edit Check Warehouse Details
+    Click Update Button
+    Verify Check Warehouse is Updated
+    Logout From System
+
+Collector - Create-Edit
+    [Tags]  collector  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Collector
+    Click New Collector
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Collector is Created
+    Click Edit Button
+    Edit Collector Details
+    Click Update Button
+    Verify Collector is Updated
+    Logout From System
+
+Currency - Create-Edit
+    [Tags]  currency  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Currecny Type
+    Click New Currency Type
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Currency is Created
+    Click Edit Button
+    Edit Currency Details
+    Click Update Button
+    Verify Currency is Updated
+    Logout From System
+
+Payment - Create-Edit
+    [Tags]  payment_type  accounting
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Accounting > Payment Type
+    Click New Payment Type
+    Enter Identifier
+    Enter Description
+    Select This is a Check
+    Click Create Button
+    Verify Payment Type is Created
+    Click Edit Button
+    Edit Payment Type Details
+    Click Update Button
+    Verify Payment Type is Updated
+    Logout From System
+
+Assembler - Create-Edit
+    [Tags]  assembler  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Assembler
+    Click New Assembler
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Brand - Create-Edit
+    [Tags]  brand  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Brand
+    Click New Product Brand
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Category - Create-Edit
+    [Tags]  category  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Category
+    Click New Product Category
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Color - Create-Edit
+    [Tags]  color  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Color
+    Click New Product Color
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Model - Create-Edit
+    [Tags]  model  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Model
+    Click New Model
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Material - Create-Edit
+    [Tags]  material  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Material
+    Click New Material
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Subcategory - Create-Edit
+    [Tags]  subcategory  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Subcategory
+    Click New Product Subcategory
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Discount Type - Create-Edit
+    [Tags]  product_type  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Discount Type
+    Click New Discount Type
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Unit - Create-Edit
+    [Tags]  unit  production
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Production > Unit
+    Click New Product Unit
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Production is Created
+    Click Edit Button
+    Edit Production Details
+    Click Update Button
+    Verify Prodution is Updated
+    Logout From System
+
+Cutstomer Type - Create-Edit
+    [Tags]  customer_type  sales
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Sales > Customer Type
+    Click New Customer Type
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Sales is Created
+    Click Edit Button
+    Edit Sales Details
+    Click Update Button
+    Verify Sales is Updated
+    Logout From System
+
+Discount Group - Create-Edit
+    [Tags]  discount_group  sales
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Sales > Discount Group
+    Click New Discount Group
+    Enter Identifier
+    Enter Description
+    Enter Rate
+    Click Create Button
+    Verify Discount Group is Created
+    Click Edit Button
+    Edit Discount Group Details
+    Click Update Button
+    Verify Discount Group is Updated
+    Logout From System
+
+City - Create-Edit
+    [Tags]  city  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > City
+    Click New City
+    Enter Identifier
+    Enter Description
+    Select Province
+    Click Create Button
+    Verify City is Created
+    Click Edit Button
+    Edit City Details
+    Click Update Button
+    Verify City is Updated
+    Logout From System
+
+Country - Create-Edit
+    [Tags]  country  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Country
+    Click New Country
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Misc is Created
+    Click Edit Button
+    Edit Misc Details
+    Click Update Button
+    Verify Misc is Updated
+    Logout From System
+
+Packaging - Create-Edit
+    [Tags]  packaging  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Packaging
+    Click New Packaging
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Misc is Created
+    Click Edit Button
+    Edit Misc Details
+    Click Update Button
+    Verify Misc is Updated
+    Logout From System
+
+Personnel - Create-Edit
+    [Tags]  personnel  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Personnel
+    Click New Personnel
+    Enter Identifier
+    Enter Last Name
+    Enter First Name
+    Select Personnel Type
+    Click Create Button
+    Verify Personnel is Created
+    Click Edit Button
+    Edit Personnel Details
+    Click Update Button
+    Verify Personnel is Updated
+    Logout From System
+
+Personnel Type - Create-Edit
+    [Tags]  personnel_type  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Personnel Type
+    Click New Personnel Type
+    Enter Identifier
+    Enter Description
+    Click Create Button
+    Verify Misc is Created
+    Click Edit Button
+    Edit Misc Details
+    Click Update Button
+    Verify Misc is Updated
+    Logout From System
+
+Province - Create-Edit
+    [Tags]  province  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Province
+    Click New Province
+    Enter Identifier
+    Enter Description
+    Select Region
+    Click Create Button
+    Verify Province is Created
+    Click Edit Button
+    Edit Misc Details
+    Click Update Button
+    Verify Misc is Updated
+    Logout From System
+
+Region - Create-Edit
+    [Tags]  region  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Region
+    Click New Region
+    Enter Identifier
+    Enter Description
+    Select Country
+    Click Create Button
+    Verify Country is Created
+    Click Edit Button
+    Edit Misc Details
+    Click Update Button
+    Verify Misc is Updated
+    Logout From System
+
+Term - Create-Edit
+    [Tags]  term  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Term
+    Click New Term
+    Enter Identifier
+    Enter Description
+    Enter Day Value
+    Click Create Button
+    Verify Term is Created
+    Click Edit Button
+    Edit Term Details
+    Click Update Button
+    Verify Term is Updated
+    Logout From System
+
+Truck - Create-Edit
+    [Tags]  truck  misc
+    Login to System as SuperAdmin
+    Navigate to Maintenance > Misc > Truck
+    Click New Truck
+    Enter Identifier
+    Enter Model
+    Enter Plate Number
+    Click Create Button
+    Verify Truck is Created
+    Click Edit Button
+    Edit Truck Details
+    Click Update Button
+    Verify Truck is Updated
+    Logout From System
+
+*** Keywords ***
+Navigate to Maintenance > Admin > User
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAdmin  don't wait
+    Click Element  menuUser
+
+Click New User
+    Click Link  New User
+
+Enter Login Name
+    Input Text  username  robot.test
+
+Enter Full Name
+    Input Text  userRealName  ${identifier}
+
+Enter Password
+    Input Text  passwd  robottest
+
+Tick Enabled Check Box
+    Select Checkbox  enabled
+
+Enter Description
+    Input Text  description  ${description}
+
+Enter Email
+    Input Text  email  zigma-sales-project@orangeandbronze.com
+
+Tick Show Email Check Box
+    Select Checkbox  emailShow
+
+Assign Roles
+    Select Checkbox  ROLE_MANAGER_SALES
+
+Click Create Button
+    Click Button  Create
+
+Verify if User is Successfully Created
+    Element Should Contain  loginName  robot.test
+    Element Should Contain  fullName  ${identifier}
+    Element Should Contain  enabledCheckbox  true
+    Element Should Contain  userDescription  ${description}
+    Element Should Contain  userEmail  zigma-sales-project@orangeandbronze.com
+    Element Should Contain  showEmail  true
+    Element Should Contain  userRoles  ROLE_MANAGER_SALES
+
+Click Edit Button
+    Click Button  Edit
+
+Edit User Details
+    Input Text  username  test.robot
+    Input Text  userRealName  ${edited_identifier}
+    Input Text  passwd  changethis
+    Input Text  description  ${edited_description}
+    Select Checkbox  ROLE_MANAGER_PURCHASING
+    Unselect Checkbox  enabled
+
+Click Update Button
+    Click Button  Update
+
+Verify that User is Edited Successfully
+    Element Should Contain  loginName  test.robot
+    Element Should Contain  fullName  ${edited_identifier}
+    Element Should Contain  userDescription  ${edited_description}
+    Element Should Contain  userRoles  ROLE_MANAGER_PURCHASING
+    Element Should Contain  enabledCheckbox  false
+
+Click Delete Button
+    Click Button  Delete
+
+Verify that User is Deleted
+    Page Should Not Contain  test.robot
+    Page Should Not Contain  robot.test
+    Page Should Contain  deleted.
+
+Choose OK on Confirmation
+    Confirm Action
+
+Navigate to Maintenance > Admin > Role
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAdmin  don't wait
+    Click Element  menuRole
+
+Click New Role
+    Click Link  New Role
+
+Enter Role Name
+    Input Text  authority  ${identifier}
+
+Verify Role is Created
+    Element Should Contain  roleName  ${identifier}
+    Element Should Contain  roleDescription  ${description}
+
+Edit Role Details
+    Input Text  authority  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Role is Updated
+    Element Should Contain  roleName  ${edited_identifier}
+    Element Should Contain  roleDescription  ${edited_description}
+
+Verify Role is Deleted
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+    Page Should Contain  deleted.
+
+Navigate to Maintenance > Admin > Requestmap
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAdmin  don't wait
+    Click Element  menuRequestMap
+
+Click New Requestmap
+    Click Link  New Requestmap
+
+Enter URL Pattern
+    Input Text  url  /robot
+
+Enter Role (requestmap)
+    Input Text  configAttribute  /${identifier}
+
+Verify Requestmap is Created
+    Element Should Contain  requestmapUrl  /robot
+    Element Should Contain  requestmapRoles  /${identifier}
+
+View a Requestmap
+    Click Link  7
+    Click Element  rowUrl0
+
+Edit Requestmap Details
+    Input Text  url  /test
+    Input Text  configAttribute  /${edited_identifier}
+
+Verify Requestmap is Updated
+    Element Should Contain  requestmapUrl  /test
+    Element Should Contain  requestmapRoles  /${edited_identifier}
+
+Verify Requestmap is Deleted
+    Page Should Contain  deleted.
+    Page Should Not Contain  /robot
+
+Navigate to Maintenance > Accounting > Bank
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuBank
+
+Click New Bank
+    Click Link  New Bank
+
+Enter Identifier
+    Input Text  identifier  ${identifier}
+
+Verify Bank is Created
+    Element Should Contain  bankIdentifier  ${identifier}
+    Element Should Contain  bankDescription  ${description}
+
+Edit Bank Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Bank is Updated
+    Element Should Contain  bankIdentifier  ${edited_identifier}
+    Element Should Contain  bankDescription  ${edited_description}
+
+Verify Bank is Deleted
+    Page Should Contain  Bank deleted!
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+
+Navigate to Maintenance > Accounting > Bank Account
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuBankAccount
+
+Click New Bank Account
+    Click Link  New Bank Account
+
+Enter Account Number
+    Input Text  accountNumber  1234-5678-90
+
+Enter Account Name
+    Input Text  accountName  ${identifier}
+
+Verify Bank Account is Created
+    Element Should Contain  accountNumber  1234-5678-90
+    Element Should Contain  accountName  ${identifier}
+
+Edit Bank Account Details
+    Input Text  accountNumber  9876543210
+    Input Text  accountName  ${edited_identifier}
+
+Verify Bank Account is Edited
+    Element Should Contain  accountNumber  9876543210
+    Element Should Contain  accountName  ${edited_identifier}
+
+Verify Bank Acount is Deleted
+    Page Should Contain  Bank Account deleted!
+    Page Should Not Contain  Test Robot
+    Page Should Not Contain  Robot Test
+
+Navigate to Maintenance > Accounting > Charge
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCharge
+
+Click New Charge
+    Click Link  New Charge
+
+Verify Charge is Created
+    Element Should Contain  chargeIdentifier  ${identifier}
+    Element Should Contain  chargeDescription  ${description}
+    Page Should Contain  Charge created!
+
+Edit Charge Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Charge is Updated
+    Element Should Contain  chargeIdentifier  ${edited_identifier}
+    Element Should Contain  chargeDescription  ${edited_description}
+    Page Should Contain  Charge updated successfully!
+
+Verify Charge is Deleted
+    Page Should Contain  Charge deleted!
+
+Navigate to Maintenance > Accounting > Check Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckType
+
+Click New Check Type
+    Click Link  New Check Type
+
+Enter Routing Number
+    Input Text  routingNumber  1234567890
+
+Enter Branch
+    Input Text  branch  ${identifier}
+
+Select Description
+    Select From List  description  Regional
+
+Edit Check Type Details
+    Input Text  routingNumber  9876543210
+    Input Text  branch  ${edited_identifier}
+    Select From List  description  Local
+
+Verify Check Type is Created
+    Element Should Contain  routingNumber  1234567890
+    Element Should Contain  checkTypeBranch  ${identifier}
+    Element Should Contain  checkDescription  Regional
+
+Verify Check Type is Updated
+    Element Should Contain  routingNumber  9876543210
+    Element Should Contain  checkTypeBranch  ${edited_identifier}
+    Element Should Contain  checkDescription  Local
+
+Verify Check Type is Deleted
+    Page Should Contain  Check Type deleted!
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+
+Navigate to Maintenance > Accounting > Collector
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCollector
+
+Click New Collector
+    Click Link  New Collector
+
+Verify Collector is Created
+    Element Should Contain  collectorIdentifier  ${identifier}
+    Element Should Contain  collectorDescription  ${description}
+
+Edit Collector Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited description}
+
+Verify Collector is Updated
+    Element Should Contain  collectorIdentifier  ${edited_identifier}
+    Element Should Contain  collectorDescription  ${edited_description}
+
+Verify Collector is Deleted
+    Page Should Contain  Collector deleted!
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+
+Navigate to Maintenance > Accounting > Currecny Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCurrency
+
+Click New Currency Type
+    Click Link  New Currency Type
+
+Verify Currency is Created
+    Element Should Contain  currencyIdentifier  ${identifier}
+    Element Should Contain  currencyDescription  ${description}
+    Page Should Contain  Currency Type created!
+
+Edit Currency Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Currency is Updated
+    Element Should Contain  currencyIdentifier  ${edited_identifier}
+    Element Should Contain  currencyDescription  ${edited_description}
+
+Verify Currency is Deleted
+    Page Should Contain  Currency Type deleted!
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+
+Navigate to Maintenance > Accounting > Payment Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuPaymentType
+
+Click New Payment Type
+    Click Link  New Payment Type
+
+Verify Payment Type is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  description  ${description}
+    Element Should Contain  isCheckCheckbox  True
+
+Select This is a Check
+    Select Checkbox  isCheck
+
+Edit Payment Type Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+    Unselect Checkbox  isCheck
+
+Verify Payment Type is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  description  ${edited_description}
+    Element Should Contain  isCheckCheckbox  False
+
+Verify Payment Type is Deleted
+    Page Should Contain  Payment Type deleted!
+    Page Should Not Contain  robot test
+    Page Should Not Contain  test robot
+
+Navigate to Maintenance > Production > Assembler
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuAssembler
+
+Click New Assembler
+    Click Link  New Assembler
+
+Verify Production is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  description  ${description}
+
+Edit Production Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Prodution is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  description  ${edited_description}
+
+Verify Production is Deleted
+    Page Should Contain  deleted!
+    Page Should Not Contain  ${identifier}
+    Page Should Not Contain  ${edited_identifier}
+
+Navigate to Maintenance > Production > Brand
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuBrand
+
+Click New Product Brand
+    Click Link  New Product Brand
+
+Navigate to Maintenance > Production > Category
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuCategory
+
+Click New Product Category
+    Click Link  New Product Category
+
+Navigate to Maintenance > Production > Color
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuColor
+
+Click New Product Color
+    Click Link  New Product Color
+
+Navigate to Maintenance > Production > Model
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuModel
+
+Click New Model
+    Click Link  New Product Model
+
+Navigate to Maintenance > Production > Material
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuMaterial
+
+Click New Material
+    Click Link  New Product Material
+
+Navigate to Maintenance > Production > Subcategory
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuSubcategory
+
+Click New Product Subcategory
+    Click Link  New Product Subcategory
+
+Navigate to Maintenance > Production > Discount Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuDiscountType
+
+Click New Discount Type
+    Click Link  New Discount Type
+
+Navigate to Maintenance > Production > Unit
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuProduction  don't wait
+    Click Element  menuUnit
+
+Click New Product Unit
+    Click Link  New Product Unit
+
+Navigate to Maintenance > Sales > Customer Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuCustomerType
+
+Click New Customer Type
+    Click Link  New Customer Type
+
+Verify Sales is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  description  ${description}
+
+Edit Sales Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Sales is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  description  ${edited_description}
+
+Verify Sales is Deleted
+    Page Should Contain  deleted!
+    Page Should Not Contain  ${identifier}
+    Page Should Not Contain  ${edited_identifier}
+
+Navigate to Maintenance > Sales > Invoice Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuInvoiceType
+
+Click New Invoice Type
+    Click Link  New InvoiceType
+
+Navigate to Maintenance > Sales > Discount Group
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuSales  don't wait
+    Click Element  menuDiscountGroup
+
+Click New Discount Group
+    Click Link  New Discount Group
+
+Enter Rate
+    Input Text  rate  50.00
+
+Verify Discount Group is Created
+    Verify Sales is Created
+    Element Should Contain  rate  50.0000%
+
+Edit Discount Group Details
+    Edit Sales Details
+    Input Text  rate  70.00
+
+Verify Discount Group is Updated
+    Verify Sales is Updated
+    Element Should Contain  rate  70.0000%
+
+Navigate to Maintenance > Misc > City
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuCity
+
+Click New City
+    Click Link  New City
+
+Verify Misc is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  description  ${description}
+
+Edit Misc Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Misc is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  description  ${edited_description}
+
+Verify Misc is Deleted
+    Page Should Contain  deleted!
+    Page Should Not Contain  ${identifier}
+    Page Should Not Contain  ${edited_identifier}
+
+Select Province
+    Select From List  province.id  Tarlac
+
+Verify City is Created
+    Verify Misc is Created
+    Element Should Contain  province  Tarlac
+
+Edit City Details
+    Edit Misc Details
+    Select From List  province.id  Pampanga
+
+Verify City is Updated
+    Verify Misc is Updated
+    Element Should Contain  province  Pampanga
+
+Navigate to Maintenance > Misc > Country
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuCountry
+
+Click New Country
+    Click Link  New Country
+
+Navigate to Maintenance > Misc > Packaging
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPackaging
+
+Click New Packaging
+    Click Link  New Packaging
+
+Navigate to Maintenance > Misc > Personnel
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPersonnel
+
+Click New Personnel
+    Click Link  New Personnel
+
+Enter Last Name
+    Input Text  lastName  Belerma
+
+Enter First Name
+    Input Text  firstName  Ika
+
+Select Personnel Type
+    Select From List  type.id  3
+
+Verify Personnel is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  lastName  Belerma
+    Element Should Contain  firstName  Ika
+    Element Should Contain  personnelType  Checker
+
+Edit Personnel Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  lastName  Test
+    Input Text  firstName  Robot
+
+Verify Personnel is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  lastName  Test
+    Element Should Contain  firstName  Robot
+
+Verify Personnel is Deleted
+    Page Should Contain  Personnel deleted!
+    Page Should Not Contain  Belerma
+    Page Should Not Contain  Robot
+
+Navigate to Maintenance > Misc > Personnel Type
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuPersonnelType
+
+Click New Personnel Type
+    Click Link  New Personnel Type
+
+Select Region
+    Select From List  region.id  NCR
+
+Navigate to Maintenance > Misc > Province
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuProvince
+
+Click New Province
+    Click Link  New Province
+
+Verify Province is Created
+    Verify Misc is Created
+    Element Should Contain  region  NCR
+
+Navigate to Maintenance > Misc > Region
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuRegion
+
+Click New Region
+    Click Link  New Region
+
+Select Country
+    Select From List  country.id  Philippines
+
+Verify Country is Created
+    Verify Misc is Created
+    Element Should Contain  country  Philippines
+
+Navigate to Maintenance > Misc > Term
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuTerms
+
+Click New Term
+    Click Link  New Term
+
+Enter Day Value
+    Input Text  dayValue  11
+
+Verify Term is Created
+    Verify Misc is Created
+    Element Should Contain  dayValue  11
+
+Edit Term Details
+    Edit Misc Details
+    Input Text  dayValue  500
+
+Verify Term is Updated
+    Verify Misc is Updated
+    Element Should Contain  dayValue  500
+
+Navigate to Maintenance > Misc > Truck
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuMisc  don't wait
+    Click Element  menuTruck
+
+Click New Truck
+    Click Link  New Truck
+
+Enter Model
+    Input Text  model  Optimus Prime
+
+Enter Plate Number
+    Input Text  plateNumber  TOP 888
+
+Verify Truck is Created
+    Element Should Contain  identifier  ${identifier}
+    Element Should Contain  model  Optimus Prime
+    Element Should Contain  plateNumber  TOP 888
+
+Edit Truck Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  model  Megatron
+    Input Text  plateNumber  BOT 999
+
+Verify Truck is Updated
+    Element Should Contain  identifier  ${edited_identifier}
+    Element Should Contain  model  Megatron
+    Element Should Contain  plateNumber  BOT 999
+
+Navigate to Maintenance > Accounting > Check Status
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckStatus
+
+Click New Check Status
+    Click Link  New Check Status
+
+Verify Check Status is Created
+    Element Should Contain  checkStatusIdentifier  ${identifier}
+    Element Should Contain  checkStatusDescription  ${description}
+
+Edit Check Status Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Check Status is Updated
+    Element Should Contain  checkStatusIdentifier  ${edited_identifier}
+    Element Should Contain  checkStatusDescription  ${edited_description}
+
+Navigate to Maintenance > Accounting > Check Warehouse
+    Click Element  menuMaintenance  don't wait
+    Click Element  menuAccounting  don't wait
+    Click Element  menuCheckWarehouse
+
+Click New Check Warehouse
+    Click Link  New Check Warehouse
+
+Verify Check Warehouse is Created
+    Element Should Contain  checkWarehouseIdentifier  ${identifier}
+    Element Should Contain  checkWarehouseDescription  ${description}
+
+Edit Check Warehouse Details
+    Input Text  identifier  ${edited_identifier}
+    Input Text  description  ${edited_description}
+
+Verify Check Warehouse is Updated
+    Element Should Contain  checkWarehouseIdentifier  ${edited_identifier}
+    Element Should Contain  checkWarehouseDescription  ${edited_description}
+

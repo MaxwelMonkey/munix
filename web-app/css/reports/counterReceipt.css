@@ -1,0 +1,23 @@
+.column0{
+	width:15%;
+}
+
+.column1{
+	width:18%;
+}
+
+.column2{
+	width:18%;
+}
+
+.column3{
+	width:18%;
+}
+
+.column5, .cell5, .total5{
+	text-align:right;
+}
+
+.column4, .cell4, .total4{
+	text-align:right;
+}

@@ -1,0 +1,107 @@
+Base database is URL: jdbc:mysql://localhost/munix_base
+Base database is URL: jdbc:mysql://localhost/munix1
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1312828069595-1">
+        <createTable tableName="customer_ledger">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-2">
+        <createTable tableName="customer_ledger_entry">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)"/>
+            <column name="credit_amount" type="DECIMAL(19,2)"/>
+            <column name="customer_ledger_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_opened" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_posted" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="debit_amount" type="DECIMAL(19,2)"/>
+            <column name="details" type="VARCHAR(255)"/>
+            <column name="is_child" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reference_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="running_balance" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-3">
+        <createTable tableName="customer_ledger_entry_customer_ledger_entry">
+            <column name="customer_ledger_entry_payment_breakdown_id" type="BIGINT"/>
+            <column name="customer_ledger_entry_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-4">
+        <addColumn tableName="customer">
+            <column name="customer_ledger_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-5">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="new_price" defaultNullValue="" tableName="price_adjustment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-6">
+        <modifyColumn tableName="purchase_delivery_item">
+            <column name="final_price" type="DECIMAL(19,2)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-7">
+        <addNotNullConstraint columnDataType="DECIMAL(19,2)" columnName="final_price" defaultNullValue="" tableName="purchase_delivery_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-8">
+        <createIndex indexName="FK24217FDEB2E9AD7D" tableName="customer" unique="false">
+            <column name="customer_ledger_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-9">
+        <createIndex indexName="FK51AC8DDB2E9AD7D" tableName="customer_ledger_entry" unique="false">
+            <column name="customer_ledger_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-10">
+        <createIndex indexName="FK92E11EFBDBA27F39" tableName="customer_ledger_entry_customer_ledger_entry" unique="false">
+            <column name="customer_ledger_entry_payment_breakdown_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-11">
+        <createIndex indexName="FK92E11EFBE8E23342" tableName="customer_ledger_entry_customer_ledger_entry" unique="false">
+            <column name="customer_ledger_entry_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-12">
+        <dropIndex indexName="identifier" tableName="invoice_type"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-13">
+        <dropColumn columnName="check_date" schemaName="supplier_payment_item" tableName="supplier_payment_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1312828069595-14">
+        <dropTable tableName="invoice_type"/>
+    </changeSet>
+</databaseChangeLog>

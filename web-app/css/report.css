@@ -1,0 +1,99 @@
+/* 
+    Document   : report
+    Created on : 06 9, 10, 2:47:50 PM
+    Author     : siocowiz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+}
+
+h2{
+    text-align: center;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+}
+
+#head table{
+    width: 100%;
+    border: 1px solid;
+    margin-bottom: 25px;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+#head td{
+    padding: 4px;
+}
+
+#head td.name{
+    font-weight: bold;
+    vertical-align: top;
+}
+
+#body table{
+    width: 100%;
+    /*border: 1px solid;*/
+    text-align: left;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+#body th{
+    border: 1px solid;
+    padding: 4px;
+}
+
+#body td{
+  /*  border: 1px solid;*/
+    padding: 4px;
+}
+
+#footer table{
+    font-size: 12px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+#footer td{
+    padding-bottom: 5px;
+}
+
+#footer td.name{
+    font-weight: bold;
+    width: 15%;
+}
+
+#footer td.value{
+    width: 50%;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+tfoot{
+    font-weight: bold;
+}
+

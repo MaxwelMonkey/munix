@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1310062277234-1">
+        <createTable tableName="price_adjustment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="effective_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_adjustment_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-2">
+        <createTable tableName="price_adjustment_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_price" type="DECIMAL(19,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_adjustment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-3">
+        <addColumn tableName="sales_delivery">
+            <column name="remark" type="VARCHAR(250)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-4">
+        <addColumn tableName="trip_ticket">
+            <column name="mark_as_complete_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-5">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_counter_receipt" defaultNullValue="" tableName="bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-6">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_direct_payment" defaultNullValue="" tableName="bounced_check"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-7">
+        <dropNotNullConstraint columnDataType="BIGINT" columnName="direct_payment_invoice_id" tableName="bounced_check_direct_payment_invoice"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-8">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_counter_receipt" defaultNullValue="" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-9">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_direct_payment" defaultNullValue="" tableName="credit_memo"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-10">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)" columnName="fax" tableName="customer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-11">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_counter_receipt" defaultNullValue="" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-12">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_direct_payment" defaultNullValue="" tableName="customer_charge"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-13">
+        <addNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="rate" defaultNullValue="" tableName="discount_group"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-14">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="description" defaultNullValue="" tableName="product"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-15">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_counter_receipt" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-16">
+        <addNotNullConstraint columnDataType="BIT" columnName="is_taken_by_direct_payment" defaultNullValue="" tableName="sales_delivery"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-17">
+        <dropPrimaryKey tableName="bounced_check_direct_payment_invoice"/>
+    </changeSet>
+<!--
+    <changeSet author="jeje (generated)" id="1310062277234-18">
+        <createIndex indexName="FKD2D03538E8F7FB72" tableName="bounced_check_direct_payment_invoice" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+-->
+    <changeSet author="jeje (generated)" id="1310062277234-19">
+        <createIndex indexName="FK53F61A23A821CE87" tableName="price_adjustment" unique="false">
+            <column name="item_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-20">
+        <createIndex indexName="FK54EFF7AF85509F07" tableName="price_adjustment_item" unique="false">
+            <column name="price_adjustment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1310062277234-21">
+        <createIndex indexName="FK54EFF7AFFA625C14" tableName="price_adjustment_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

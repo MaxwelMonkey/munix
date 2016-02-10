@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1321436459373-2">
+        <createTable tableName="customer_audit_trail">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="field_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_entry" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="previous_entry" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-3">
+        <createTable tableName="inventory_adjustment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date_generated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-4">
+        <createTable tableName="inventory_adjustment_inventory_adjustment_item">
+            <column name="inventory_adjustment_items_id" type="BIGINT"/>
+            <column name="inventory_adjustment_item_id" type="BIGINT"/>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-5">
+        <createTable tableName="inventory_adjustment_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_stock" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="old_stock" type="DECIMAL(19,2)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-6">
+        <createTable tableName="product_audit_trail">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="field_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_entry" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="previous_entry" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1321436459373-7">
+        <addColumn tableName="bounced_check">
+            <column name="amount_paid" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-8">
+        <addColumn tableName="customer_discount">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1321436459373-22">
+	<sqlFile path="alter scripts/alter-scripts-28.sql"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1321436459373-9">
+        <addColumn tableName="sales_delivery">
+            <column name="net_discount_group_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-10">
+        <addColumn tableName="sales_order">
+            <column name="net_discount_group_id" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1321436459373-12">
+        <createIndex indexName="FKE2BD61C1A122CF80" tableName="customer_audit_trail" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-13">
+        <createIndex indexName="FKE2BD61C1ADBCDF60" tableName="customer_audit_trail" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-14">
+        <createIndex indexName="FKF223F830A821CE87" tableName="inventory_adjustment" unique="false">
+            <column name="item_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-15">
+        <createIndex indexName="FKF223F830ADD15514" tableName="inventory_adjustment" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-16">
+        <createIndex indexName="FK2862CE734E3BEC0E" tableName="inventory_adjustment_inventory_adjustment_item" unique="false">
+            <column name="inventory_adjustment_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-17">
+        <createIndex indexName="FK74EBD9C2FA625C14" tableName="inventory_adjustment_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-18">
+        <createIndex indexName="FK29D19D52ADBCDF60" tableName="product_audit_trail" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-19">
+        <createIndex indexName="FK29D19D52FA625C14" tableName="product_audit_trail" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-20">
+        <createIndex indexName="FKC6EB71C7DE0C54EF" tableName="sales_delivery" unique="false">
+            <column name="net_discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1321436459373-21">
+        <createIndex indexName="FK67203A5BDE0C54EF" tableName="sales_order" unique="false">
+            <column name="net_discount_group_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

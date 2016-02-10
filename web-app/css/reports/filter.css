@@ -1,0 +1,23 @@
+  	div.multicheckbox{
+		height:100px;
+		overflow-y:scroll;
+		border:solid 1px #cccccc;
+		margin-top:0px;
+  	}
+  	
+  	div.multicheckbox div.checkbox{
+		padding:5px;
+		margin-top:0px;
+  	}
+
+  	div.multicheckbox div.checkbox label{
+		cursor:pointer;
+  	}
+
+  	div.multicheckbox div.checkbox input{
+		height:10px;
+  	}
+
+  	input.checkAll{
+		height:10px;
+  	}

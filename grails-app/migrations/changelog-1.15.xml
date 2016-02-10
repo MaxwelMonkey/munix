@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1330674407260-1">
+        <addColumn tableName="inventory_adjustment">
+            <column name="inventory_status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1330674407260-2">
+        <addColumn tableName="sales_agent">
+            <column name="commission" type="DECIMAL(19,2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1330674407260-3">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="term_id" defaultNullValue="1" tableName="customer"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1330674407260-4">
+        <modifyColumn tableName="material_requisition_item">
+            <column name="units_required" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1330674407260-5">
+        <addNotNullConstraint columnDataType="BIGINT" columnName="type_id" defaultNullValue="1" tableName="product"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1330674407260-6">
+	<sqlFile path="alter scripts/alter-scripts-40.sql"/>
+    </changeSet>
+</databaseChangeLog>

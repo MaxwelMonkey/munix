@@ -1,0 +1,10 @@
+table.main{
+	padding-left:20px;
+	width:450px;
+	font-size:11px;
+}
+
+table.main span.label{
+	font-weight:bold;
+}
+

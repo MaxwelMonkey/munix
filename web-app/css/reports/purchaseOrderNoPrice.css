@@ -1,0 +1,11 @@
+.column0, .cell0{
+	text-align:right;
+}
+
+.column2, .cell2, .column7, .cell7{
+	text-align:center;
+}
+
+img {
+	max-width:75px;
+}

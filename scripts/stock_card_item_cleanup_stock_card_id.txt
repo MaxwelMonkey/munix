@@ -1,0 +1,11 @@
+truncate table stock_card_cleanup;
+
+insert into stock_card_cleanup values (1234);
+
+delete from stock_card_item where type<>'INITIAL_ENTRY' and type='APPROVED_INVENTORY_ADJUSTMENT' and stock_card_id  in (5165);
+
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date_generated, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), b.id, b.new_stock, null, concat('IA-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_INVENTORY_ADJUSTMENT', d.identifier, null, null, null from inventory_adjustment a, inventory_adjustment_item b, stock_card c, warehouse d where approved_by <> '' and a.id=b.adjustment_id and b.product_id=c.product_id and a.warehouse_id=d.id and (b.new_stock-b.old_stock)>=0 and c.id  in (5165);
+insert into stock_card_item(version, balance, cost_foreign, cost_local, date_opened, date_posted, link_id, qty_in, qty_out, reference_id, selling_amount, stock_card_id, type, warehouse_in, warehouse_out, currency_foreign_id, supplier_customer) select 0, 0, null, null, a.date_generated, str_to_date(substring(a.approved_by,-24), '%b. %d, %Y - %h:%i %p'), b.id, null, b.new_stock, concat('IA-',lpad(a.id, 8,'0')), null, c.id, 'APPROVED_INVENTORY_ADJUSTMENT', null, d.identifier, null, null from inventory_adjustment a, inventory_adjustment_item b, stock_card c, warehouse d where approved_by <> '' and a.id=b.adjustment_id and b.product_id=c.product_id and a.warehouse_id=d.id and (b.new_stock-b.old_stock)<0 and c.id  in (5165);
+
+call update_ia_by_id;
+call update_stock_card_by_id;

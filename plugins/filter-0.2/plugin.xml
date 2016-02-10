@@ -1,0 +1,13 @@
+<plugin name='filter' version='0.2'>
+  <author>Maxwell Chiareli Xandeco</author>
+  <authorEmail>mchiareli@gmail.com</authorEmail>
+  <title>Dynamic filter plugin</title>
+  <description>Adds a dynamic filter tag lib to grails</description>
+  <documentation>http://grails.org/Filter+Plugin</documentation>
+  <resources>
+    <resource>UrlMappings</resource>
+    <resource>org.codehaus.groovy.grails.plugins.filter.controller.FilterController</resource>
+    <resource>FilterTagLib</resource>
+    <resource>FilterRemoteTagLib</resource>
+  </resources>
+</plugin>

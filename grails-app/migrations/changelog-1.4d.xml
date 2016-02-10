@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1306487089725-1">
+        <renameTable oldTableName="direct_payment_invoice_delivery" newTableName="sales_delivery_direct_payment_invoice"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-2">
+	<dropPrimaryKey tableName="sales_delivery_direct_payment_invoice" constraintName="id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-3">
+        <renameColumn columnDataType="BIGINT(20)" tableName="sales_delivery_direct_payment_invoice" oldColumnName ="id" newColumnName="direct_payment_invoice_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-4">
+        <renameColumn columnDataType="BIGINT(20)" tableName="sales_delivery_direct_payment_invoice" oldColumnName ="sales_delivery_id" newColumnName="sales_delivery_invoices_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-5">
+        <renameTable oldTableName="direct_payment_invoice_charge" newTableName="customer_charge_direct_payment_invoice"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-6">
+	<dropPrimaryKey tableName="customer_charge_direct_payment_invoice" constraintName="id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-7">
+        <renameColumn columnDataType="BIGINT(20)" tableName="customer_charge_direct_payment_invoice" oldColumnName ="id" newColumnName="direct_payment_invoice_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-8">
+        <renameColumn columnDataType="BIGINT(20)" tableName="customer_charge_direct_payment_invoice" oldColumnName ="customer_charge_id" newColumnName="customer_charge_invoices_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-9">
+        <renameTable oldTableName="direct_payment_invoice_credit_memo" newTableName="credit_memo_direct_payment_invoice"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-10">
+	<dropPrimaryKey tableName="credit_memo_direct_payment_invoice" constraintName="id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-11">
+        <renameColumn columnDataType="BIGINT(20)" tableName="credit_memo_direct_payment_invoice" oldColumnName ="id" newColumnName="direct_payment_invoice_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-12">
+        <renameColumn columnDataType="BIGINT(20)" tableName="credit_memo_direct_payment_invoice" oldColumnName ="credit_memo_id" newColumnName="credit_memo_invoices_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-13">
+        <renameTable oldTableName="direct_payment_invoice_bounced_check" newTableName="bounced_check_direct_payment_invoice"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-14">
+        <renameColumn columnDataType="BIGINT(20)" tableName="bounced_check_direct_payment_invoice" oldColumnName ="id" newColumnName="direct_payment_invoice_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-15">
+        <renameColumn columnDataType="BIGINT(20)" tableName="bounced_check_direct_payment_invoice" oldColumnName ="bounced_check_id" newColumnName="bounced_check_invoices_id"/>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-16">
+        <createIndex indexName="FKD2D03538DC7D7CCC" tableName="bounced_check_direct_payment_invoice" unique="false">
+            <column name="bounced_check_invoices_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-17">
+        <createIndex indexName="FKD2D03538E8F7FB72" tableName="bounced_check_direct_payment_invoice" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-18">
+        <createIndex indexName="FK3D63E5FDC4E64AEE" tableName="credit_memo_direct_payment_invoice" unique="false">
+            <column name="credit_memo_invoices_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-19">
+        <createIndex indexName="FK3D63E5FDE8F7FB72" tableName="credit_memo_direct_payment_invoice" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-20">
+        <createIndex indexName="FK65003EE8B1800442" tableName="customer_charge_direct_payment_invoice" unique="false">
+            <column name="customer_charge_invoices_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-21">
+        <createIndex indexName="FK65003EE8E8F7FB72" tableName="customer_charge_direct_payment_invoice" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-22">
+        <createIndex indexName="FKD3F613162FC6C8F6" tableName="sales_delivery_direct_payment_invoice" unique="false">
+            <column name="sales_delivery_invoices_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1306487089725-23">
+        <createIndex indexName="FKD3F61316E8F7FB72" tableName="sales_delivery_direct_payment_invoice" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1306487089725-24">
+	<addColumn tableName="sales_order_item">
+	    <column name="is_net" type="BIT(1)" />
+	</addColumn>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-25">
+        <createTable tableName="customer_charge_receipts">
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_charge_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-26">
+        <renameColumn columnDataType="BIT(1)" tableName="sales_delivery" oldColumnName ="is_taken" newColumnName="is_taken_by_direct_payment"/>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-27">
+        <addColumn tableName="sales_delivery">
+            <column name="is_taken_by_counter_receipt" type="BIT(1)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-28">
+        <renameColumn columnDataType="BIT(1)" tableName="customer_charge" oldColumnName ="is_taken" newColumnName="is_taken_by_direct_payment"/>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-29">
+        <addColumn tableName="customer_charge">
+            <column name="is_taken_by_counter_receipt" type="BIT(1)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-30">
+        <renameColumn columnDataType="BIT(1)" tableName="bounced_check" oldColumnName ="is_taken" newColumnName="is_taken_by_direct_payment"/>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-31">
+        <addColumn tableName="bounced_check">
+            <column name="is_taken_by_counter_receipt" type="BIT(1)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-32">
+        <renameColumn columnDataType="BIT(1)" tableName="credit_memo" oldColumnName ="is_taken" newColumnName="is_taken_by_direct_payment"/>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-33">
+        <addColumn tableName="credit_memo">
+            <column name="is_taken_by_counter_receipt" type="BIT(1)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-34">
+        <createTable tableName="bounced_check_counter_receipts">
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bounced_check_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-35">
+        <createTable tableName="credit_memo_counter_receipts">
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_memo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="tony (generated)" id="1306487089725-36">
+        <createTable tableName="customer_charge_counter_receipts">
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_charge_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+   <changeSet author="tony (generated)" id="1306487089725-37">
+        <addPrimaryKey columnNames="credit_memo_id, counter_receipt_id" tableName="credit_memo_counter_receipts"/>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-38">
+        <addPrimaryKey columnNames="customer_charge_id, counter_receipt_id" tableName="customer_charge_counter_receipts"/>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-40">
+        <createIndex indexName="FK9BA86738326A7547" tableName="bounced_check_counter_receipts" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-41">
+        <createIndex indexName="FK9BA867384F1C80C7" tableName="bounced_check_counter_receipts" unique="false">
+            <column name="bounced_check_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-42">
+        <createIndex indexName="FK27ED4FBD326A7547" tableName="credit_memo_counter_receipts" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-43">
+        <createIndex indexName="FK27ED4FBD87E03BD3" tableName="credit_memo_counter_receipts" unique="false">
+            <column name="credit_memo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-44">
+        <createIndex indexName="FK6E4D74E8191BA59D" tableName="customer_charge_counter_receipts" unique="false">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="tony (generated)" id="1306487089725-45">
+        <createIndex indexName="FK6E4D74E8326A7547" tableName="customer_charge_counter_receipts" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

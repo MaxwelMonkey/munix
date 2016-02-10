@@ -1,0 +1,29 @@
+.column0, .cell0{
+	width:170px;
+}
+
+.column1, .cell1{
+	width:100px;
+	text-align:right;
+}
+.column2, .cell2{
+	width:170px;
+	text-align:center;
+}
+.column4, .cell4{
+	width:170px;
+	text-align:right;
+}
+.column5, .cell5{
+	width:170px;
+	text-align:right;
+}
+
+.column6, .cell6{
+	width:170px;
+	text-align:right;
+}
+
+.total4, .total5, .total6{
+	text-align:right;
+}

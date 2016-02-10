@@ -1,0 +1,11 @@
+.column0, .cell0, .column7, .cell7, .column8, .cell8, .total5, .total6, .total7, .total8{
+	text-align:right;
+}
+
+.column2, .cell2{
+	text-align:center;
+}
+
+img {
+	max-width:75px;
+}

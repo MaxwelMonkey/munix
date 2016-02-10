@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug='false'>
+  <appender name='APP_LOG' class='org.apache.log4j.FileAppender'>
+    <errorHandler class='org.apache.log4j.helpers.OnlyOnceErrorHandler' />
+    <param name='File' value='logs/app.log' />
+    <param name='Append' value='true' />
+    <layout class='org.apache.log4j.PatternLayout'>
+      <param name='ConversionPattern' value='%d %-5p [%-30.40c] %2X{tid} %X{sid} %X{uid} %m%n' />
+    </layout>
+  </appender>
+  <category name='grails.app' additivity='false'>
+    <priority value='INFO' />
+    <appender-ref ref='APP_LOG' />
+  </category>
+  <root>
+    <priority value='WARN' />
+  </root>
+</log4j:configuration>

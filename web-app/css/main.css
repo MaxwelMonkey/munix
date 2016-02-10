@@ -1,0 +1,677 @@
+html * {
+    margin: 0;
+    /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+}
+
+/* GENERAL */
+
+.spinner {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+}
+
+body {
+    border-top: 5px solid #000;
+    background: #E8E6E2;
+    color: #333;
+    font: normal normal normal 13px/1.4 Verdana, 'Lucida Grande', Arial, Helvetica, sans-serif;
+    line-height: 1.7em;
+}
+
+#logo {
+    margin: 0px;
+    background: #2D96C4;
+    border-bottom: 1px solid #000;
+}
+
+.header{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.header td:FIRST-CHILD{
+    width:150px;
+}
+
+a:link, a:visited, a:hover {
+    color: #666;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1 {
+    color: #3680A1;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin: 1em 0 .5em 0;
+    margin-left: 5px;
+}
+
+h3 {
+    color: #000;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin: 1em 0 .5em 0;
+    margin-left: 5px;
+}
+
+h2 {
+    color: #3680A1;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 1em 0 .5em 0;
+    margin-left: 5px;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+input, select, textarea {
+    background-color: #FAFAFA;
+    border: 1px solid #ccc;
+    font: 12px 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0px 4px;
+}
+
+input{
+    height: 25px;
+    padding: 4px;
+}
+
+.login .companyName {
+    text-align: left;
+    width: 15%;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 18px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    color: #f4f9fe;
+}
+
+select {
+    padding: 2px 2px 2px 0;
+    background-color: #FCFCFC;
+}
+textarea {
+    width: 250px;
+    height: 150px;
+    vertical-align: top;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #b2d1ff;
+    background: #fff;
+}
+
+.body {
+    float: left;
+    margin: 0 15px 10px 15px;
+
+}
+
+/* NAVIGATION MENU */
+
+.nav {
+    background: #194D63;
+    margin-top: 0px;
+    padding: 4px 12px;
+}
+
+.menuButton {
+    font-size: 11px;
+    padding: 0 5px;
+}
+.menuButton a {
+    color: #fff;
+    padding: 4px 6px;
+    -khtml-opacity: 0.6;
+    opacity: .6;
+}
+
+.menuButton a:HOVER {
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+
+.menuButton a.home {
+    background: url(../images/skin/house.png) center left no-repeat;
+    padding-left: 25px;
+
+}
+.menuButton a.list {
+    background: url(../images/skin/database_table.png) center left no-repeat;
+    padding-left: 25px;
+}
+.menuButton a.create {
+    background: url(../images/skin/database_add.png) center left no-repeat;
+    padding-left: 25px;
+}
+
+a.addItem {
+    background: url(../images/skin/database_add.png) center left no-repeat;
+    padding-left: 22px;
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #625D5D;
+    margin-top: 0px;
+}
+
+/* MESSAGES AND ERRORS */
+
+.message {
+    font-family:inherit;
+    font-size:11px;
+    line-height: 16px;
+    background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    margin: 10px 0 5px 0;
+    padding: 10px 5px 10px 30px
+}
+
+div.errors {
+    font-family:inherit;
+    font-size:11px;
+    background: #fff3f3;
+    border: 1px solid red;
+    color: #cc0000;
+    margin: 10px 0 5px 0;
+    padding: 10px 0 10px 0;
+}
+div.errors ul {
+    list-style: none;
+    padding: 0;
+}
+div.errors li {
+    background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    line-height: 16px;
+    padding-left: 30px;
+}
+
+td.errors select {
+    border: 1px solid red;
+}
+td.errors input {
+    border: 1px solid red;
+}
+
+/* TABLES */
+.loggedInInfo{
+	float: right;
+    margin-top: 25px;
+    color: #fff;
+}
+table {
+    border: 1px solid #ccc;
+    width: 100%
+}
+tr {
+    border: 0;
+}
+td, th, label {
+    font: 11px verdana, arial, helvetica, sans-serif;
+    line-height: 12px;
+    padding: 5px 6px;
+    text-align: left;
+    vertical-align: top;
+    color: #000;
+}
+th {
+    background: #fff;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 17px;
+    padding: 2px 6px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+
+}
+th a:link, th a:visited, th a:hover {
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    text-decoration: none;
+    width: 100%;
+}
+th.asc a, th.desc a {
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.odd {
+    background: #f7f7f7;
+    cursor: pointer;
+}
+.even {
+    background: #fff;
+    cursor: pointer;
+}
+
+/* LIST */
+
+.list table {
+    border-collapse: collapse;
+}
+.list th, .list td {
+    border-left: 1px solid #ddd;
+    border: 1px solid #E5EFF8;
+}
+
+.list th {
+    padding: 8px;
+    background: #267596;
+
+}
+
+.list tr:hover {
+    background: #CBE6F2;
+}
+
+.list th:hover{
+    background: #4B9BBD;
+}
+
+.subTable table {
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.subTable th, .subTable td {
+    border-left: 1px solid #ddd;
+    border: 1px solid #E5EFF8;
+}
+
+.subTable th {
+    padding: 8px;
+    background: #267596;
+	
+}
+
+
+/* PAGINATION */
+
+.paginateButtons {
+    background: #267596;
+    border: 1px solid #E5EFF8;
+    border-top: 0;
+    font-size: 13px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    color: #fff;
+    overflow: hidden;
+    padding: 10px 3px;
+    font-weight: bold;
+}
+.paginateButtons a {
+    background: #2D96C4;
+    border: 1px solid #E5EFF8;
+    color: #fff;
+    font-size: 13px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    margin: 0 3px;
+    padding: 2px 6px;
+}
+
+.paginateButtons a:HOVER {
+    background: #4B9BBD;
+}
+
+.paginateButtons span {
+    padding: 2px 3px;
+}
+
+/* DIALOG */
+
+.dialog table {
+    padding: 5px 0;
+    background: #fff;
+    border: 2px solid #E5EFF8;
+}
+
+.dialog td {
+    border: 1px solid #E5EFF8;
+}
+
+.prop {
+    padding: 5px;
+}
+.prop .name {
+    text-align: left;
+    width: 15%;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 13px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+    background: #f4f9fe;
+    color: #006DBA;
+}
+
+label{
+    font-size: 13px;
+    font: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+}
+
+.prop .value {
+    text-align: left;
+    /*    width: 85%;*/
+    padding: 10px;
+}
+
+/* ACTION BUTTONS */
+
+.buttons {
+    background: #fff;
+    border: 2px solid #E5EFF8;
+    color: #666;
+    font-size: 11px;
+    margin-top: 15px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.buttons input {
+    background: #fff;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 3px;
+    overflow: visible;
+    padding: 2px 5px;
+
+}
+
+.buttons input.delete {
+    background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+.buttons input.edit {
+    background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons input.save {
+    background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons input.viewTable {
+    background: transparent url(../images/skin/database_table.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons .viewTable {
+	border: 0;
+    color: #333;
+    font-weight: bold;
+    margin-left: 3px;
+    padding: 2px 5px;
+    background: transparent url(../images/skin/database_table.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons .deliver {
+
+    background: transparent url(../images/skin/deliver.png) 5px 50% no-repeat;
+    padding-left: 28px;
+}
+
+.buttons a.deliver {
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 3px;
+    color: #333;
+    font-size: 11px;
+}
+
+.buttons .approve {
+    background: transparent url(../images/skin/approve.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+
+.buttons a.approve {
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 3px;
+    color: #333;
+    font-size: 11px;
+}
+
+.buttons .cancel {
+    background: transparent url(../images/cancel.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+
+.buttons .print {
+    background: transparent url(../images/skin/print.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+
+.buttons .unapprove {
+    background: transparent url(../images/skin/unapprove.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+
+.buttons .unmarkAsComplete {
+    background: transparent url(../images/skin/unapprove.png) 5px 50% no-repeat;
+    padding-left: 25px;
+}
+
+#selector{
+    border: 1px solid;
+    border-color: #b2d1ff;
+    float: left;
+    position: absolute;
+    background: #fff;
+    width: 600px;
+    margin-left:10px;
+    height: 250px;
+    overflow: auto;
+}
+#selector table{
+    border-collapse: collapse;
+    cursor: pointer;
+}
+#selector tr:hover{
+    color: #48802c;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#selector th{
+    color: #3680A1;
+}
+
+.editable tr:hover{
+    font-size: 20px;
+    background-color: #CBE6F2;
+    cursor: pointer;
+}
+
+.editable td, .uneditable td{
+    color: #000;
+}
+
+.uneditable tr:hover{
+    font-size: 20px;
+    background-color: #CBE6F2;
+    cursor: default;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+.redText{
+    color: #ff0000;
+}
+.total{
+    border-top: 1px solid #CCC;
+    background: #E5EFF8;
+    color: #006DBA;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 17px;
+    padding: 2px 6px;
+}
+
+div {
+    margin-top: 10px;
+}
+
+div #selector{
+    margin-top: 0px;
+}
+div .paginateButtons{
+    margin-top: 0px;
+}
+
+.navbar{
+    float:left;
+    position: absolute;
+    margin-left: 180px;
+    margin-top: 45px;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+.selectorContainer{
+    background-color: #f4f9fe;
+    border: 2px solid #E5EFF8;
+    padding: 5px 0;
+    color: #006DBA;
+}
+
+.selectorContainer span{
+    margin: 0;
+}
+
+.selectorContainer label{
+    vertical-align: middle;
+}
+
+.selectorContainer input{
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+#search{
+    background-color: #fff;
+    border: 2px solid #E5EFF8;
+    padding: 6px;
+    color: #fff;
+    margin: 0;
+    font-size: 13px;
+    width: 50%;
+}
+
+#search table{
+    border: 1px solid #E5EFF8;
+}
+
+
+#search table td{
+    padding: 5px;
+    vertical-align: middle;
+    border: 1px solid #E5EFF8;
+}
+
+#search table td.name{
+    font-size: 12px;
+    background-color: #F4F9FE;
+    color: #006DBA;
+    border-right: 1px solid #E5EFF8;
+}
+
+#search input.button{
+    width: 50px;
+    margin-left: 90%;
+}
+
+.positiveEven{
+    background-color: #D7FAD7;
+}
+
+.positiveOdd{
+    background-color: #E8FFE8;
+}
+
+.negativeOdd{
+    background-color: #FFE8E8;
+}
+
+.negativeEven{
+    background-color: #FAD7D7;
+}
+
+.actualOdd{
+    background-color: #E8F2FF;
+}
+
+.actualEven{
+    background-color: #D7EBFA;
+}
+
+.projectedOdd{
+    background-color: #FDFFE8;
+}
+
+.projectedEven{
+    background-color: #FAF9D7;
+}
+
+.stockList tr:HOVER{
+    color: #000;
+}
+
+#processingCover{
+	display:none;
+	width: 100%;
+	background-color: black;
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#loadingPopup{
+	display:none;
+	border-radius:5px;
+	background-color:white;
+	font-size:120%;
+	margin-top:auto;
+	margin-left:auto;
+	margin-right:auto;
+	position:absolute;
+	padding:20px;
+	top:auto;
+	opacity:0.8;
+}
+
+	.negative { color:red!important }
+	.positive { color:#00BB00!important }

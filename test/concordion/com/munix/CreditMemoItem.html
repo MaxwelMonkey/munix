@@ -1,0 +1,222 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010">
+<head>
+    <title>Credit Memo Item</title>
+    <link href="../concordion.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <h1>Credit Memo Item</h1>
+
+    <div style="background-color: #aaa; padding: 1em;">
+        <p>
+            The Credit Memo Module gives the user the ability to make adjustments (positive or negative) on an invoice, specifically a Sales Delivery.
+            This is usually necessary if there are returns, changes in price or reports of discrepancy between the invoice and actual delivered quantity.
+	</p>
+    </div>
+
+    <hr/>
+
+    <h2>Credit/Debit Calculation</h2>
+
+    <p>The final Credit or Debit Amount is dependent on the changes with Quantity or Price.    
+    </p>
+
+    <div class="example">
+
+        <h3>Examples</h3>
+
+             <table concordion:execute="#result = computeFinalCredit(#oldQty, #oldPrice, #newQty, #newPrice)">
+                <tr>
+                    <th concordion:set="#oldQty">Old Quantity</th>
+                    <th concordion:set="#oldPrice">Old Price</th>
+                    <th concordion:set="#newQty">New Quantity</th>
+                    <th concordion:set="#newPrice">New Price</th>
+                    <th concordion:assertEquals="#result.finalCredit">Final Credit</th>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>100</td>
+                    <td>0</td>
+                    <td>100</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+					<td>10</td>
+					<td>100</td>
+					<td>6</td>
+					<td>100</td>
+					<td>400</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1000</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>0</td>
+					<td>100</td>
+					<td>1000</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>10</td>
+					<td>90</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>0</td>
+					<td>200</td>
+					<td>1000</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>1</td>
+					<td>100</td>
+					<td>900</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>1</td>
+					<td>200</td>
+					<td>800</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>1</td>
+					<td>90</td>
+					<td>910</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>10</td>
+					<td>200</td>
+					<td>-1000</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>9</td>
+					<td>500</td>
+					<td>-3500</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>10</td>
+					<td>100</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>6</td>
+					<td>0</td>
+					<td>1000</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+					<td>200</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>11</td>
+					<td>100</td>
+					<td>-100</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>11</td>
+					<td>200</td>
+					<td>-1200</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>9</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>9</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>9</td>
+					<td>50</td>
+					<td>550</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>11</td>
+					<td>50</td>
+					<td>450</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+					<td>50</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>11</td>
+					<td>0</td>
+					<td>1000</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>100</td>
+					<td>9</td>
+					<td>0</td>
+					<td>1000</td>
+				</tr>
+            </table>
+
+    </div>
+
+    <h2>For Manual Testing</h2>
+    <ul>
+        <li><a href="#">Other active specification</a></li>
+        <li><a href="#">Another one</a></li>
+    </ul>
+
+</body>
+</html>

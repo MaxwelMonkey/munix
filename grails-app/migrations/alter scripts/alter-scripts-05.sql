@@ -1,0 +1,13 @@
+update customer_charge set is_taken = true where status='Taken';
+update customer_charge set is_taken = false where status!='Taken';
+update customer_charge set status='Unpaid' where status='Taken';
+update bounced_check set is_taken = true where status='Taken';
+update bounced_check set is_taken = false where status!='Taken';
+update bounced_check set status='Approved' where status='Taken';
+update credit_memo set is_taken = true where status='Taken';
+update credit_memo set is_taken = false where status!='Taken';
+update credit_memo set status='Approved' where status='Taken';
+update sales_delivery set is_taken = true where status='Taken';
+update sales_delivery set is_taken = false where status!='Taken';
+update sales_delivery set status='Unpaid' where status='Taken';
+update check_payment set status = 'Pending' where status ='Undeposited';

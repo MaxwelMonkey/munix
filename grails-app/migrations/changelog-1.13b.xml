@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jeje (generated)" id="1328450915880-2">
+        <createTable tableName="reason">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-3">
+        <addColumn tableName="credit_memo">
+            <column name="reason_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-4">
+        <addColumn tableName="purchase_order">
+            <column name="counter_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-5">
+        <addColumn tableName="purchase_order">
+            <column name="year" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-6">
+        <addColumn tableName="purchase_order_item">
+            <column name="items_idx" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-7">
+        <addColumn tableName="purchase_order_item">
+            <column name="product_code" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-8">
+        <modifyColumn tableName="material_release_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-9">
+        <modifyColumn tableName="product">
+            <column name="running_cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-10">
+        <modifyColumn tableName="sales_delivery_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-11">
+        <modifyColumn tableName="sales_delivery_item">
+            <column name="price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-12">
+        <modifyColumn tableName="sales_order_item">
+            <column name="cost" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-13">
+        <modifyColumn tableName="sales_order_item">
+            <column name="final_price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-14">
+        <dropNotNullConstraint columnDataType="DECIMAL(19,4)" columnName="final_price" tableName="sales_order_item"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-15">
+        <modifyColumn tableName="sales_order_item">
+            <column name="price" type="DECIMAL(19,4)"/>
+        </modifyColumn>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-16">
+        <createIndex indexName="FKEDE916C0EFFED740" tableName="credit_memo" unique="false">
+            <column name="reason_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-17">
+        <createIndex indexName="identifier" tableName="reason" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="jeje (generated)" id="1328450915880-18">
+	<sqlFile path="alter scripts/alter-scripts-36.sql"/>
+    </changeSet>
+    <changeSet author="jeje (generated)" id="1328450915880-19">
+	<sqlFile path="alter scripts/alter-scripts-37.sql"/>
+    </changeSet>
+</databaseChangeLog>

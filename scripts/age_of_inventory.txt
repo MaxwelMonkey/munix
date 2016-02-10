@@ -1,0 +1,18 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `age_of_inventory` AS
+select `a`.`id` AS `id`,`a`.`version` AS `version`,`a`.`model_id` AS `model_id`,`a`.`type_id` AS `type_id`,
+`a`.`is_for_sale` AS `is_for_sale`,`a`.`is_for_assembly` AS `is_for_assembly`,`a`.`eoq` AS `eoq`,
+`a`.`part_number` AS `part_number`,`a`.`is_net` AS `is_net`,`a`.`photo` AS `photo`,
+`a`.`material_id` AS `material_id`,`a`.`unit_id` AS `unit_id`,`a`.`is_component` AS `is_component`,
+`a`.`category_id` AS `category_id`,`a`.`reorder_point` AS `reorder_point`,`a`.`color_id` AS `color_id`,
+`a`.`subcategory_id` AS `subcategory_id`,`a`.`brand_id` AS `brand_id`,`a`.`identifier` AS `identifier`,
+`a`.`status` AS `status`,`a`.`added_description` AS `added_description`,`a`.`size` AS `size`,
+`a`.`model_number` AS `model_number`,`a`.`retail_price` AS `retail_price`,
+`a`.`whole_sale_price` AS `whole_sale_price`,`a`.`item_type_id` AS `item_type_id`,
+`a`.`package_details` AS `package_details`,`a`.`running_cost` AS `running_cost`,
+`a`.`stock_card_id` AS `stock_card_id`,`a`.`running_cost_in_foreign_currency` AS `running_cost_in_foreign_currency`,
+`a`.`unit` AS `unit`,`a`.`item_type` AS `item_type`,`a`.`type` AS `type`,`a`.`category` AS `category`,
+`a`.`subcategory` AS `subcategory`,`a`.`brand` AS `brand`,`a`.`model` AS `model`,`a`.`material` AS `material`,
+`a`.`color` AS `color`,`aoi_30`.`total` AS `aoi30`,`aoi_60`.`total` AS `aoi60`,`aoi_90`.`total` AS `aoi90`,
+`aoi_120`.`total` AS `aoi120`,`aoi_gt120`.`total` AS `aoigt120` 
+from (((((`product_list` `a` left join `aoi_30` on((`a`.`id` = `aoi_30`.`id`))) 
+left join `aoi_60` on((`a`.`id` = `aoi_60`.`id`))) left join `aoi_90` on((`a`.`id` = `aoi_90`.`id`))) left join `aoi_120` on((`a`.`id` = `aoi_120`.`id`))) left join `aoi_gt120` on((`a`.`id` = `aoi_gt120`.`id`))) order by `a`.`category`,`a`.`subcategory`,`a`.`brand`,`a`.`model`,`a`.`model_number`,`a`.`material`,`a`.`size`,`a`.`added_description`,`a`.`color`

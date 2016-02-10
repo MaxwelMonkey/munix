@@ -1,0 +1,4081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="charles (generated)" id="1303967612898-1">
+        <createTable tableName="assemble">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-2">
+        <createTable tableName="audit_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="actor" type="VARCHAR(255)"/>
+            <column name="class_name" type="VARCHAR(255)"/>
+            <column name="date_created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_name" type="VARCHAR(255)"/>
+            <column name="last_updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_value" type="VARCHAR(255)"/>
+            <column name="old_value" type="VARCHAR(255)"/>
+            <column name="persisted_object_id" type="VARCHAR(255)"/>
+            <column name="persisted_object_version" type="BIGINT"/>
+            <column name="property_name" type="VARCHAR(255)"/>
+            <column name="uri" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-3">
+        <createTable tableName="bank">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-4">
+        <createTable tableName="bank_account">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-5">
+        <createTable tableName="bank_branch">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_id" type="BIGINT"/>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-6">
+        <createTable tableName="bounced_check">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_invoice_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-7">
+        <createTable tableName="bounced_check_check_payment">
+            <column name="bounced_check_checks_id" type="BIGINT"/>
+            <column name="check_payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-8">
+        <createTable tableName="charge">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-9">
+        <createTable tableName="check_deposit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="bills_purchase" type="BIT"/>
+            <column name="deposit_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-10">
+        <createTable tableName="check_deposit_check_payment">
+            <column name="check_deposit_checks_id" type="BIGINT"/>
+            <column name="check_payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-11">
+        <createTable tableName="check_payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_branch_id" type="BIGINT"/>
+            <column name="bounced_check_id" type="BIGINT"/>
+            <column name="branch" type="VARCHAR(255)"/>
+            <column name="check_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_id" type="BIGINT"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_item_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-12">
+        <createTable tableName="check_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="routing_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-13">
+        <createTable tableName="check_warehouse">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_default" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-14">
+        <createTable tableName="check_warehousing">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="destination_warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="origin_warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-15">
+        <createTable tableName="check_warehousing_check_payment">
+            <column name="check_warehousing_checks_id" type="BIGINT"/>
+            <column name="check_payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-16">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="province_id" type="BIGINT"/>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-17">
+        <createTable tableName="collection_schedule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="closed_by" type="VARCHAR(255)"/>
+            <column name="collector_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="end_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-18">
+        <createTable tableName="collection_schedule_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_complete" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="schedule_id" type="BIGINT"/>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-19">
+        <createTable tableName="collector">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-20">
+        <createTable tableName="company">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="billing_address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="fax" type="VARCHAR(255)"/>
+            <column name="landline" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registered_address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-21">
+        <createTable tableName="counter_receipt">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="collection_date" type="DATETIME"/>
+            <column name="counter_date" type="DATETIME"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-22">
+        <createTable tableName="counter_receipt_customer_charge">
+            <column name="counter_receipt_charges_id" type="BIGINT"/>
+            <column name="customer_charge_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-23">
+        <createTable tableName="counter_receipt_sales_delivery">
+            <column name="counter_receipt_deliveries_id" type="BIGINT"/>
+            <column name="sales_delivery_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-24">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-25">
+        <createTable tableName="credit_memo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="commission_rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_invoice_id" type="BIGINT"/>
+            <column name="direct_payment_item_id" type="BIGINT"/>
+            <column name="discount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_group_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="discount_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_two_by" type="VARCHAR(255)"/>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-26">
+        <createTable tableName="credit_memo_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_memo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="new_qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="old_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="old_qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="delivery_item_id" type="BIGINT"/>
+            <column name="date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-27">
+        <createTable tableName="currency_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-28">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_name" type="VARCHAR(255)"/>
+            <column name="account_number" type="VARCHAR(255)"/>
+            <column name="auto_approve" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bil_addr_city_id" type="BIGINT"/>
+            <column name="bil_addr_street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bil_addr_zip" type="VARCHAR(255)"/>
+            <column name="branch_id" type="BIGINT"/>
+            <column name="bus_addr_city_id" type="BIGINT"/>
+            <column name="bus_addr_street" type="VARCHAR(255)"/>
+            <column name="bus_addr_zip" type="VARCHAR(255)"/>
+            <column name="collection_mode" type="VARCHAR(255)"/>
+            <column name="collection_preference" type="VARCHAR(255)"/>
+            <column name="collection_schedule" type="VARCHAR(255)"/>
+            <column name="commission_rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact" type="VARCHAR(255)"/>
+            <column name="contact_position" type="VARCHAR(255)"/>
+            <column name="credit_limit" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_remark" type="VARCHAR(255)"/>
+            <column name="declared_value" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="enable_credit_limit" type="BIT"/>
+            <column name="fax" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="forwarder_id" type="BIGINT"/>
+            <column name="general_remark" type="VARCHAR(255)"/>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="landline" type="VARCHAR(255)"/>
+            <column name="mobile" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner" type="VARCHAR(255)"/>
+            <column name="sales_agent_id" type="BIGINT"/>
+            <column name="secondary_contact" type="VARCHAR(255)"/>
+            <column name="secondary_contact_position" type="VARCHAR(255)"/>
+            <column name="skype" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="term_id" type="BIGINT"/>
+            <column name="tin" type="VARCHAR(255)"/>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website" type="VARCHAR(255)"/>
+            <column name="yahoo" type="VARCHAR(255)"/>
+            <column name="auto_second_approve" type="BIT"/>
+            <column name="bank_id" type="BIGINT"/>
+            <column name="branch" type="VARCHAR(255)"/>
+            <column name="account_name1" type="VARCHAR(255)"/>
+            <column name="account_name2" type="VARCHAR(255)"/>
+            <column name="account_name3" type="VARCHAR(255)"/>
+            <column name="account_number1" type="VARCHAR(255)"/>
+            <column name="account_number2" type="VARCHAR(255)"/>
+            <column name="account_number3" type="VARCHAR(255)"/>
+            <column name="bank1_id" type="BIGINT"/>
+            <column name="bank2_id" type="BIGINT"/>
+            <column name="bank3_id" type="BIGINT"/>
+            <column name="branch1" type="VARCHAR(255)"/>
+            <column name="branch2" type="VARCHAR(255)"/>
+            <column name="branch3" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-29">
+        <createTable tableName="customer_charge">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_paid" type="DECIMAL(19,2)"/>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="counter_receipt_id" type="BIGINT"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_invoice_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-30">
+        <createTable tableName="customer_charge_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="charge_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_charge_id" type="BIGINT"/>
+            <column name="reference" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-31">
+        <createTable tableName="customer_charge_payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_charge_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_id" type="BIGINT"/>
+            <column name="counter_receipt_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-32">
+        <createTable tableName="customer_discount">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-33">
+        <createTable tableName="customer_discount_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_log_id" type="BIGINT"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="discount_id" type="BIGINT"/>
+            <column name="previous_log_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-34">
+        <createTable tableName="customer_discount_log_customer_discount_log_item">
+            <column name="customer_discount_log_items_id" type="BIGINT"/>
+            <column name="customer_discount_log_item_id" type="BIGINT"/>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-35">
+        <createTable tableName="customer_discount_log_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME"/>
+            <column name="discount_group_id" type="BIGINT"/>
+            <column name="discount_type_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-36">
+        <createTable tableName="customer_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="previous" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-37">
+        <createTable tableName="customer_payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_id" type="BIGINT"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipt_id" type="BIGINT"/>
+            <column name="check_payment_id" type="BIGINT"/>
+            <column name="direct_payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-38">
+        <createTable tableName="customer_payment_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-39">
+        <createTable tableName="customer_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-40">
+        <createTable tableName="direct_delivery">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trip_ticket_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-41">
+        <createTable tableName="direct_delivery_package">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="direct_delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="packaging_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-42">
+        <createTable tableName="direct_payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-43">
+        <createTable tableName="direct_payment_invoice">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-44">
+        <createTable tableName="direct_payment_invoice_bounced_check">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="bounced_check_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-45">
+        <createTable tableName="direct_payment_invoice_charge">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="customer_charge_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-46">
+        <createTable tableName="direct_payment_invoice_credit_memo">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="credit_memo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-47">
+        <createTable tableName="direct_payment_invoice_delivery">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="sales_delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-48">
+        <createTable tableName="direct_payment_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_payment_id" type="BIGINT"/>
+            <column name="payment_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="check_payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-49">
+        <createTable tableName="discount_group">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-50">
+        <createTable tableName="discount_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-51">
+        <createTable tableName="forwarder">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="BIGINT"/>
+            <column name="contact" type="VARCHAR(255)"/>
+            <column name="contact_position" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="landline" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-52">
+        <createTable tableName="inventory_increase">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-53">
+        <createTable tableName="inventory_increase_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inventory_increase_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-54">
+        <createTable tableName="inventory_shrinkage">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-55">
+        <createTable tableName="inventory_shrinkage_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost" type="DECIMAL(19,2)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shrinkage_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-56">
+        <createTable tableName="invoice_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-57">
+        <createTable tableName="item_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-58">
+        <createTable tableName="job_order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="assigned_to_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="DATETIME"/>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="schedule_id" type="BIGINT"/>
+            <column name="start_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-59">
+        <createTable tableName="job_order_out">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_order_outs_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-60">
+        <createTable tableName="job_order_out_material_requisition_item">
+            <column name="job_order_out_materials_id" type="BIGINT"/>
+            <column name="material_requisition_item_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-61">
+        <createTable tableName="ledger_entry">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="debit" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reference" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-62">
+        <createTable tableName="ledger_entry_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ledger_entry_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="debit" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-63">
+        <createTable tableName="material_release">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="requisition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-64">
+        <createTable tableName="material_release_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="component_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_release_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-65">
+        <createTable tableName="material_requisition">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-66">
+        <createTable tableName="material_requisition_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="component_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty_received" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="requisition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-67">
+        <createTable tableName="packaging">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-68">
+        <createTable tableName="payment_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_check" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-69">
+        <createTable tableName="personnel">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-70">
+        <createTable tableName="personnel_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-71">
+        <createTable tableName="print_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_delivery_id" type="BIGINT"/>
+            <column name="print_type" type="VARCHAR(255)"/>
+            <column name="sales_order_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-72">
+        <createTable tableName="print_log_sales_delivery">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-73">
+        <createTable tableName="print_log_sales_order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="print_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-74">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="added_description" type="VARCHAR(255)"/>
+            <column name="brand_id" type="BIGINT"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="color_id" type="BIGINT"/>
+            <column name="eoq" type="DECIMAL(19,2)"/>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_component" type="BIT"/>
+            <column name="is_for_assembly" type="BIT"/>
+            <column name="is_for_sale" type="BIT"/>
+            <column name="is_net" type="BIT"/>
+            <column name="material_id" type="BIGINT"/>
+            <column name="model_id" type="BIGINT"/>
+            <column name="model_number" type="VARCHAR(255)"/>
+            <column name="part_number" type="VARCHAR(255)"/>
+            <column name="photo" type="MEDIUMBLOB"/>
+            <column name="reorder_point" type="DECIMAL(19,2)"/>
+            <column name="retail_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="size" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subcategory_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="unit_id" type="BIGINT"/>
+            <column name="whole_sale_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_type_id" type="BIGINT"/>
+            <column name="package_details" type="VARCHAR(250)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-75">
+        <createTable tableName="product_brand">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-76">
+        <createTable tableName="product_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-77">
+        <createTable tableName="product_color">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-78">
+        <createTable tableName="product_component">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="component_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-79">
+        <createTable tableName="product_material">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-80">
+        <createTable tableName="product_model">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-81">
+        <createTable tableName="product_size">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-82">
+        <createTable tableName="product_subcategory">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-83">
+        <createTable tableName="product_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-84">
+        <createTable tableName="product_unit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-85">
+        <createTable tableName="province">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region_id" type="BIGINT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="identifier" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-86">
+        <createTable tableName="purchase_delivery">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="currency_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exchange_rate" type="DECIMAL(19,2)"/>
+            <column name="po_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="purchase_invoice_id" type="BIGINT"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-87">
+        <createTable tableName="purchase_delivery_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_id" type="BIGINT"/>
+            <column name="final_price" type="DECIMAL(19,4)"/>
+            <column name="invoice_id" type="BIGINT"/>
+            <column name="po_item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(19,2)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="received_items_idx" type="INT"/>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-88">
+        <createTable tableName="purchase_invoice">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exchange_rate" type="DECIMAL(25,4)"/>
+            <column name="payment_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="reference" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT"/>
+            <column name="invoice_date" type="DATETIME"/>
+            <column name="supplier_reference" type="VARCHAR(255)"/>
+            <column name="discount_rate" type="DECIMAL(19,2)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-89">
+        <createTable tableName="purchase_invoice_purchase_order">
+            <column name="purchase_invoice_pos_id" type="BIGINT"/>
+            <column name="purchase_order_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-90">
+        <createTable tableName="purchase_order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="closed_by" type="VARCHAR(255)"/>
+            <column name="currency_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="po_id_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-91">
+        <createTable tableName="purchase_order_id">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="po_id" type="BIGINT"/>
+            <column name="purchase_order_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-92">
+        <createTable tableName="purchase_order_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="final_price" type="DECIMAL(19,4)"/>
+            <column name="is_complete" type="BIT"/>
+            <column name="po_id" type="BIGINT"/>
+            <column name="price" type="DECIMAL(19,4)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="received_qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-93">
+        <createTable tableName="region">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="BIGINT"/>
+            <column name="identifier" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-94">
+        <createTable tableName="requestmap">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="config_attribute" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-95">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-96">
+        <createTable tableName="role_people">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-97">
+        <createTable tableName="sales_agent">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="BIGINT"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="landline" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mobile" type="VARCHAR(255)"/>
+            <column name="skype" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="yahoo" type="VARCHAR(255)"/>
+            <column name="zip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-98">
+        <createTable tableName="sales_delivery">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_paid" type="DECIMAL(19,2)"/>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="commission_rate" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipt_id" type="BIGINT"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_delivery_id" type="BIGINT"/>
+            <column name="direct_payment_invoice_id" type="BIGINT"/>
+            <column name="discount" type="DECIMAL(19,2)"/>
+            <column name="discount_group_id" type="BIGINT"/>
+            <column name="invoice_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="sales_agent_id" type="BIGINT"/>
+            <column name="sales_delivery_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_delivery_number" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="term_day" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="waybill_id" type="BIGINT"/>
+            <column name="auto_approved_by" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-99">
+        <createTable tableName="sales_delivery_counter_receipts">
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipts_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-100">
+        <createTable tableName="sales_delivery_counter_reciepts">
+            <column name="sales_delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counter_receipt_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deliveries_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-101">
+        <createTable tableName="sales_delivery_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_item_id" type="BIGINT"/>
+            <column name="price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="items_idx" type="INT"/>
+            <column name="remaining_qty" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-102">
+        <createTable tableName="sales_order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="approved_two_by" type="VARCHAR(255)"/>
+            <column name="closed_by" type="VARCHAR(255)"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_date" type="DATETIME"/>
+            <column name="discount" type="DECIMAL(19,2)"/>
+            <column name="discount_group_id" type="BIGINT"/>
+            <column name="prepared_by" type="VARCHAR(255)"/>
+            <column name="price_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="sales_agent_id" type="BIGINT"/>
+            <column name="status" type="VARCHAR(23)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-103">
+        <createTable tableName="sales_order_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost" type="DECIMAL(19,2)"/>
+            <column name="delivered_qty" type="DECIMAL(19,2)"/>
+            <column name="final_price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="BIGINT"/>
+            <column name="price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-104">
+        <createTable tableName="sales_order_item_sales_delivery_item">
+            <column name="sales_order_item_items_delivered_id" type="BIGINT"/>
+            <column name="sales_delivery_item_id" type="BIGINT"/>
+            <column name="items_delivered_idx" type="INT"/>
+            <column name="sales_order_item_delivered_items_id" type="BIGINT"/>
+            <column name="delivered_items_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-105">
+        <createTable tableName="schedule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-106">
+        <createTable tableName="stock">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="incoming_qty" type="DECIMAL(19,2)"/>
+            <column name="outgoing_qty" type="DECIMAL(19,2)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-107">
+        <createTable tableName="stock_card">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-108">
+        <createTable tableName="stock_card_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="final_qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoice_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-109">
+        <createTable tableName="stock_card_stock_card_item">
+            <column name="stock_card_previous_id" type="BIGINT"/>
+            <column name="stock_card_item_id" type="BIGINT"/>
+            <column name="previous_idx" type="INT"/>
+            <column name="stock_card_stock_id" type="BIGINT"/>
+            <column name="stock_idx" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-110">
+        <createTable tableName="stock_transfer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="destination_warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="origin_warehouse_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="received_by" type="VARCHAR(255)"/>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-111">
+        <createTable tableName="stock_transfer_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transfer_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-112">
+        <createTable tableName="supplier">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="contact" type="VARCHAR(255)"/>
+            <column name="country_id" type="BIGINT"/>
+            <column name="currency_id" type="BIGINT"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="fax" type="VARCHAR(255)"/>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="landline" type="VARCHAR(255)"/>
+            <column name="locale_type" type="VARCHAR(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="skype" type="VARCHAR(255)"/>
+            <column name="term_id" type="BIGINT"/>
+            <column name="tin" type="VARCHAR(255)"/>
+            <column name="website" type="VARCHAR(255)"/>
+            <column name="yahoo" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-113">
+        <createTable tableName="supplier_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost" type="DECIMAL(19,2)"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_code" type="VARCHAR(255)"/>
+            <column name="supplier_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-114">
+        <createTable tableName="supplier_payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-115">
+        <createTable tableName="supplier_payment_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="check_bank_id" type="BIGINT"/>
+            <column name="check_date" type="DATETIME"/>
+            <column name="check_number" type="VARCHAR(255)"/>
+            <column name="check_type_id" type="BIGINT"/>
+            <column name="payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-116">
+        <createTable tableName="supplier_payment_purchase_invoice">
+            <column name="supplier_payment_purchase_invoices_id" type="BIGINT"/>
+            <column name="purchase_invoice_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-117">
+        <createTable tableName="term">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="day_value" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-118">
+        <createTable tableName="trip_ticket">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="driver_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="truck_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-119">
+        <createTable tableName="trip_ticket_delivery_item">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-120">
+        <createTable tableName="trip_ticket_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="priority" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trip_ticket_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-121">
+        <createTable tableName="trip_ticket_personnel">
+            <column name="trip_ticket_helpers_id" type="BIGINT"/>
+            <column name="personnel_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-122">
+        <createTable tableName="trip_ticket_waybill_item">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-123">
+        <createTable tableName="truck">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plate_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-124">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email_show" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="passwd" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_real_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-125">
+        <createTable tableName="warehouse">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-126">
+        <createTable tableName="waybill">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="declared_value" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="forwarder_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prepared_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trip_ticket_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-127">
+        <createTable tableName="waybill_package">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="packaging_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="DECIMAL(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="waybill_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-128">
+        <addPrimaryKey columnNames="role_id, user_id" tableName="role_people"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-129">
+        <addPrimaryKey
+            columnNames="sales_delivery_id, counter_receipt_id" tableName="sales_delivery_counter_reciepts"/>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-130">
+        <createIndex indexName="identifier" tableName="assemble" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-131">
+        <createIndex indexName="identifier" tableName="bank" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-132">
+        <createIndex indexName="FK93353B2A95BAB602"
+            tableName="bank_account" unique="false">
+            <column name="bank_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-133">
+        <createIndex indexName="account_number" tableName="bank_account" unique="true">
+            <column name="account_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-134">
+        <createIndex indexName="FKFF04E105A261FDC0"
+            tableName="bank_branch" unique="false">
+            <column name="bank_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-135">
+        <createIndex indexName="identifier" tableName="bank_branch" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-136">
+        <createIndex indexName="FK4C408DE5A122CF80"
+            tableName="bounced_check" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-137">
+        <createIndex indexName="FK4C408DE5E8F7FB72"
+            tableName="bounced_check" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-138">
+        <createIndex indexName="FKD217E0F5A533AAA7"
+            tableName="bounced_check_check_payment" unique="false">
+            <column name="bounced_check_checks_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-139">
+        <createIndex indexName="FKD217E0F5E8C000EF"
+            tableName="bounced_check_check_payment" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-140">
+        <createIndex indexName="identifier" tableName="charge" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-141">
+        <createIndex indexName="FK75491A671222D478"
+            tableName="check_deposit" unique="false">
+            <column name="account_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-142">
+        <createIndex indexName="FK2CA761F795970993"
+            tableName="check_deposit_check_payment" unique="false">
+            <column name="check_deposit_checks_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-143">
+        <createIndex indexName="FK2CA761F7E8C000EF"
+            tableName="check_deposit_check_payment" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-144">
+        <createIndex indexName="FKE9BE35CF29C190B8"
+            tableName="check_payment" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-145">
+        <createIndex indexName="FKE9BE35CF4F1C80C7"
+            tableName="check_payment" unique="false">
+            <column name="bounced_check_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-146">
+        <createIndex indexName="FKE9BE35CF6D153868"
+            tableName="check_payment" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-147">
+        <createIndex indexName="FKE9BE35CF8298FA99"
+            tableName="check_payment" unique="false">
+            <column name="bank_branch_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-148">
+        <createIndex indexName="FKE9BE35CFA122CF80"
+            tableName="check_payment" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-149">
+        <createIndex indexName="FKE9BE35CFA261FDC0"
+            tableName="check_payment" unique="false">
+            <column name="bank_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-150">
+        <createIndex indexName="FKE9BE35CFA644C96"
+            tableName="check_payment" unique="false">
+            <column name="direct_payment_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-151">
+        <createIndex indexName="FKE9BE35CFD26282DC"
+            tableName="check_payment" unique="false">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-152">
+        <createIndex indexName="routing_number" tableName="check_type" unique="true">
+            <column name="routing_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-153">
+        <createIndex indexName="identifier" tableName="check_warehouse" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-154">
+        <createIndex indexName="FK3704AA0921DF9931"
+            tableName="check_warehousing" unique="false">
+            <column name="origin_warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-155">
+        <createIndex indexName="FK3704AA09770A3D49"
+            tableName="check_warehousing" unique="false">
+            <column name="destination_warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-156">
+        <createIndex indexName="FK3855EE19DBC1B3D7"
+            tableName="check_warehousing_check_payment" unique="false">
+            <column name="check_warehousing_checks_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-157">
+        <createIndex indexName="FK3855EE19E8C000EF"
+            tableName="check_warehousing_check_payment" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-158">
+        <createIndex indexName="FK2E996B37C43640" tableName="city" unique="false">
+            <column name="province_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-159">
+        <createIndex indexName="FK5F6DA718BF9788D4"
+            tableName="collection_schedule" unique="false">
+            <column name="collector_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-160">
+        <createIndex indexName="identifier"
+            tableName="collection_schedule" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-161">
+        <createIndex indexName="FK64633BDA269B4E1E"
+            tableName="collection_schedule_item" unique="false">
+            <column name="schedule_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-162">
+        <createIndex indexName="FK64633BDA326A7547"
+            tableName="collection_schedule_item" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-163">
+        <createIndex indexName="identifier" tableName="collector" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-164">
+        <createIndex indexName="FKAB61B2F5A122CF80"
+            tableName="counter_receipt" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-165">
+        <createIndex indexName="FKCFE28EB191BA59D"
+            tableName="counter_receipt_customer_charge" unique="false">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-166">
+        <createIndex indexName="FKCFE28EBE9819F47"
+            tableName="counter_receipt_customer_charge" unique="false">
+            <column name="counter_receipt_charges_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-167">
+        <createIndex indexName="FK72B544513396FBC0"
+            tableName="counter_receipt_sales_delivery" unique="false">
+            <column name="counter_receipt_deliveries_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-168">
+        <createIndex indexName="FK72B54451CF8A4ED"
+            tableName="counter_receipt_sales_delivery" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-169">
+        <createIndex indexName="description" tableName="country" unique="true">
+            <column name="description"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-170">
+        <createIndex indexName="identifier" tableName="country" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-171">
+        <createIndex indexName="FKEDE916C07AC68D73"
+            tableName="credit_memo" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-172">
+        <createIndex indexName="FKEDE916C0A122CF80"
+            tableName="credit_memo" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-173">
+        <createIndex indexName="FKEDE916C0B19F2F02"
+            tableName="credit_memo" unique="false">
+            <column name="direct_payment_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-174">
+        <createIndex indexName="FKEDE916C0E8F7FB72"
+            tableName="credit_memo" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-175">
+        <createIndex indexName="FKEDE916C0EE220F11"
+            tableName="credit_memo" unique="false">
+            <column name="discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-176">
+        <createIndex indexName="FK3363553287E03BD3"
+            tableName="credit_memo_item" unique="false">
+            <column name="credit_memo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-177">
+        <createIndex indexName="FK336355329B404909"
+            tableName="credit_memo_item" unique="false">
+            <column name="delivery_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-178">
+        <createIndex indexName="identifier" tableName="currency_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-179">
+        <createIndex indexName="FK24217FDE13E004C7" tableName="customer" unique="false">
+            <column name="sales_agent_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-180">
+        <createIndex indexName="FK24217FDE301963FE" tableName="customer" unique="false">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-181">
+        <createIndex indexName="FK24217FDE47994BE7" tableName="customer" unique="false">
+            <column name="bank1_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-182">
+        <createIndex indexName="FK24217FDE4799C046" tableName="customer" unique="false">
+            <column name="bank2_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-183">
+        <createIndex indexName="FK24217FDE479A34A5" tableName="customer" unique="false">
+            <column name="bank3_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-184">
+        <createIndex indexName="FK24217FDE5A3A6AB4" tableName="customer" unique="false">
+            <column name="forwarder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-185">
+        <createIndex indexName="FK24217FDE5D08B871" tableName="customer" unique="false">
+            <column name="bus_addr_city_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-186">
+        <createIndex indexName="FK24217FDE61A70FC0" tableName="customer" unique="false">
+            <column name="term_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-187">
+        <createIndex indexName="FK24217FDE7ADF94DC" tableName="customer" unique="false">
+            <column name="branch_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-188">
+        <createIndex indexName="FK24217FDEA261FDC0" tableName="customer" unique="false">
+            <column name="bank_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-189">
+        <createIndex indexName="FK24217FDEF9AF3A0C" tableName="customer" unique="false">
+            <column name="bil_addr_city_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-190">
+        <createIndex indexName="identifier" tableName="customer" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-191">
+        <createIndex indexName="FK3F8DAA35326A7547"
+            tableName="customer_charge" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-192">
+        <createIndex indexName="FK3F8DAA35A122CF80"
+            tableName="customer_charge" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-193">
+        <createIndex indexName="FK3F8DAA35E8F7FB72"
+            tableName="customer_charge" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-194">
+        <createIndex indexName="FKE849A2DD191BA59D"
+            tableName="customer_charge_item" unique="false">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-195">
+        <createIndex indexName="FKE849A2DD5C07C140"
+            tableName="customer_charge_item" unique="false">
+            <column name="charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-196">
+        <createIndex indexName="FKE41A7DFC191BA59D"
+            tableName="customer_charge_payment" unique="false">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-197">
+        <createIndex indexName="FKE41A7DFC326A7547"
+            tableName="customer_charge_payment" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-198">
+        <createIndex indexName="FKE41A7DFC9BFC8F21"
+            tableName="customer_charge_payment" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-199">
+        <createIndex indexName="customer_charge_id"
+            tableName="customer_charge_payment" unique="true">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-200">
+        <createIndex indexName="FK4D7B2082A122CF80"
+            tableName="customer_discount" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-201">
+        <createIndex indexName="FK4D7B2082DC243AE3"
+            tableName="customer_discount" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-202">
+        <createIndex indexName="FK4D7B2082EE220F11"
+            tableName="customer_discount" unique="false">
+            <column name="discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-203">
+        <createIndex indexName="FKE23FE20719062F30"
+            tableName="customer_discount_log" unique="false">
+            <column name="previous_log_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-204">
+        <createIndex indexName="FKE23FE20761A0B66E"
+            tableName="customer_discount_log" unique="false">
+            <column name="current_log_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-205">
+        <createIndex indexName="FKE23FE207A122CF80"
+            tableName="customer_discount_log" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-206">
+        <createIndex indexName="FKE23FE207F334F09E"
+            tableName="customer_discount_log" unique="false">
+            <column name="discount_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-207">
+        <createIndex indexName="FK776AC78337EDEA71"
+            tableName="customer_discount_log_customer_discount_log_item" unique="false">
+            <column name="customer_discount_log_items_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-208">
+        <createIndex indexName="FK776AC78379645481"
+            tableName="customer_discount_log_customer_discount_log_item" unique="false">
+            <column name="customer_discount_log_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-209">
+        <createIndex indexName="FK65BB7E4B7AC68D73"
+            tableName="customer_discount_log_item" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-210">
+        <createIndex indexName="FK65BB7E4BADBCDF60"
+            tableName="customer_discount_log_item" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-211">
+        <createIndex indexName="FK65BB7E4BEE220F11"
+            tableName="customer_discount_log_item" unique="false">
+            <column name="discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-212">
+        <createIndex indexName="FK35AF3363A122CF80"
+            tableName="customer_log" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-213">
+        <createIndex indexName="FK35AF3363ADBCDF60"
+            tableName="customer_log" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-214">
+        <createIndex indexName="FK57369AA5326A7547"
+            tableName="customer_payment" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-215">
+        <createIndex indexName="FK57369AA5538B2FA0"
+            tableName="customer_payment" unique="false">
+            <column name="delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-216">
+        <createIndex indexName="FK57369AA59BFC8F21"
+            tableName="customer_payment" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-217">
+        <createIndex indexName="FK57369AA5A122CF80"
+            tableName="customer_payment" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-218">
+        <createIndex indexName="FK57369AA5E8C000EF"
+            tableName="customer_payment" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-219">
+        <createIndex indexName="FKA3D5786D3F5DED21"
+            tableName="customer_payment_item" unique="false">
+            <column name="payment_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-220">
+        <createIndex indexName="FKA3D5786DFFCA78F6"
+            tableName="customer_payment_item" unique="false">
+            <column name="payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-221">
+        <createIndex indexName="identifier" tableName="customer_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-222">
+        <createIndex indexName="FK794F078AA0FF9EF2"
+            tableName="direct_delivery" unique="false">
+            <column name="trip_ticket_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-223">
+        <createIndex indexName="FK794F078AA122CF80"
+            tableName="direct_delivery" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-224">
+        <createIndex indexName="FKE2B0B891E58D3EF3"
+            tableName="direct_delivery_package" unique="false">
+            <column name="direct_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-225">
+        <createIndex indexName="FKE2B0B891F0A31D14"
+            tableName="direct_delivery_package" unique="false">
+            <column name="packaging_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-226">
+        <createIndex indexName="FK3ECB7BB0A122CF80"
+            tableName="direct_payment" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-227">
+        <createIndex indexName="FK1592B59E9BFC8F21"
+            tableName="direct_payment_invoice" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-228">
+        <createIndex indexName="FKA32BE9044F1C80C7"
+            tableName="direct_payment_invoice_bounced_check" unique="false">
+            <column name="bounced_check_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-229">
+        <createIndex indexName="FK84287C75191BA59D"
+            tableName="direct_payment_invoice_charge" unique="false">
+            <column name="customer_charge_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-230">
+        <createIndex indexName="FKEBDEAD9F87E03BD3"
+            tableName="direct_payment_invoice_credit_memo" unique="false">
+            <column name="credit_memo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-231">
+        <createIndex indexName="FKF7770975CF8A4ED"
+            tableName="direct_payment_invoice_delivery" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-232">
+        <createIndex indexName="FK5DEA86423F5DED21"
+            tableName="direct_payment_item" unique="false">
+            <column name="payment_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-233">
+        <createIndex indexName="FK5DEA86429BFC8F21"
+            tableName="direct_payment_item" unique="false">
+            <column name="direct_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-234">
+        <createIndex indexName="FK5DEA8642E8C000EF"
+            tableName="direct_payment_item" unique="false">
+            <column name="check_payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-235">
+        <createIndex indexName="identifier" tableName="discount_group" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-236">
+        <createIndex indexName="identifier" tableName="discount_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-237">
+        <createIndex indexName="FK7D0A0232E54A7B60"
+            tableName="forwarder" unique="false">
+            <column name="city_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-238">
+        <createIndex indexName="FKFBF45DC57AC68D73"
+            tableName="inventory_increase" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-239">
+        <createIndex indexName="FKFBF45DC5ADD15514"
+            tableName="inventory_increase" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-240">
+        <createIndex indexName="FK64D4A94DDD5205CD"
+            tableName="inventory_increase_item" unique="false">
+            <column name="inventory_increase_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-241">
+        <createIndex indexName="FK64D4A94DFA625C14"
+            tableName="inventory_increase_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-242">
+        <createIndex indexName="FKE8A19B33ADD15514"
+            tableName="inventory_shrinkage" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-243">
+        <createIndex indexName="FKE8A19B33DC243AE3"
+            tableName="inventory_shrinkage" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-244">
+        <createIndex indexName="FK2F9AA09F1C4EFB04"
+            tableName="inventory_shrinkage_item" unique="false">
+            <column name="shrinkage_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-245">
+        <createIndex indexName="FK2F9AA09FFA625C14"
+            tableName="inventory_shrinkage_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-246">
+        <createIndex indexName="identifier" tableName="invoice_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-247">
+        <createIndex indexName="identifier" tableName="item_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-248">
+        <createIndex indexName="FK5789044C5E4BFC06"
+            tableName="job_order" unique="false">
+            <column name="assigned_to_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-249">
+        <createIndex indexName="FK5789044CC785A8E0"
+            tableName="job_order" unique="false">
+            <column name="schedule_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-250">
+        <createIndex indexName="FK5789044CFA625C14"
+            tableName="job_order" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-251">
+        <createIndex indexName="FKA7C2DCDB17471605"
+            tableName="job_order_out" unique="false">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-252">
+        <createIndex indexName="FKA7C2DCDBADD15514"
+            tableName="job_order_out" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-253">
+        <createIndex indexName="FKA7C2DCDBFA625C14"
+            tableName="job_order_out" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-254">
+        <createIndex indexName="FK2D05FE8A714D4AA9"
+            tableName="job_order_out_material_requisition_item" unique="false">
+            <column name="job_order_out_materials_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-255">
+        <createIndex indexName="FK2D05FE8A8841506E"
+            tableName="job_order_out_material_requisition_item" unique="false">
+            <column name="material_requisition_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-256">
+        <createIndex indexName="FK43A1A61CA122CF80"
+            tableName="ledger_entry" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-257">
+        <createIndex indexName="FK52A9FF565A7D0261"
+            tableName="ledger_entry_item" unique="false">
+            <column name="ledger_entry_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-258">
+        <createIndex indexName="FKF29C1CEFA102E4D"
+            tableName="material_release" unique="false">
+            <column name="requisition_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-259">
+        <createIndex indexName="FKF29C1CEFADD15514"
+            tableName="material_release" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-260">
+        <createIndex indexName="FKB3D7D4635A217605"
+            tableName="material_release_item" unique="false">
+            <column name="material_release_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-261">
+        <createIndex indexName="FKB3D7D46374256946"
+            tableName="material_release_item" unique="false">
+            <column name="component_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-262">
+        <createIndex indexName="FKE75F918417471605"
+            tableName="material_requisition" unique="false">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-263">
+        <createIndex indexName="job_order_id"
+            tableName="material_requisition" unique="true">
+            <column name="job_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-264">
+        <createIndex indexName="FK315EF4EE74256946"
+            tableName="material_requisition_item" unique="false">
+            <column name="component_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-265">
+        <createIndex indexName="FK315EF4EEA102E4D"
+            tableName="material_requisition_item" unique="false">
+            <column name="requisition_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-266">
+        <createIndex indexName="identifier" tableName="packaging" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-267">
+        <createIndex indexName="identifier" tableName="payment_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-268">
+        <createIndex indexName="FK32DAD220FEF76F4" tableName="personnel" unique="false">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-269">
+        <createIndex indexName="identifier" tableName="personnel" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-270">
+        <createIndex indexName="identifier" tableName="personnel_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-271">
+        <createIndex indexName="FK94E966B26AAB427" tableName="print_log" unique="false">
+            <column name="sales_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-272">
+        <createIndex indexName="FK94E966B2ADBCDF60"
+            tableName="print_log" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-273">
+        <createIndex indexName="FK94E966B2CF8A4ED" tableName="print_log" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-274">
+        <createIndex indexName="FKF121FEF4ADBCDF60"
+            tableName="print_log_sales_delivery" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-275">
+        <createIndex indexName="FKF121FEF4CF8A4ED"
+            tableName="print_log_sales_delivery" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-276">
+        <createIndex indexName="FKCD27844E6AAB427"
+            tableName="print_log_sales_order" unique="false">
+            <column name="sales_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-277">
+        <createIndex indexName="FKCD27844EADBCDF60"
+            tableName="print_log_sales_order" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-278">
+        <createIndex indexName="FKED8DCCEF42B932B1" tableName="product" unique="false">
+            <column name="color_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-279">
+        <createIndex indexName="FKED8DCCEF43DB54F1" tableName="product" unique="false">
+            <column name="model_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-280">
+        <createIndex indexName="FKED8DCCEF66A41031" tableName="product" unique="false">
+            <column name="brand_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-281">
+        <createIndex indexName="FKED8DCCEFA821CE87" tableName="product" unique="false">
+            <column name="item_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-282">
+        <createIndex indexName="FKED8DCCEFB16DC83" tableName="product" unique="false">
+            <column name="unit_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-283">
+        <createIndex indexName="FKED8DCCEFE377A5C3" tableName="product" unique="false">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-284">
+        <createIndex indexName="FKED8DCCEFE7056391" tableName="product" unique="false">
+            <column name="subcategory_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-285">
+        <createIndex indexName="FKED8DCCEFE95178C3" tableName="product" unique="false">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-286">
+        <createIndex indexName="FKED8DCCEFFDE94923" tableName="product" unique="false">
+            <column name="material_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-287">
+        <createIndex indexName="identifier" tableName="product" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-288">
+        <createIndex indexName="identifier" tableName="product_brand" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-289">
+        <createIndex indexName="identifier" tableName="product_category" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-290">
+        <createIndex indexName="identifier" tableName="product_color" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-291">
+        <createIndex indexName="FKB511C5AD74256946"
+            tableName="product_component" unique="false">
+            <column name="component_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-292">
+        <createIndex indexName="FKB511C5ADFA625C14"
+            tableName="product_component" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-293">
+        <createIndex indexName="identifier" tableName="product_material" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-294">
+        <createIndex indexName="identifier" tableName="product_model" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-295">
+        <createIndex indexName="identifier" tableName="product_size" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-296">
+        <createIndex indexName="identifier"
+            tableName="product_subcategory" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-297">
+        <createIndex indexName="identifier" tableName="product_type" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-298">
+        <createIndex indexName="identifier" tableName="product_unit" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-299">
+        <createIndex indexName="FKC5242B301C565940" tableName="province" unique="false">
+            <column name="region_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-300">
+        <createIndex indexName="description" tableName="province" unique="true">
+            <column name="description"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-301">
+        <createIndex indexName="identifier" tableName="province" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-302">
+        <createIndex indexName="FK8305972324F8B62"
+            tableName="purchase_delivery" unique="false">
+            <column name="po_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-303">
+        <createIndex indexName="FK8305972665060C0"
+            tableName="purchase_delivery" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-304">
+        <createIndex indexName="FK83059728C2ADE7A"
+            tableName="purchase_delivery" unique="false">
+            <column name="currency_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-305">
+        <createIndex indexName="FK8305972A10A6711"
+            tableName="purchase_delivery" unique="false">
+            <column name="purchase_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-306">
+        <createIndex indexName="FK3D13F1C010E8EF41"
+            tableName="purchase_delivery_item" unique="false">
+            <column name="po_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-307">
+        <createIndex indexName="FK3D13F1C023C89113"
+            tableName="purchase_delivery_item" unique="false">
+            <column name="invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-308">
+        <createIndex indexName="FK3D13F1C05B4A41E1"
+            tableName="purchase_delivery_item" unique="false">
+            <column name="delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-309">
+        <createIndex indexName="FK3D13F1C0FA625C14"
+            tableName="purchase_delivery_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-310">
+        <createIndex indexName="FK5ABE5DEF235D9748"
+            tableName="purchase_invoice" unique="false">
+            <column name="payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-311">
+        <createIndex indexName="FK5ABE5DEF665060C0"
+            tableName="purchase_invoice" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-312">
+        <createIndex indexName="FK5ABE5DEFADD15514"
+            tableName="purchase_invoice" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-313">
+        <createIndex indexName="reference" tableName="purchase_invoice" unique="true">
+            <column name="reference"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-314">
+        <createIndex indexName="FK705BFEE04C9E9931"
+            tableName="purchase_invoice_purchase_order" unique="false">
+            <column name="purchase_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-315">
+        <createIndex indexName="FK705BFEE094BC60DC"
+            tableName="purchase_invoice_purchase_order" unique="false">
+            <column name="purchase_invoice_pos_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-316">
+        <createIndex indexName="FK71A56A90665060C0"
+            tableName="purchase_order" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-317">
+        <createIndex indexName="FK71A56A908C2ADE7A"
+            tableName="purchase_order" unique="false">
+            <column name="currency_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-318">
+        <createIndex indexName="FK71A56A90FF74C001"
+            tableName="purchase_order" unique="false">
+            <column name="po_id_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-319">
+        <createIndex indexName="FK20AD3D2A324F8B62"
+            tableName="purchase_order_id" unique="false">
+            <column name="po_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-320">
+        <createIndex indexName="FK20AD3D2A665060C0"
+            tableName="purchase_order_id" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-321">
+        <createIndex indexName="FKAA52E362324F8B62"
+            tableName="purchase_order_item" unique="false">
+            <column name="po_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-322">
+        <createIndex indexName="FKAA52E362FA625C14"
+            tableName="purchase_order_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-323">
+        <createIndex indexName="FKC84826F4A0CA06B4" tableName="region" unique="false">
+            <column name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-324">
+        <createIndex indexName="description" tableName="region" unique="true">
+            <column name="description"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-325">
+        <createIndex indexName="identifier" tableName="region" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-326">
+        <createIndex indexName="url" tableName="requestmap" unique="true">
+            <column name="url"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-327">
+        <createIndex indexName="authority" tableName="role" unique="true">
+            <column name="authority"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-328">
+        <createIndex indexName="FK28B75E788921B80"
+            tableName="role_people" unique="false">
+            <column name="role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-329">
+        <createIndex indexName="FK28B75E78ADBCDF60"
+            tableName="role_people" unique="false">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-330">
+        <createIndex indexName="FK6655F612E54A7B60"
+            tableName="sales_agent" unique="false">
+            <column name="city_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-331">
+        <createIndex indexName="identifier" tableName="sales_agent" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-332">
+        <createIndex indexName="FKC6EB71C713E004C7"
+            tableName="sales_delivery" unique="false">
+            <column name="sales_agent_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-333">
+        <createIndex indexName="FKC6EB71C7326A7547"
+            tableName="sales_delivery" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-334">
+        <createIndex indexName="FKC6EB71C799372215"
+            tableName="sales_delivery" unique="false">
+            <column name="invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-335">
+        <createIndex indexName="FKC6EB71C7A122CF80"
+            tableName="sales_delivery" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-336">
+        <createIndex indexName="FKC6EB71C7ADD15514"
+            tableName="sales_delivery" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-337">
+        <createIndex indexName="FKC6EB71C7B6AE7AB4"
+            tableName="sales_delivery" unique="false">
+            <column name="waybill_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-338">
+        <createIndex indexName="FKC6EB71C7E58D3EF3"
+            tableName="sales_delivery" unique="false">
+            <column name="direct_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-339">
+        <createIndex indexName="FKC6EB71C7E8F7FB72"
+            tableName="sales_delivery" unique="false">
+            <column name="direct_payment_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-340">
+        <createIndex indexName="FKC6EB71C7EE220F11"
+            tableName="sales_delivery" unique="false">
+            <column name="discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-341">
+        <createIndex indexName="FK6E898396326A7547"
+            tableName="sales_delivery_counter_receipts" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-342">
+        <createIndex indexName="FK6E898396CF8A4ED"
+            tableName="sales_delivery_counter_receipts" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-343">
+        <createIndex indexName="FK6EC0101E326A7547"
+            tableName="sales_delivery_counter_reciepts" unique="false">
+            <column name="counter_receipt_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-344">
+        <createIndex indexName="FK6EC0101ECF8A4ED"
+            tableName="sales_delivery_counter_reciepts" unique="false">
+            <column name="sales_delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-345">
+        <createIndex indexName="FK93C68B538B2FA0"
+            tableName="sales_delivery_item" unique="false">
+            <column name="delivery_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-346">
+        <createIndex indexName="FK93C68B5FAC73B1"
+            tableName="sales_delivery_item" unique="false">
+            <column name="order_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-347">
+        <createIndex indexName="FK93C68BFA625C14"
+            tableName="sales_delivery_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-348">
+        <createIndex indexName="FK67203A5B13E004C7"
+            tableName="sales_order" unique="false">
+            <column name="sales_agent_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-349">
+        <createIndex indexName="FK67203A5BA122CF80"
+            tableName="sales_order" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-350">
+        <createIndex indexName="FK67203A5BADD15514"
+            tableName="sales_order" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-351">
+        <createIndex indexName="FK67203A5BDC243AE3"
+            tableName="sales_order" unique="false">
+            <column name="discount_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-352">
+        <createIndex indexName="FK67203A5BEE220F11"
+            tableName="sales_order" unique="false">
+            <column name="discount_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-353">
+        <createIndex indexName="FKA6A93A7799372215"
+            tableName="sales_order_item" unique="false">
+            <column name="invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-354">
+        <createIndex indexName="FKA6A93A77FA625C14"
+            tableName="sales_order_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-355">
+        <createIndex indexName="FK3084ACC36E21C3F8"
+            tableName="sales_order_item_sales_delivery_item" unique="false">
+            <column name="sales_order_item_delivered_items_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-356">
+        <createIndex indexName="FK3084ACC3E8591BDC"
+            tableName="sales_order_item_sales_delivery_item" unique="false">
+            <column name="sales_delivery_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-357">
+        <createIndex indexName="FK68AF716ADD15514" tableName="stock" unique="false">
+            <column name="warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-358">
+        <createIndex indexName="FK68AF716FA625C14" tableName="stock" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-359">
+        <createIndex indexName="FK27AB3A99FA625C14"
+            tableName="stock_card" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-360">
+        <createIndex indexName="FKEECAB0F923C89113"
+            tableName="stock_card_item" unique="false">
+            <column name="invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-361">
+        <createIndex indexName="FKC768EF5396030AD4"
+            tableName="stock_card_stock_card_item" unique="false">
+            <column name="stock_card_item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-362">
+        <createIndex indexName="FKE0E88AF4A5EF5D8D"
+            tableName="stock_transfer" unique="false">
+            <column name="origin_warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-363">
+        <createIndex indexName="FKE0E88AF4FB1A01A5"
+            tableName="stock_transfer" unique="false">
+            <column name="destination_warehouse_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-364">
+        <createIndex indexName="FK92A8617EF5B89C4A"
+            tableName="stock_transfer_item" unique="false">
+            <column name="transfer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-365">
+        <createIndex indexName="FK92A8617EFA625C14"
+            tableName="stock_transfer_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-366">
+        <createIndex indexName="FK9CDBF9CC61A70FC0" tableName="supplier" unique="false">
+            <column name="term_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-367">
+        <createIndex indexName="FK9CDBF9CC8C2ADE7A" tableName="supplier" unique="false">
+            <column name="currency_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-368">
+        <createIndex indexName="FK9CDBF9CCA0CA06B4" tableName="supplier" unique="false">
+            <column name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-369">
+        <createIndex indexName="identifier" tableName="supplier" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-370">
+        <createIndex indexName="FK7C4079A6665060C0"
+            tableName="supplier_item" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-371">
+        <createIndex indexName="FK7C4079A6FA625C14"
+            tableName="supplier_item" unique="false">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-372">
+        <createIndex indexName="FKA6074693665060C0"
+            tableName="supplier_payment" unique="false">
+            <column name="supplier_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-373">
+        <createIndex indexName="FK79D9113F235D9748"
+            tableName="supplier_payment_item" unique="false">
+            <column name="payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-374">
+        <createIndex indexName="FK79D9113FAE5CB9CB"
+            tableName="supplier_payment_item" unique="false">
+            <column name="check_bank_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-375">
+        <createIndex indexName="FK79D9113FE6697A5A"
+            tableName="supplier_payment_item" unique="false">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-376">
+        <createIndex indexName="FK79D9113FEB0486A5"
+            tableName="supplier_payment_item" unique="false">
+            <column name="check_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-377">
+        <createIndex indexName="FK563A121B6BCE2256"
+            tableName="supplier_payment_purchase_invoice" unique="false">
+            <column name="supplier_payment_purchase_invoices_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-378">
+        <createIndex indexName="FK563A121BA10A6711"
+            tableName="supplier_payment_purchase_invoice" unique="false">
+            <column name="purchase_invoice_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-379">
+        <createIndex indexName="identifier" tableName="term" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-380">
+        <createIndex indexName="FKF042F0668788CC94"
+            tableName="trip_ticket" unique="false">
+            <column name="truck_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-381">
+        <createIndex indexName="FKF042F066CEE458EC"
+            tableName="trip_ticket" unique="false">
+            <column name="driver_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-382">
+        <createIndex indexName="FK93C788658FF032CA"
+            tableName="trip_ticket_delivery_item" unique="false">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-383">
+        <createIndex indexName="FK278D934C4CA0842B"
+            tableName="trip_ticket_item" unique="false">
+            <column name="trip_ticket_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-384">
+        <createIndex indexName="FK9A91F58726C03BF4"
+            tableName="trip_ticket_personnel" unique="false">
+            <column name="personnel_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-385">
+        <createIndex indexName="FK9A91F587C56B2F25"
+            tableName="trip_ticket_personnel" unique="false">
+            <column name="trip_ticket_helpers_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-386">
+        <createIndex indexName="FK5A595D7565DD5DF7"
+            tableName="trip_ticket_waybill_item" unique="false">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-387">
+        <createIndex indexName="identifier" tableName="truck" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-388">
+        <createIndex indexName="plate_number" tableName="truck" unique="true">
+            <column name="plate_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-389">
+        <createIndex indexName="username" tableName="user" unique="true">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-390">
+        <createIndex indexName="identifier" tableName="warehouse" unique="true">
+            <column name="identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-391">
+        <createIndex indexName="FK4362DF765A3A6AB4" tableName="waybill" unique="false">
+            <column name="forwarder_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-392">
+        <createIndex indexName="FK4362DF76A122CF80" tableName="waybill" unique="false">
+            <column name="customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-393">
+        <createIndex indexName="FK4362DF76E7EE1226" tableName="waybill" unique="false">
+            <column name="trip_ticket_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-394">
+        <createIndex indexName="FK1213E47DB6AE7AB4"
+            tableName="waybill_package" unique="false">
+            <column name="waybill_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="charles (generated)" id="1303967612898-395">
+        <createIndex indexName="FK1213E47DF0A31D14"
+            tableName="waybill_package" unique="false">
+            <column name="packaging_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
