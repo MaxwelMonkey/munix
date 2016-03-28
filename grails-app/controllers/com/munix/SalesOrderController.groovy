@@ -219,7 +219,16 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
                 String.format('%,.2f',product.getProductPrice(params.priceType)),
 				product?.getPackageDetails())
             warehouseList.each{
-                dataMap.add(product.formatSOH(it))
+            	try{
+            	if(product.getStock(it).qty>0)
+                	dataMap.add("<span class='positive'>"+product.formatSOH(it)+"</span>")
+                else if(product.getStock(it).qty<0)
+                	dataMap.add("<span class='negative'>"+product.formatSOH(it)+"</span>")
+                else
+                	dataMap.add(product.formatSOH(it))
+                }catch(e){
+                e.printStackTrace()
+                }
             }
             data.add(dataMap)
           }

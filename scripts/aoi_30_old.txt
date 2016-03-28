@@ -1,0 +1,3 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_30` AS
+select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
+from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 0) and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 30)))) group by `a`.`id`

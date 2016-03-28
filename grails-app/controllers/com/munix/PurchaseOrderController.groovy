@@ -71,8 +71,13 @@ class PurchaseOrderController {
 				//)
 			Warehouse.list().sort{it.identifier}.each{
 				def warehouse = it
-				def stock = product.stocks?.find{it.warehouse?.id == warehouse.id}  
-				dataMap.add(stock?.formatQty())
+				def stock = product.stocks?.find{it.warehouse?.id == warehouse.id}
+				if(stock.qty>0)  
+					dataMap.add("<span class='positive'>"+stock?.formatQty()+"</span>")
+				else if(stock.qty<0)
+					dataMap.add("<span class='negative'>"+stock?.formatQty()+"</span>")
+				else
+					dataMap.add(stock?.formatQty())
 			}
 			data.add(dataMap)
 		}

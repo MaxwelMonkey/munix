@@ -147,6 +147,7 @@ class SalesOrderService {
     }
 
     def autocompleteSalesOrders() {
+    	println "RUNNING AUTOCOMPLETE SALES ORDERS"
 		def salesOrders = SalesOrder.findAllByStatusInList(["Approved"])
         def cal = Calendar.getInstance()
         cal.add(Calendar.MONTH, -1)

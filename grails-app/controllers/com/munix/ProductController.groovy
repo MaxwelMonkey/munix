@@ -40,7 +40,7 @@ class ProductController {
             redirect(action: "list")
 		}
     }
-	def generateProductComponentTable = {
+	def generateProductComponentTable = { 
 		def searchField = params.sSearch
 		def products = productService.getAllComponents(searchField)
 		def data = createProductComponentsDataMap(products)
@@ -203,7 +203,8 @@ class ProductController {
     }
 	
 	def editMultiple = {
-		[products:Product.findAll([sort:"identifier"])]
+		//[products:Product.findAll([sort:"identifier"])]
+		[products:[]]
 	}
 	
 	def editMultiple2 = {
@@ -305,6 +306,15 @@ class ProductController {
 		redirect action:"editMultiple3", id:approval.id
 	}
 	
+	def rejectUpdateMultiple= {
+		def a = ApprovalProcess.get(Long.parseLong(params.id))
+		a.status="Rejected"
+		a.approvedDate = new Date()
+		a.save(flush:true)
+		flash.message = "Product updates have been rejected."
+		redirect action:"list"
+	}
+	
 	def approveUpdateMultiple= {
 		def a = ApprovalProcess.get(Long.parseLong(params.id))
     	a.status = "Approved"
@@ -336,10 +346,72 @@ class ProductController {
 	}
 	
 	def productList = {
-		def result = Product.findAllByIdentifierLike("%${params.term}%")
+		def result = []
+		def products = Product.findAllByIdentifierLike("%${params.term}%")
+		def i = 0
+		products.each{
+			result[i]=[:]
+			result[i]["identifier"] = it.identifier;
+			result[i]["id"] = it.id;
+			result[i]["type"] = it.type?.identifier;
+			result[i]["itemType"] = it.itemType?.identifier;
+			result[i]["unit"] = it.unit?.identifier;
+			result[i]["category"] = it.category?.identifier;
+			result[i]["subcategory"] = it.subcategory?.identifier;
+			result[i]["brand"] = it.brand?.identifier;
+			result[i]["model"] = it.model?.identifier;
+			result[i]["material"] = it.material?.identifier;
+			result[i]["color"] = it.color?.identifier;
+			result[i]["isComponent"] = it.isComponent;
+			result[i]["isForAssembly"] = it.isForAssembly;
+			result[i]["isForSale"] = it.isForSale;
+			result[i]["status"] = it.status;
+			i++
+		}
 		render result as JSON
 	}
-
+	
+	def productListByKeyword = {
+		def warehouses = Warehouse.list()
+		def result = []
+		try{
+		def products = Product.executeQuery("select p from Product p LEFT JOIN p.type t LEFT JOIN p.itemType it LEFT JOIN p.unit u LEFT JOIN p.category c LEFT JOIN p.subcategory sc LEFT JOIN p.brand b LEFT JOIN p.model m LEFT JOIN p.material ma LEFT JOIN p.color co where p.identifier like '%${params.term}%' or t.identifier like '%${params.term}%' or it.identifier like '%${params.term}%' or u.identifier like '%${params.term}%' or c.identifier like '%${params.term}%' or sc.identifier like '%${params.term}%' or b.identifier like '%${params.term}%' or m.identifier like '%${params.term}%' or ma.identifier like '%${params.term}%' or co.identifier like '%${params.term}%'")
+		def i = 0
+		products.each{
+			result[i]=[:]
+			result[i]["identifier"] = it.identifier;
+			result[i]["id"] = it.id;
+			result[i]["type"] = it.type?.identifier;
+			result[i]["itemType"] = it.itemType?.identifier;
+			result[i]["unit"] = it.unit?.identifier;
+			result[i]["category"] = it.category?.identifier;
+			result[i]["subcategory"] = it.subcategory?.identifier;
+			result[i]["brand"] = it.brand?.identifier;
+			result[i]["model"] = it.model?.identifier;
+			result[i]["material"] = it.material?.identifier;
+			result[i]["color"] = it.color?.identifier;
+			result[i]["isComponent"] = it.isComponent;
+			result[i]["isForAssembly"] = it.isForAssembly;
+			result[i]["isForSale"] = it.isForSale;
+			result[i]["status"] = it.status;
+			def product = it
+			warehouses.each{
+				def positive=""
+				if(product.getStock(it).qty>0){
+					positive="positive"
+				}else if (product.getStock(it).qty<0){
+					positive="negative"
+				}
+				result[i]["warehouse"+it.id] = "<span class='"+positive+"'>"+product.formatSOH(it)+"</span>"
+			}
+			i++
+		}
+		}catch(e){
+			e.printStackTrace()
+		}
+		render result as JSON
+	}
+	
     def update = {
         def productInstance = Product.get(params.id)
 

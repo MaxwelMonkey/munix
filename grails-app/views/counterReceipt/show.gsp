@@ -85,7 +85,7 @@
           <td valign="top" class="name"><g:message code="counterReceipt.status.label" default="Status" /></td>
           <td valign="top" class="value">${fieldValue(bean: counterReceiptInstance, field: "status")}</td>
           <td valign="top" class="name"><g:message code="counterReceipt.remark.label" default="Remarks" /></td>
-          <td valign="top" class="value">${fieldValue(bean: counterReceiptInstance, field: "remark")}</td>
+          <td valign="top" class="value">${fieldValue(bean: counterReceiptInstance, field: "remark")?.replace('\n', '<br/>\n')}</td>
         </tr>
 
         </tbody>

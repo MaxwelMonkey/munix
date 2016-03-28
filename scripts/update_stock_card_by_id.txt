@@ -5,9 +5,9 @@ DELIMITER $$
 CREATE PROCEDURE clean_stock_card_by_id(sc_id integer)
 BEGIN
 truncate table stock_card_cleanup;
-insert into stock_card_cleanup select c.stock_card_id, p.id, e.id, c.q from product p, stock_card d, warehouse e, stock f, (select stock_card_id, wh, sum(qty_total) q from (select stock_card_id, warehouse_in wh, sum(coalesce(qty_in,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_in union select stock_card_id, warehouse_out wh, -1*sum(coalesce(qty_out,0)) qty_total from stock_card_item a group by stock_card_id, warehouse_out) b group by stock_card_id, wh) c where c.stock_card_id=d.id and d.product_id=f.product_id and e.identifier=c.wh and f.qty<>c.q and e.id=f.warehouse_id and f.product_id=p.id and c.stock_card_id=sc_id;
+insert into stock_card_cleanup(id) values (sc_id);
 call clean_stock_card;
-update stock inner join stock_card_cleanup z on stock.product_id = z.product_id and z.warehouse_id=stock.warehouse_id set stock.qty = z.qty;
+call clean_inconsistent_stock_cards;
 END$$
 DELIMITER ;
 

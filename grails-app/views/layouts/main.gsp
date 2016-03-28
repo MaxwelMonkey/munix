@@ -190,6 +190,7 @@
                 <li><a id="menuReport" href="${createLink(controller:'agingInventoryReport',action:'list')}">Aging of Inventory</a></li>
                 <li><a id="menuReport" href="${createLink(controller:'assemblyReport',action:'search')}">Assembly</a></li>
                 <li><a href="${createLink(controller:'customerAuditReport',action:'search')}">Customer Audit</a></li>
+                <li><a href="${createLink(controller:'salesDeliveryMarginReport',action:'search')}">SD Margin</a></li>
               </ul>
              </li>
             <li><a id="menuLogout" href="${createLink(controller:'logout')}">Logout</a></li>

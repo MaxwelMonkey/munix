@@ -78,6 +78,12 @@ class SalesDeliveryItem {
 			currentCost = this.cost
 		}
 		
-		return currentCost == 0 ? BigDecimal.ZERO : (((getDiscountedPrice()/currentCost) - 1) * 100).setScale(4,RoundingMode.FLOOR)
+		if(!currentCost) return BigDecimal.ZERO
+		
+		return currentCost == 0 ? BigDecimal.ZERO : ((((getDiscountedPrice()?getDiscountedPrice():BigDecimal.ZERO)/currentCost) - 1) * 100).setScale(4,RoundingMode.FLOOR)
+	}
+	
+	def getTotalMargin(){
+		getMargin() * this.qty
 	}
 }

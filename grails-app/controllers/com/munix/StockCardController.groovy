@@ -16,7 +16,7 @@ class StockCardController {
 			def dateTo = params.dateTo?params.dateTo:cal.getTime()
 			cal.add(Calendar.MONTH, -6)
 			def dateFrom = params.dateFrom?params.dateFrom:cal.getTime()
-			def items = StockCardItem.executeQuery("from StockCardItem s where s.stockCard=? and (s.datePosted<? or s.datePosted is null)",[stockCardInstance, dateTo])
+			def items = StockCardItem.executeQuery("from StockCardItem s where s.stockCard=? and (s.datePosted<? or s.datePosted is null)",[stockCardInstance, dateTo+1])
 			print items?.size()
 			return [stockCardInstance: stockCardInstance, stockCardItems: items, stocks: stocks, dateFrom:dateFrom, dateTo:dateTo]
 		} else {
@@ -36,7 +36,15 @@ class StockCardController {
     	}
     	[stockCards:s]
     }
-	
+    
+    def recalculate = {
+        Sql sqlQuery = new Sql(dataSource)
+        sqlQuery.execute("call clean_stock_card_by_id(${params.id})")
+        sqlQuery.close();
+		redirect action:"show", id:params.id
+    }
+
+/*	
 	def recalculate = {
         Sql sqlQuery = new Sql(dataSource)
         sqlQuery.execute("delete from stock_card_item where stock_card_id=${params.id} and type<>'INITIAL_ENTRY'")
@@ -90,5 +98,6 @@ class StockCardController {
 			stk.save()
 		}
 		redirect action:"show", id:params.id
-	}
+	}*/
+	
 }

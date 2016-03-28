@@ -99,17 +99,144 @@ section.positioned {
         </thead>
         <tbody>
 	        <g:each in="${list}" status="i" var="bean">
+	        	<g:set var="aoi30" value="${bean?.aoi30}"/>
+	        	<g:set var="aoi60" value="${bean?.aoi60}"/>
+	        	<g:set var="aoi90" value="${bean?.aoi90}"/>
+	        	<g:set var="aoi120" value="${bean?.aoi120}"/>
+	        	<g:set var="aoigt120" value="${bean?.aoigt120}"/>
+	        	<g:set var="aoiia" value="${bean?.aoiia}"/>
+	        	<g:if test="${aoiia<0}">
+	    	    	<g:while test="${aoiia<0}">
+		        		<g:if test="${aoigt120>0}">
+		        			<g:set var="aoiiatemp" value="${aoiia-aoigt120}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoigt120" value="${aoigt120+aoiia}"/>
+		        			<g:if test="${aoigt120<0}">
+		        				<g:set var="aoigt120" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi120>0}">
+		        			<g:set var="aoiiatemp" value="${aoiia-aoi120}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi120" value="${aoi120+aoiia}"/>
+		        			<g:if test="${aoi120<0}">
+		        				<g:set var="aoi120" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi90>0}">
+		        			<g:set var="aoiiatemp" value="${aoiia-aoi90}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi90" value="${aoi90+aoiia}"/>
+		        			<g:if test="${aoi90<0}">
+		        				<g:set var="aoi90" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi60>0}">
+		        			<g:set var="aoiiatemp" value="${aoiia-aoi60}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi60" value="${aoi60+aoiia}"/>
+		        			<g:if test="${aoi60<0}">
+		        				<g:set var="aoi60" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi30>0}">
+		        			<g:set var="aoiiatemp" value="${aoiia-aoi30}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi30" value="${aoi30+aoiia}"/>
+		        			<g:if test="${aoi30<0}">
+		        				<g:set var="aoi30" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        			<g:set var="aoiia" value="${0.00}"/>
+		        	</g:while>
+	        	</g:if>
+	        	<g:if test="${aoiia>0}">
+	    	    	<g:while test="${aoiia>0}">
+		        		<g:if test="${aoigt120<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoigt120}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoigt120" value="${aoigt120+aoiia}"/>
+		        			<g:if test="${aoigt120>0}">
+		        				<g:set var="aoigt120" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi120<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi120}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi120" value="${aoi120+aoiia}"/>
+		        			<g:if test="${aoi120>0}">
+		        				<g:set var="aoi120" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi90<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi90}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi90" value="${aoi90+aoiia}"/>
+		        			<g:if test="${aoi90>0}">
+		        				<g:set var="aoi90" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi60<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi60}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi60" value="${aoi60+aoiia}"/>
+		        			<g:if test="${aoi60>0}">
+		        				<g:set var="aoi60" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        		<g:if test="${aoi30<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi30}"/>
+		        			<g:if test="${aoiiatemp<0}">
+		        				<g:set var="aoiiatemp" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoi30" value="${aoi30+aoiia}"/>
+		        			<g:if test="${aoi30>0}">
+		        				<g:set var="aoi30" value="${0.00}"/>
+		        			</g:if>
+		        			<g:set var="aoiia" value="${aoiiatemp}"/>
+		        		</g:if>
+		        			<g:set var="aoiia" value="${0.00}"/>
+		        	</g:while>
+	        	</g:if>
+	        	
     	    	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 		        	<td><g:link controller="product" action="show" id="${bean?.id}">${bean?.identifier}</g:link></td>
 		        	<td>${bean?.category} ${bean?.subcategory} ${bean?.brand} ${bean?.model} ${bean?.model_number} ${bean?.material} ${bean?.size} ${bean?.added_description} ${bean?.color}</td>
 		        	<td>${bean?.unit}</td>
 		        	<td>${bean?.item_type}</td>
 		        	<td>${bean?.type}</td>
-		        	<td>${String.format('%,.2f',bean?.aoi30)}</td>
-		        	<td>${String.format('%,.2f',bean?.aoi60)}</td>
-		        	<td>${String.format('%,.2f',bean?.aoi90)}</td>
-		        	<td>${String.format('%,.2f',bean?.aoi120)}</td>
-		        	<td>${String.format('%,.2f',bean?.aoigt120)}</td>
+		        	<td>${String.format('%,.2f',aoi30)}</td>
+		        	<td>${String.format('%,.2f',aoi60)}</td>
+		        	<td>${String.format('%,.2f',aoi90)}</td>
+		        	<td>${String.format('%,.2f',aoi120)}</td>
+		        	<td>${String.format('%,.2f',aoigt120)}</td>
 		    	</tr>
 	    	</g:each>
         </tbody>

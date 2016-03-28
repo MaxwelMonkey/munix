@@ -29,11 +29,21 @@
 <tr class="prop">
     <td class="name">Customer</td>
     <td class="value">
-        <%--<g:select name="product.id" from="${products}" optionKey="id" noSelection="['':'All']"/> --%>
         <input type="checkbox" class="checkAll" onclick="checkAll('customer', this.checked)" id="customerCheckAll"> <label for="customerCheckAll">Check All</label>
         <div class="multicheckbox">
             <g:each in="${customers}" var="customer">
                 <div class="checkbox"><input class="customerCheckbox" type="checkbox" name="customer.id" id="customer${customer?.id}" value="${customer?.id}"> <label for="customer${customer?.id}">${customer}</label></div>
+            </g:each>
+        </div>
+    </td>
+</tr>
+<tr class="prop">
+    <td class="name">Sales Agent</td>
+    <td class="value">
+        <input type="checkbox" class="checkAll" onclick="checkAll('salesAgent', this.checked)" id="salesAgentCheckAll"> <label for="salesAgentCheckAll">Check All</label>
+        <div class="multicheckbox">
+            <g:each in="${salesAgents}" var="salesAgent">
+                <div class="checkbox"><input class="salesAgentCheckbox" type="checkbox" name="salesAgent.id" id="salesAgent${salesAgent?.id}" value="${salesAgent?.id}"> <label for="salesAgent${salesAgent?.id}">${salesAgent}</label></div>
             </g:each>
         </div>
     </td>

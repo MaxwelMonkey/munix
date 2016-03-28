@@ -5,14 +5,26 @@ import groovy.sql.Sql
 class AccountReceivablesController {
 
     def dataSource
+    def customerService
 
     
 	def index = {
+		def model = [:]
 		def query = "SELECT * FROM age_of_receivables";
         Sql sqlQuery = new Sql(dataSource)
         def result = sqlQuery.rows(query)
         sqlQuery.close();
-        [list:result]
+		model["list"] = result
+		def df = new Date().minus(200000)
+		def dt = new Date().plus(200000)
+    	def unpaidSds = customerService.getUnpaidSalesDeliveries(df, dt)
+		def unpaidCcs = customerService.getUnpaidCustomerCharges(df, dt)
+		def unpaidDms = customerService.getUnpaidDebitMemos(df, dt)
+		def unpaidBcs = customerService.getUnpaidBouncedChecks(df, dt)
+		def unpaidCps = customerService.getUnpaidCheckPayments(df, dt)
+		model["unpaidCcs"] = unpaidCcs
+		model["unpaidBcs"] = unpaidBcs
+		model
     }
     
     def list = {

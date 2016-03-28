@@ -210,7 +210,14 @@
                     <td class="right price">${item?.item?.finalPrice}</td>
                     <td class="right discountedAmount">PHP <g:formatNumber number="${item?.item?.computeAmount()}" format="###,##0.00" /></td>
 	                <g:each in="${warehouses}" var="warehouses">
-						<td class="right">${item.stocks[warehouses.identifier]}</td>                
+                	        		<g:set var="positive" value="${''}"/>
+		        	<g:if test="${item.stocks[warehouses.identifier]>0}">
+		        		<g:set var="positive" value="${'positive'}"/>
+		        	</g:if> 
+		        	<g:if test="${item.stocks[warehouses.identifier]<0}">
+		        		<g:set var="positive" value="${'negative'}"/>
+		        	</g:if> 
+					<td class="right ${positive}">${item.stocks[warehouses.identifier]}</td>
 	                </g:each> 
                   </tr>
                   <g:set var="idx" value="${idx+1}"/>
@@ -277,7 +284,14 @@
                 <td class="right price">${item?.item?.finalPrice}</td>
                 <td class="right netAmount">PHP <g:formatNumber number="${item?.item?.computeAmount()}" format="###,##0.00" /></td>
                 <g:each in="${warehouses}" var="warehouses">
-					<td class="right">${item.stocks[warehouses.identifier]}</td>
+                	        		<g:set var="positive" value="${''}"/>
+		        	<g:if test="${item.stocks[warehouses.identifier]>0}">
+		        		<g:set var="positive" value="${'positive'}"/>
+		        	</g:if> 
+		        	<g:if test="${item.stocks[warehouses.identifier]<0}">
+		        		<g:set var="positive" value="${'negative'}"/>
+		        	</g:if> 
+					<td class="right ${positive}">${item.stocks[warehouses.identifier]}</td>
 	            </g:each>                 
               </tr>
               <g:set var="idx" value="${idx+1}"/>

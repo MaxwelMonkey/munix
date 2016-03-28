@@ -38,8 +38,8 @@ table.main tr td{
 }
 
 #body {
-	padding-top:40px;
-	min-height:225px;
+	padding-top:10px;
+	min-height:212px;
 	width:100%;
 }
 #body table.form tr th{
@@ -61,7 +61,7 @@ td.accountBreakdown{
 
 td.accountDetails{
 	vertical-align:top;
-	padding-top:70px;
+	padding-top:40px;
 }
 
 td.cell0{
@@ -81,7 +81,7 @@ td.cell2{
 }
 
 #footer{
-	margin-top:43px;
+	margin-top:0px;
 }
 
 #footer table tr td.total1{

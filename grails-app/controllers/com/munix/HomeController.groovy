@@ -4,6 +4,7 @@ class HomeController {
 	
 	def authenticateService
 	def sessionFactory
+	def salesOrderService
 
 	def clear = {
 		sessionFactory.currentSession.flush()
@@ -12,7 +13,14 @@ class HomeController {
 		render "cleared2!"
 	}
 	
+	def cleanSalesOrders = {
+		salesOrderService.autocancelSalesOrders()
+		salesOrderService.autocompleteSalesOrders()
+		render "cleaned sales orders."
+	}
+	
 	def index = {
+	
 		def user = User.findByUsername(authenticateService.principal()?.username)
 		if(user?.authorities?.size()==1){
 			user?.authorities?.each{
@@ -114,7 +122,7 @@ class HomeController {
    		def purchaseOrders = PurchaseOrder.findAllByStatus(status)                     
    		def list = []
    		purchaseOrders.each{
-   			list << [it.id,formatDate(date:it?.date, format:"MMM. dd, yyyy"),it,it.supplier,it.formatTotal(),it.status]
+   			list << [it.id,formatDate(date:it?.date, format:"MMM. dd, yyyy"),it.formatId(),it.supplier,it.formatTotal(),it.status]
    		}
    		list
 	}
@@ -354,6 +362,10 @@ class HomeController {
   		section["columns"] = ["Description", "Requested By", "Date","Type", "Status", "Action"]
    		def approvals = ApprovalProcess.findAllByStatusAndType("Unapproved", "Customer")                     
  		def list = []
+ 		approvals.each{
+ 			list << [it.referenceNumber,it.description, it.requestedBy?.userRealName, formatDate(date:it?.date, format:"MMM. dd, yyyy HH:mm:ss"),	it.type, it.status, "<a href='${request.contextPath}/customer/show/${it.referenceNumber}'>View Customer</a> | <a href='${request.contextPath}/approvalProcess/approve/${it.id}?view=accounting'>Approve</a> | <a href='${request.contextPath}/approvalProcess/reject/${it.id}?view=accounting'>Reject</a> "]
+ 		}
+   		approvals = ApprovalProcess.findAllByStatusAndType("Unapproved", "Customer Discount")                     
  		approvals.each{
  			list << [it.referenceNumber,it.description, it.requestedBy?.userRealName, formatDate(date:it?.date, format:"MMM. dd, yyyy HH:mm:ss"),	it.type, it.status, "<a href='${request.contextPath}/customer/show/${it.referenceNumber}'>View Customer</a> | <a href='${request.contextPath}/approvalProcess/approve/${it.id}?view=accounting'>Approve</a> | <a href='${request.contextPath}/approvalProcess/reject/${it.id}?view=accounting'>Reject</a> "]
  		}

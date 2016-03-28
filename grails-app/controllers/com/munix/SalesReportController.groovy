@@ -935,9 +935,10 @@ class SalesReportController {
     def creditMemoSearch ={
 
         def customers = Customer.findAll([sort:"identifier"]);
+        def salesAgents = SalesAgent.findAll([sort:"identifier"]);
         def products = Product.findAll([sort:"identifier"]);
         def reasons = Reason.findAll([sort:"identifier"]);
-        [customers:customers, products:products, reasons:reasons]
+        [customers:customers, salesAgents:salesAgents, products:products, reasons:reasons]
     }
 
     def creditMemoList ={
@@ -964,6 +965,18 @@ class SalesReportController {
                             eq("id", params.customer?.id as Long)
                         else
                             'in'("id", params.customer?.id.collect{value -> Long.parseLong(value)})
+                    }
+                }
+            }
+            if (params.salesAgent?.id){
+                and {
+                    customer{
+                    	salesAgent{
+    	                    if(params.salesAgent?.id instanceof String)
+	                            eq("id", params.salesAgent?.id as Long)
+                        	else
+                            	'in'("id", params.salesAgent?.id.collect{value -> Long.parseLong(value)})
+                    	}
                     }
                 }
             }

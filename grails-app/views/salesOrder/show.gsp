@@ -57,6 +57,7 @@
       <div class="errors">${flash.error}</div>
     </g:if>
     <div class="dialog">
+    <h2>Sales Order Details</h2>
       <table>
         <tbody>
 
@@ -79,30 +80,24 @@
           </tr>
           
           <tr class="prop">
-       	    <td valign="top" class="name"><g:message code="salesOrder.customer.label" default="Customer Remarks" /></td>
-	        <td valign="top" class="value">${salesOrderInstance?.customer?.generalRemark}</td>
-       	    <td valign="top" class="name"><g:message code="salesOrder.oldestUnpaidInvoice.label" default="Oldest Unpaid Invoice" /></td>
-       	    <g:set var="oui" value="${com.munix.SalesDelivery.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
-       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
-		    <td valign="top" class="value"><g:link controller="salesDelivery" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
-		    </g:if>
-		    <g:else>
-		    <td valign="top" class="value"></td>
-		    </g:else>
+            <td valign="top" class="name"><g:message code="salesOrder.salesAgent.label" default="Sales Agent" /></td>
+            <td valign="top" class="value"><g:link controller="salesAgent" action="show" id="${salesOrderInstance?.customer?.salesAgent?.id}">${salesOrderInstance?.customer?.salesAgent?.formatName()?.encodeAsHTML()}</g:link></td>
+		 	<td valign="top" class="name"><g:message code="salesOrder.preparedBy.label" default="Prepared By" /></td>
+	        <td valign="top" class="value"> ${salesOrderInstance?.preparedBy?.encodeAsHTML()} </td>
           </tr>
 
           <tr class="prop">
-       	    <td valign="top" class="name"><g:message code="salesOrder.customer.label" default="Customer Remaining Credit" /></td>
-			<td valign="top" class="value ${salesOrderInstance?.customer?.remainingCreditIsNegative()?"redText":""}"><g:formatNumber number="${salesOrderInstance?.customer?.remainingCredit}" format="#,##0.00"/></td>
-            <td valign="top" class="name"><g:message code="salesOrder.netDiscountGroup.label" default="Net Discount Group" /></td>
-            <td valign="top" class="value">
-                <g:if test="${boldNetDiscountGroup}">
-                  <strong>${salesOrderInstance?.netDiscountGroup?.encodeAsHTML()}</strong>
-                </g:if>
-                <g:else>
-                  ${salesOrderInstance?.netDiscountGroup?.encodeAsHTML()}
-                </g:else>
-            </td>
+            <td valign="top" class="name"><g:message code="salesOrder.forwarder.label" default="Forwarder" /></td>
+            <td valign="top" class="value"><g:link controller="forwarder" action="show" id="${salesOrderInstance?.customer?.forwarder?.id}">${salesOrderInstance?.customer?.forwarder}</g:link></td>
+     	    <td valign="top" class="name"><g:message code="salesOrder.approvedBy.label" default="1st Approval" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.approvedBy?.encodeAsHTML()}</td>
+          </tr>
+
+          <tr class="prop">
+	        <td valign="top" class="name"><g:message code="salesOrder.discountType.label" default="Discount Type" /></td>
+     	    <td valign="top" class="value">${salesOrderInstance?.discountType}</td>
+            <td valign="top" class="name"><g:message code="salesOrder.approvedTwoBy.label" default="2nd Approval" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.approvedTwoBy?.encodeAsHTML()}</td>
           </tr>
 
           <tr class="prop">
@@ -115,35 +110,21 @@
                   ${salesOrderInstance?.discountGroup?.encodeAsHTML()}
                 </g:else>
             </td>
-		 	<td valign="top" class="name"><g:message code="salesOrder.preparedBy.label" default="Prepared By" /></td>
-	        <td valign="top" class="value"> ${salesOrderInstance?.preparedBy?.encodeAsHTML()} </td>
-          </tr>
-
-          <tr class="prop">
-            <td valign="top" class="name"><g:message code="salesOrder.type.label" default="Customer Type" /></td>
-		 	<td valign="top" class="value">${salesOrderInstance?.customer?.type?.description}</td>
-     	    <td valign="top" class="name"><g:message code="salesOrder.approvedBy.label" default="1st Approval" /></td>
-	        <td valign="top" class="value">${salesOrderInstance?.approvedBy?.encodeAsHTML()}</td>
-          </tr>
-
-
-          <tr class="prop">
-	        <td valign="top" class="name"><g:message code="salesOrder.discountType.label" default="Discount Type" /></td>
-     	    <td valign="top" class="value">${salesOrderInstance?.discountType}</td>
-            <td valign="top" class="name"><g:message code="salesOrder.approvedTwoBy.label" default="2nd Approval" /></td>
-	        <td valign="top" class="value">${salesOrderInstance?.approvedTwoBy?.encodeAsHTML()}</td>
-          </tr>
-
-          <tr class="prop">
-            <td valign="top" class="name"><g:message code="salesOrder.salesAgent.label" default="Sales Agent" /></td>
-            <td valign="top" class="value"><g:link controller="salesAgent" action="show" id="${salesOrderInstance?.customer?.salesAgent?.id}">${salesOrderInstance?.customer?.salesAgent?.formatName()?.encodeAsHTML()}</g:link></td>
             <td valign="top" class="name"><g:message code="salesOrder.status.label" default="Status" /></td>
 	        <td valign="top" class="value">${fieldValue(bean: salesOrderInstance, field: "status")}</td>
           </tr>
 
+
           <tr class="prop">
-            <td valign="top" class="name"><g:message code="salesOrder.forwarder.label" default="Forwarder" /></td>
-            <td valign="top" class="value"><g:link controller="forwarder" action="show" id="${salesOrderInstance?.customer?.forwarder?.id}">${salesOrderInstance?.customer?.forwarder}</g:link></td>
+            <td valign="top" class="name"><g:message code="salesOrder.netDiscountGroup.label" default="Net Discount Group" /></td>
+            <td valign="top" class="value">
+                <g:if test="${boldNetDiscountGroup}">
+                  <strong>${salesOrderInstance?.netDiscountGroup?.encodeAsHTML()}</strong>
+                </g:if>
+                <g:else>
+                  ${salesOrderInstance?.netDiscountGroup?.encodeAsHTML()}
+                </g:else>
+            </td>
 	        <td valign="top" class="name"><g:message code="salesOrder.closedBy.label" default="Closed By" /></td>
 	        <td valign="top" class="value">${fieldValue(bean: salesOrderInstance, field: "closedBy")}</td>
           </tr>
@@ -155,6 +136,65 @@
 	        <td valign="top" class="value">${fieldValue(bean: salesOrderInstance, field: "cancelledBy")}</td>
           </tr>
 
+        </tbody>
+      </table>
+    </div>
+    <div class="dialog">
+    <h2>Customer Account Details</h2>
+      <table>
+        <tbody>
+
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.salesDelivery.label" default="Sales Delivery" /></td>
+       	    <g:set var="oui" value="${com.munix.SalesDelivery.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="salesDelivery" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.term.label" default="Terms" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.term}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="salesDelivery" action="unpaidList" params="['customerId':salesOrderInstance?.customer?.id]">View Unpaid Sales Delivery List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.remainingCredit.label" default="Remaining Credit" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.getRemainingCredit()}</td>
+          </tr>
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.customerCharge.label" default="Customer Charge" /></td>
+       	    <g:set var="oui" value="${com.munix.CustomerCharge.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="customerCharge" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.remark.label" default="Customer Remarks" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.generalRemark}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="customerCharge" action="unpaidList" params="['customerId':salesOrderInstance?.customer?.id]">View Unpaid Customer Charge List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.billing.label" default="Billing" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.formatBillingAddress()}</td>
+          </tr>
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.bouncedCheck.label" default="Bounced Check" /></td>
+       	    <g:set var="oui" value="${com.munix.BouncedCheck.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="bouncedCheck" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.landline.label" default="Landline" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.landline}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="bouncedCheck" action="unpaidList" params="['customerId':salesOrderInstance?.customer?.id]">View Unpaid Bounced Check List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.mobile.label" default="Mobile" /></td>
+	        <td valign="top" class="value">${salesOrderInstance?.customer?.mobile}</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -231,7 +271,15 @@
           </td>
        </g:ifAnyGranted>
 	        <g:each in="${warehouseList}" var="warehouse">
-            <td class="right warehouse warehouse${warehouse.id}">${i?.product?.formatSOH(warehouse)}</td>
+	        		<g:set var="positive" value="${''}"/>
+	        	<g:if test="${i?.product?.getStock(warehouse).qty>0}">
+	        		<g:set var="positive" value="${'positive'}"/>
+	        	</g:if> 
+	        	<g:if test="${i?.product?.getStock(warehouse).qty<0}">
+	        		<g:set var="positive" value="${'negative'}"/>
+	        	</g:if> 
+	        	
+            <td class="right warehouse ${positive} warehouse${warehouse.id}">${i?.product?.formatSOH(warehouse)}</td>
 	        </g:each>        
           <td class="right">${i?.formatQty()}</td>
           <td class="right">${i?.formatDeliveredQty()}</td>
@@ -371,7 +419,15 @@
           </td>
         </g:ifAnyGranted>
 	        <g:each in="${warehouseList}" var="warehouse">
-            <td class="right warehouse warehouse${warehouse.id}">${i?.product?.formatSOH(warehouse)}</td>
+	        		<g:set var="positive" value="${''}"/>
+	        	<g:if test="${i?.product?.getStock(warehouse).qty>0}">
+	        		<g:set var="positive" value="${'positive'}"/>
+	        	</g:if> 
+	        	<g:if test="${i?.product?.getStock(warehouse).qty<0}">
+	        		<g:set var="positive" value="${'negative'}"/>
+	        	</g:if> 
+	        	
+            <td class="right warehouse ${positive} warehouse${warehouse.id}">${i?.product?.formatSOH(warehouse)}</td>
 	        </g:each>        
             <td class="right">${i?.formatQty()}</td>
             <td class="right">${i?.formatDeliveredQty()}</td>

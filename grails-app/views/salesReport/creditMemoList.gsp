@@ -45,7 +45,9 @@
             <thead>
             <tr>
                 <th>Date</th>
-                <th>Ref #</th>
+                <th>CM Ref #</th>
+                <th>SD Ref #</th>
+                <th>SD Date</th>
                 <th>Customer</th>
                 <th>Product Code</th>
                 <th>Product Description</th>
@@ -80,8 +82,10 @@
                 <g:set var="totalDiscount" value="${totalDiscount+bean?.computeDiscountAmount()}"/>
                 <g:set var="totalNetTotal" value="${totalNetTotal+bean?.computeDiscountedAmount()}"/>
                 <tr>
-                    <td>${creditMemo?.id} : <g:formatDate date="${bean['date']}" format="MM/dd/yyyy"/></td>
+                    <td><g:formatDate date="${bean['date']}" format="MM/dd/yyyy"/></td>
+                    <td>${bean?.creditMemo}</td>
                     <td>${bean?.deliveryItem?.delivery}</td>
+                    <td><g:formatDate date="${bean.deliveryItem?.delivery?.date}" format="MM/dd/yyyy"/></td>
                     <td>${bean?.creditMemo?.customer}</td>
                     <td>${bean?.deliveryItem?.product?.identifier}</td>
                     <td>${bean?.deliveryItem?.product?.description}</td>
@@ -98,6 +102,7 @@
             </tbody>
             %{--<g:if test="${params.totalHidden != 'Y'}">--}%
                 <tr>
+                    <td></td><td></td>
                     <td></td><td></td>
                     <td></td><td></td><td></td>
                     <th class="right">Total</th>

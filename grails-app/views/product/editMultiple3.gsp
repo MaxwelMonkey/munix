@@ -123,6 +123,7 @@
       <g:ifAnyGranted role="ROLE_MANAGER_SALES">
       <div class="buttons">
         <span class="button"><g:actionSubmit class="save" action="approveUpdateMultiple" value="${message(code: 'default.button.approve.label', default: 'Approve')}" onclick="return confirm('Are you sure you want to approve this update?')"/></span>
+        <span class="button"><g:actionSubmit class="delete" action="rejectUpdateMultiple" value="${message(code: 'default.button.reject.label', default: 'Reject')}" onclick="return confirm('Are you sure you want to reject this update?')"/></span>
       </div>
       </g:ifAnyGranted>
     </g:form>

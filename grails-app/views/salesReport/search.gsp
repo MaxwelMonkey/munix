@@ -59,6 +59,12 @@
 	          	<g:ifAllGranted role="ROLE_MANAGER_ACCOUNTING">
 	          		<option value="salesReportByMonthComparison">By Month Comparison</option>
 	          	</g:ifAllGranted>
+	          	<g:ifAllGranted role="ROLE_MANAGER_ACCOUNTING">
+	          		<option value="salesDeliveryMargin">SD Margin (Summary)</option>
+	          	</g:ifAllGranted>
+	          	<g:ifAllGranted role="ROLE_MANAGER_ACCOUNTING">
+	          		<option value="salesDeliveryMarginDetailed">SD Margin (Detailed)</option>
+	          	</g:ifAllGranted>
 	          </select>
             </td>
           </tr>

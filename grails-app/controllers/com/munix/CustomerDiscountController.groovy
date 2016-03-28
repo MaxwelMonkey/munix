@@ -28,20 +28,26 @@ class CustomerDiscountController {
         customerDiscountInstance.customer = Customer.get(params.id)
 
         if (customerDiscountService.validateCustomerDiscount(customerDiscountInstance)) {
-            if (customerDiscountInstance.save(flush: true)) {
-				customerDiscountInstance.log = new CustomerDiscountLog(customer: customerDiscountInstance.customer, discount: customerDiscountInstance)
-                createCustomerDiscountLogItem(customerDiscountInstance.log)
-
-                flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerDiscount.label', default: 'CustomerDiscount'), customerDiscountInstance.id])}"
-                redirect(action: "show", id: params.id, controller:"customer")
-            } else {
-                render(view: "create", model: [customerDiscountInstance: customerDiscountInstance])
+        	if(needsApproval()){
+        		def approvalCustomerDiscount = createApproval(customerDiscountInstance, null)
+                flash.message = "Customer Discount needs to be approved before it takes effect: " + approvalCustomerDiscount.toString()
+	            redirect(action: "show", id: params.id, controller:"customer")
+        	}else{
+	            if (customerDiscountInstance.save(flush: true)) {
+					customerDiscountService.logChanges(customerDiscountInstance) 
+	
+	                flash.message = "${message(code: 'default.created.message', args: [message(code: 'customerDiscount.label', default: 'CustomerDiscount'), customerDiscountInstance.id])}"
+	                redirect(action: "show", id: params.id, controller:"customer")
+	            } else {
+	                render(view: "create", model: [customerDiscountInstance: customerDiscountInstance])
+	            }
             }
         } else {
         	flash.message = "Duplicate discount type already exists!"
     		redirect(action: "show", id: params.id, controller:"customer")
         }
     }
+    
 
 
     def edit = {
@@ -54,6 +60,7 @@ class CustomerDiscountController {
             redirect(action: "list")
         }
     }
+
 
     def update = {
         def customerDiscountInstance = CustomerDiscount.get(params.id)		
@@ -72,12 +79,19 @@ class CustomerDiscountController {
 			
 			if (customerDiscountService.validateUpdatedCustomerDiscount(tempCustomerDiscount, customerDiscountInstance)) {
 				if (tempCustomerDiscount.validate()) {
-					customerDiscountInstance.properties = params
+		        	if(needsApproval()){
+		        		def approvalCustomerDiscount = createApproval(tempCustomerDiscount, customerDiscountInstance)
+		                flash.message = "Customer Discount needs to be approved before it takes effect: " + approvalCustomerDiscount.toString()
+			            redirect(action: "show", id: customerDiscountInstance.customer?.id, controller:"customer")
+			            return
+		        	}else{
+						customerDiscountInstance.properties = params
+					}
 				} else {
 					render(view: "edit", model: [customerDiscountInstance: customerDiscountInstance])
 				}
 	            if (!customerDiscountInstance.hasErrors() && customerDiscountInstance.save(flush: true)) {
-					logChanges(customerDiscountInstance)
+					customerDiscountService.logChanges(customerDiscountInstance)
 	                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'customerDiscount.label', default: 'CustomerDiscount'), customerDiscountInstance.id])}"
 	                redirect(action: "show", controller:"customer", id: customerDiscountInstance.customer.id)
 	            } else {
@@ -92,37 +106,36 @@ class CustomerDiscountController {
             redirect(action: "list")
         }
     }
-	
-	private void logChanges(CustomerDiscount customerDiscountInstance) {
-		if(!customerDiscountInstance.log){
-			customerDiscountInstance.log = new CustomerDiscountLog(customer: customerDiscountInstance.customer, discount: customerDiscountInstance)
-			createCustomerDiscountLogItem(customerDiscountInstance.log)
-		}
-		if (hasCustomerDiscountChanged(customerDiscountInstance)){
-			createCustomerDiscountLogItem(customerDiscountInstance.log)
-		}
-	}
-	
-	private boolean hasCustomerDiscountChanged(CustomerDiscount customerDiscountInstance) {
-		return customerDiscountInstance.discountGroup != customerDiscountInstance.log.currentLog.discountGroup || 
-			customerDiscountInstance.discountType != customerDiscountInstance.log.currentLog.discountType || 
-			customerDiscountInstance.type != customerDiscountInstance.log.currentLog.type
-	}
-
-    private def createCustomerDiscountLogItem(CustomerDiscountLog discountLog) {
-        def log = new CustomerDiscountLogItem(user: authenticateService.userDomain(), 
-			date: new Date(), 
-			discountGroup: discountLog.discount.discountGroup, 
-			discountType: discountLog.discount.discountType,
-			type: discountLog.discount.type)
-        discountLog.addToItems(log)
-		discountLog.save()
+    
+    def needsApproval = {
+    	authenticateService.ifNotGranted("ROLE_SUPER")
     }
 
+    def createApproval(customerDiscountInstance, existingCustomerDiscount){
+		def user = authenticateService.userDomain()
+    	def customerInstance = customerDiscountInstance.customer
+        def approvalCustomerDiscount = new ApprovalCustomerDiscount()
+        approvalCustomerDiscount.customerDiscount = existingCustomerDiscount
+    	approvalCustomerDiscount.customer = customerInstance
+    	approvalCustomerDiscount.discountType = customerDiscountInstance.discountType
+    	approvalCustomerDiscount.discountGroup = customerDiscountInstance.discountGroup
+    	approvalCustomerDiscount.type = customerDiscountInstance.type
+	    def msg = "${user.userRealName} wants to add Discount for Customer ${customerInstance.identifier} - ${customerInstance.name}:"
+	    msg+=approvalCustomerDiscount
+    	def approval = new ApprovalProcess(description:msg, requestedBy:user, date:new Date(), type:"Customer Discount", referenceNumber:customerInstance.id)
+        approval.save(flush:true)
+    	approvalCustomerDiscount.approvalProcess = approval
+    	approvalCustomerDiscount.save()
+    	approvalCustomerDiscount
+    }
+	
+	
     def delete = {
         def customerDiscountInstance = CustomerDiscount.get(params.id)
         if (customerDiscountInstance) {
             try {
+            	def acd = ApprovalCustomerDiscount.findByCustomerDiscount(customerDiscountInstance)
+            	acd?.delete()
                 customerDiscountInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'customerDiscount.label', default: 'CustomerDiscount'), params.id])}"
                 redirect(action: "show", controller:"customer", id:customerDiscountInstance.customer.id)

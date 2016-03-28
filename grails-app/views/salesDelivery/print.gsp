@@ -93,7 +93,7 @@
 			</g:if>
 		    </div>
 		
-		    <div class="footer">
+		    <div class="footer" id="footer">
 		      <table>
 		        <tr class="prop" style="border-top:solid 2px black">
 		          <td class="name" style="width:15%;border-left:solid 2px black;padding-left:5px;">Checked By:</td>
@@ -291,7 +291,7 @@
 			    </div>
 		    </div>
 		
-		    <div class="footer">
+		    <div class="footer" id="footer">
 		      <table>
 		        <tr class="prop" style="border-top:solid 2px black">
 		          <td class="name" style="width:15%;border-left:solid 2px black;padding-left:5px;">Checked By:</td>

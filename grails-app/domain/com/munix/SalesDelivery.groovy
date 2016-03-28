@@ -276,4 +276,38 @@ class SalesDelivery extends CustomerPayment {
 			it.cost = null
 		}
 	}
+	
+	def computeCostTotal(){
+		def total = 0.00
+		items.each {
+			total += it.cost?it.cost:0.00
+		}
+		total
+	}
+	
+	def computePhpDiffTotal(){
+		def total = 0.00
+		items.each {
+			total += it.getMargin()
+		}
+		total
+	}
+	
+	def computeAverageMarginPercentage(){
+		def total = 0.00
+		items.each {
+			total += it.getPriceMargin()?it.getPriceMargin():0.00
+		}
+		if(items.size()>0){
+			total = total/items.size()
+		}
+		total
+	}
+	def computeMarginGrandTotal(){
+		def total = 0.00
+		items.each {
+			total += it.getTotalMargin()?it.getTotalMargin():0.00
+		}
+		total
+	}
 }

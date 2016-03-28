@@ -476,8 +476,8 @@
           </g:if>
           <g:ifAnyGranted role="ROLE_MANAGER_SALES,ROLE_SALES">
 	          <g:ifAnyGranted role="ROLE_MANAGER_SALES">
-	            <span class="button"><g:link class="print" target="_printFrame" action="print" id="${salesDeliveryInstance?.id}">Packing List</g:link></span>
-    	        <span class="button"><g:link class="print" target="_printFrame" action="print" params="[id:salesDeliveryInstance?.id, 'noPl':'Y']">Invoice</g:link></span>
+	            <span class="button"><g:link class="print" target="_printFrame" action="print" id="${salesDeliveryInstance?.id}" onclick="return confirm('Are you sure you want to print the Packing List?');">Packing List</g:link></span>
+    	        <span class="button"><g:link class="print" target="_printFrame" action="print" params="[id:salesDeliveryInstance?.id, 'noPl':'Y']"  onclick="return confirm('Are you sure you want to print the Invoice?');">Invoice</g:link></span>
     	      </g:ifAnyGranted>
 	          <g:ifNotGranted role="ROLE_MANAGER_SALES">
 	          	<g:if test="${printablePacking || approvedPacking}">

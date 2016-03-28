@@ -3,6 +3,7 @@ package com.munix
 class CustomerDiscountService {
 
     static transactional = true
+    def authenticateService
 
     def validateCustomerDiscount(CustomerDiscount customerDiscountInstance) {
 		def valid = true
@@ -26,4 +27,31 @@ class CustomerDiscountService {
 			return validateCustomerDiscount(newCustomerDiscount)
 		}
 	}
+	
+	def logChanges(CustomerDiscount customerDiscountInstance) {
+		if(!customerDiscountInstance.log){
+			customerDiscountInstance.log = new CustomerDiscountLog(customer: customerDiscountInstance.customer, discount: customerDiscountInstance)
+			createCustomerDiscountLogItem(customerDiscountInstance.log)
+		}
+		if (hasCustomerDiscountChanged(customerDiscountInstance)){
+			createCustomerDiscountLogItem(customerDiscountInstance.log)
+		}
+	}
+
+	def hasCustomerDiscountChanged(CustomerDiscount customerDiscountInstance) {
+		return customerDiscountInstance.discountGroup != customerDiscountInstance.log.currentLog.discountGroup || 
+			customerDiscountInstance.discountType != customerDiscountInstance.log.currentLog.discountType || 
+			customerDiscountInstance.type != customerDiscountInstance.log.currentLog.type
+	}
+
+
+    def createCustomerDiscountLogItem(CustomerDiscountLog discountLog) {
+        def log = new CustomerDiscountLogItem(user: authenticateService.userDomain(), 
+			date: new Date(), 
+			discountGroup: discountLog.discount.discountGroup, 
+			discountType: discountLog.discount.discountType,
+			type: discountLog.discount.type)
+        discountLog.addToItems(log)
+		discountLog.save()
+    }
 }

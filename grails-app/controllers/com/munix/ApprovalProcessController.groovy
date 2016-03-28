@@ -4,6 +4,7 @@ class ApprovalProcessController {
 
 	def authenticateService
 	def customerService
+	def customerDiscountService
 	
     def approve = {
     	def a = ApprovalProcess.get(Long.parseLong(params.id))
@@ -13,6 +14,10 @@ class ApprovalProcessController {
     	a.save(flush:true)
     	if(a.type=="Customer") {
     		approveCustomer(a)
+    		flash.message = "The request has been approved. <a href='${request.contextPath}/customer/show/"+a.referenceNumber+"'>View Customer</a>"
+    	}
+    	if(a.type=="Customer Discount") {
+    		approveCustomerDiscount(a)
     		flash.message = "The request has been approved. <a href='${request.contextPath}/customer/show/"+a.referenceNumber+"'>View Customer</a>"
     	}
     	if(a.type=="Sales Delivery"){
@@ -38,6 +43,18 @@ class ApprovalProcessController {
     	}
 		customerService.generateAuditTrails(customer, a.requestedBy)
     	customer.save(flush:true)
+	}
+    
+    def approveCustomerDiscount(a) {
+		def approvalCustomerDiscount = ApprovalCustomerDiscount.findByApprovalProcess(a)
+		def customerDiscount = approvalCustomerDiscount.customerDiscount
+		if(!customerDiscount) customerDiscount = new CustomerDiscount()
+		customerDiscount.customer = approvalCustomerDiscount.customer
+		customerDiscount.discountType = approvalCustomerDiscount.discountType
+		customerDiscount.discountGroup = approvalCustomerDiscount.discountGroup
+		customerDiscount.type = CustomerDiscount.Type.getTypeByName(approvalCustomerDiscount.type)
+    	customerDiscount.save(flush:true)
+		customerDiscountService.logChanges(customerDiscount)
 	}
             
     def reject = {

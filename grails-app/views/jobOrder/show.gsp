@@ -338,9 +338,6 @@
             <td></td>
             <td class="right"><strong><g:formatNumber number="${jobOrderInstance?.computeRemainingBalance()}" format="#,##0" /></strong></td>
           </tr>
-				        <g:each in="${com.munix.Warehouse.list().sort{it.identifier}}" var="warehouse">
-			            <td class="right">${reqItem?.component?.formatSOH(warehouse)}</td>
-				        </g:each>        
         </tfoot>
       </table>
     </div>

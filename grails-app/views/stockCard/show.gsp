@@ -162,18 +162,21 @@
                                     <td class="right"><g:formatNumber number="${item.qtyIn}" format="###,##0.00"/></td>
                                     <td>${item.warehouseOut}</td>
                                     <td class="right"><g:formatNumber number="${item.qtyOut}" format="###,##0.00"/></td>
-                                    	<g:if test="${c==0}">
-		                        	<g:set var="balance" value="${item.balance}"/>
-                                    	</g:if>
-                                    	<g:else>
 		                        	<g:set var="balance" value="${item.qtyOut?balance-item.qtyOut:balance}"/>
 		                        	<g:set var="balance" value="${item.qtyIn?balance+item.qtyIn:balance}"/>
-                                    	</g:else>
                                     <td class="right">
                                     		<g:formatNumber number="${balance}" format="###,##0.00"/>
                                     </td>
 		                            <g:each in="${warehouses}" var="wh">
-		                            <td class="warehouseColumn_${wh.id}" style="display:none">${stocks[wh.identifier]}</td>
+		                            	        		<g:set var="positive" value="${''}"/>
+							        	<g:if test="${stocks[wh.identifier]>0}">
+							        		<g:set var="positive" value="${'positive'}"/>
+							        	</g:if> 
+							        	<g:if test="${stocks[wh.identifier]<0}">
+							        		<g:set var="positive" value="${'negative'}"/>
+							        	</g:if> 
+								                            
+		                            <td class="warehouseColumn_${wh.id} ${positive}" style="display:none">${stocks[wh.identifier]}</td>
 		                            </g:each>
                                 </tr>
                             </g:each>

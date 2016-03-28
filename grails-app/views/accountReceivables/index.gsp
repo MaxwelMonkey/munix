@@ -26,6 +26,8 @@
 	        <th>Name</th>
 	        <th>Sales Agent</th>
 	        <th>Credit Limit</th>
+	        <th>Customer Charges</th>
+	        <th>Bounced Checks</th>
 	        <th>Terms</th>
 	        <th>30 Days</th>
 	        <th>60 Days</th>
@@ -41,6 +43,14 @@
 		        	<td><g:link controller="customer" action="show" id="${bean?.id}">${bean?.name}</g:link></td>
 		        	<td>${bean?.sales_agent}</td>
 		        	<td>${bean.credit_limit?String.format('%,.2f',bean?.credit_limit):""}</td>
+		        	<td>
+          			<g:set var="unpaidCc" value="${unpaidCcs[bean?.id]?unpaidCcs[bean?.id]:0}"/>
+          			PHP <g:formatNumber number="${unpaidCc}" format="###,##0.00" />
+          			</td>
+		        	<td>
+          			<g:set var="unpaidBc" value="${unpaidBcs[bean?.id]?unpaidBcs[bean?.id]:0}"/>
+          			PHP <g:formatNumber number="${unpaidBc}" format="###,##0.00" />
+          			</td>
 		        	<td>${bean.term}</td>
 		        	<td><g:link controller="accountReceivables" action="list" id="${bean?.id}" params="${[from:0, to:30]}">${bean.aor30}</g:link></td>
 		        	<td><g:link controller="accountReceivables" action="list" id="${bean?.id}" params="${[from:30, to:60]}">${bean.aor60}</g:link></td>

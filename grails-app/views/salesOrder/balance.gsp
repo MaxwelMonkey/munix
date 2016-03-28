@@ -62,7 +62,14 @@
           <td>${i?.product?.partNumber}</td>
           <td>${i?.product?.description}</td>
 	        <g:each in="${com.munix.Warehouse.list().sort{it.identifier}}" var="warehouse">
-            <td class="right">${i?.product?.formatSOH(warehouse)}</td>
+        	        		<g:set var="positive" value="${''}"/>
+        	<g:if test="${i?.product?.getStock(warehouse).qty>0}">
+        		<g:set var="positive" value="${'positive'}"/>
+        	</g:if> 
+        	<g:if test="${i?.product?.getStock(warehouse).qty<0}">
+        		<g:set var="positive" value="${'negative'}"/>
+        	</g:if> 
+            <td class="right ${positive}">${i?.product?.formatSOH(warehouse)}</td>
 	        </g:each>        
           <td class="right">${i?.formatQty()}</td>
           <td class="right">${i?.formatDeliveredQty()}</td>
@@ -106,7 +113,14 @@
             <td>${i?.product?.partNumber}</td>
             <td>${i?.product?.description}</td>
 	        <g:each in="${com.munix.Warehouse.list().sort{it.identifier}}" var="warehouse">
-            <td class="right">${i?.product?.formatSOH(warehouse)}</td>
+        	        		<g:set var="positive" value="${''}"/>
+        	<g:if test="${i?.product?.getStock(warehouse).qty>0}">
+        		<g:set var="positive" value="${'positive'}"/>
+        	</g:if> 
+        	<g:if test="${i?.product?.getStock(warehouse).qty<0}">
+        		<g:set var="positive" value="${'negative'}"/>
+        	</g:if> 
+            <td class="right ${positive}">${i?.product?.formatSOH(warehouse)}</td>
 	        </g:each>        
 	          <td class="right">${i?.formatQty()}</td>
 	          <td class="right">${i?.formatDeliveredQty()}</td>

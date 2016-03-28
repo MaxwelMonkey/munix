@@ -93,6 +93,9 @@
         <g:if test="${params.dateType=='invoice'}">Invoice Date: <g:formatDate format="MMMM d, yyyy" date="${params?.invoiceDateFrom}"/> - <g:formatDate format="MMMM d, yyyy" date="${params?.invoiceDateTo}"/><br/></g:if>
         <g:if test="${params.dateType=='delivery'}">Delivery Date: <g:formatDate format="MMMM d, yyyy" date="${params?.deliveryDateFrom}"/> - <g:formatDate format="MMMM d, yyyy" date="${params?.deliveryDateTo}"/><br/></g:if>
 	</g:if>
+	<g:if test="${params.reportType=='salesDeliveryMargin'}">
+	Sales Delivery Margin Report from <g:formatDate format="MMMM d, yyyy" date="${params.dateFrom}"/> to <g:formatDate format="MMMM d, yyyy" date="${params.dateTo}"/><br>
+    </g:if>
     Prepared by ${username}, <g:formatDate format="MMMM d, yyyy hh:mm a" date="${new Date()}"/>
     </div>
 	<g:layoutBody />

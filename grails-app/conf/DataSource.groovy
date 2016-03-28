@@ -35,7 +35,7 @@ environments {
         dataSource {
 //            jndiName = "java:comp/env/munixDatasource"
 			dbCreate = "update"
-			url = "jdbc:mysql://localhost/ts"
+			url = "jdbc:mysql://localhost/munix"
 			driverClassName = "com.mysql.jdbc.Driver"
 			username = "root"
 			password = "munix"

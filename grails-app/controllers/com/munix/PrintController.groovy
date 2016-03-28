@@ -467,7 +467,7 @@ class PrintController {
                            ]
 		
        model["footer"] = [["Payment is due on",formatDate(date:counterReceiptInstance?.dueDate, format:"MMM. dd, yyyy"),"",""],
-                          ["Remarks",counterReceiptInstance?.remark,"Received By","________________________"],
+                          ["Remarks",counterReceiptInstance?.remark?.replace("\r","<br>"),"Received By","________________________"],
                           ["Created By",counterReceiptInstance?.preparedBy,"Date & Time Received","________________________"]
                           
        ]

@@ -14,7 +14,6 @@ class AgingInventoryReportController extends ReportController{
 		if(!params.status) params.status='Active'
 	  	buildWhere(params)
 		def query = "SELECT * FROM age_of_inventory product ${where}";
-		println query
         Sql sqlQuery = new Sql(dataSource)
         def result = sqlQuery.rows(query, whereParams)
         sqlQuery.close();

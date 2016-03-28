@@ -223,7 +223,14 @@
           </g:else>
 
           <g:each in="${com.munix.Warehouse.list().sort{it.identifier}}" var="warehouse">
-            <td class="right">${productInstance?.formatSOH(warehouse)}</td>
+        	        		<g:set var="positive" value="${''}"/>
+        	<g:if test="${productInstance?.getStock(warehouse).qty>0}">
+        		<g:set var="positive" value="${'positive'}"/>
+        	</g:if> 
+        	<g:if test="${productInstance?.getStock(warehouse).qty<0}">
+        		<g:set var="positive" value="${'negative'}"/>
+        	</g:if> 
+            <td class="right ${positive}">${productInstance?.formatSOH(warehouse)}</td>
           </g:each>
 
           <td class="right">${fieldValue(bean: productInstance, field: "reorderPoint")}</td>

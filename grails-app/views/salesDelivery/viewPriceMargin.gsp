@@ -134,6 +134,7 @@
           <tr>
             <th class="center">Identifier</th>
             <th class="center">Description</th>
+            <th class="center">Qty</th>
             <g:if test="${salesDeliveryInstance?.isUnapproved()}">
               <th class="center">Running Cost</th>
             </g:if> <g:else>
@@ -151,6 +152,7 @@
                 <tr class="${(colors % 2) == 0 ? 'odd' : 'even'}">
 	          	  <td><g:link controller="product" action="show" id="${i?.product?.id}">${i?.product}</g:link></td>
                   <td>${i?.product?.description}</td>
+                  <td class="right"><g:formatNumber number="${i?.qty}" format="#,##0.00" /></td>
                   <td class="right">
                     <g:if test="${salesDeliveryInstance?.isUnapproved()}">
                         Php <g:formatNumber number="${i?.product?.runningCost}" format="#,##0.00" />
@@ -178,6 +180,7 @@
             <tr>
               <th class="center">Identifier</th>
               <th class="center">Description</th>
+              <th class="center">Qty</th>
               <g:if test="${salesDeliveryInstance?.isUnapproved()}">
                 <th class="center">Running Cost</th>
               </g:if> <g:else>
@@ -202,6 +205,7 @@
               <tr class="${(colors % 2) == 0 ? 'odd' : 'even'}">
 	          	  <td><g:link controller="product" action="show" id="${i?.product?.id}">${i?.product}</g:link></td>
                   <td>${i?.product?.description}</td>
+                  <td class="right"><g:formatNumber number="${i?.qty}" format="#,##0.00" /></td>
                   <td class="right">
                     <g:if test="${salesDeliveryInstance?.isUnapproved()}">
                         Php <g:formatNumber number="${i?.product?.runningCost}" format="#,##0.0000" />
