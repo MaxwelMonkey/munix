@@ -90,11 +90,11 @@ section.positioned {
 	        <th>Product Unit<div>Product Unit</div></th>
 	        <th>Item Type<div>Item Type</div></th>
 	        <th>Discount Type<div>Discount Type</div></th>
-	        <th>30 Days<div>30 days</div></th>
-	        <th>60 Days<div>60 days</div></th>
-	        <th>90 Days<div>90 days</div></th>
-	        <th>120 Days<div>120 days</div></th>
-	        <th>&gt;120 Days<div>&gt; 120 days</div></th>
+	        <th>0-90 Days<div>0-90 days</div></th>
+	        <th>91-180 Days<div>91-180 days</div></th>
+	        <th>181-270 Days<div>181-270 days</div></th>
+	        <th>271-360 Days<div>271-360 days</div></th>
+	        <th>&gt;360 Days<div>&gt; 360 days</div></th>
         </tr>
         </thead>
         <tbody>
@@ -105,11 +105,12 @@ section.positioned {
 	        	<g:set var="aoi120" value="${bean?.aoi120}"/>
 	        	<g:set var="aoigt120" value="${bean?.aoigt120}"/>
 	        	<g:set var="aoiia" value="${bean?.aoiia}"/>
+    	    	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 	        	<g:if test="${aoiia<0}">
 	    	    	<g:while test="${aoiia<0}">
 		        		<g:if test="${aoigt120>0}">
-		        			<g:set var="aoiiatemp" value="${aoiia-aoigt120}"/>
-		        			<g:if test="${aoiiatemp<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoigt120}"/>
+		        			<g:if test="${aoiiatemp>0}">
 		        				<g:set var="aoiiatemp" value="${0.00}"/>
 		        			</g:if>
 		        			<g:set var="aoigt120" value="${aoigt120+aoiia}"/>
@@ -119,8 +120,8 @@ section.positioned {
 		        			<g:set var="aoiia" value="${aoiiatemp}"/>
 		        		</g:if>
 		        		<g:if test="${aoi120>0}">
-		        			<g:set var="aoiiatemp" value="${aoiia-aoi120}"/>
-		        			<g:if test="${aoiiatemp<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi120}"/>
+		        			<g:if test="${aoiiatemp>0}">
 		        				<g:set var="aoiiatemp" value="${0.00}"/>
 		        			</g:if>
 		        			<g:set var="aoi120" value="${aoi120+aoiia}"/>
@@ -130,8 +131,8 @@ section.positioned {
 		        			<g:set var="aoiia" value="${aoiiatemp}"/>
 		        		</g:if>
 		        		<g:if test="${aoi90>0}">
-		        			<g:set var="aoiiatemp" value="${aoiia-aoi90}"/>
-		        			<g:if test="${aoiiatemp<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi90}"/>
+		        			<g:if test="${aoiiatemp>0}">
 		        				<g:set var="aoiiatemp" value="${0.00}"/>
 		        			</g:if>
 		        			<g:set var="aoi90" value="${aoi90+aoiia}"/>
@@ -141,8 +142,8 @@ section.positioned {
 		        			<g:set var="aoiia" value="${aoiiatemp}"/>
 		        		</g:if>
 		        		<g:if test="${aoi60>0}">
-		        			<g:set var="aoiiatemp" value="${aoiia-aoi60}"/>
-		        			<g:if test="${aoiiatemp<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi60}"/>
+		        			<g:if test="${aoiiatemp>0}">
 		        				<g:set var="aoiiatemp" value="${0.00}"/>
 		        			</g:if>
 		        			<g:set var="aoi60" value="${aoi60+aoiia}"/>
@@ -152,8 +153,8 @@ section.positioned {
 		        			<g:set var="aoiia" value="${aoiiatemp}"/>
 		        		</g:if>
 		        		<g:if test="${aoi30>0}">
-		        			<g:set var="aoiiatemp" value="${aoiia-aoi30}"/>
-		        			<g:if test="${aoiiatemp<0}">
+		        			<g:set var="aoiiatemp" value="${aoiia+aoi30}"/>
+		        			<g:if test="${aoiiatemp>0}">
 		        				<g:set var="aoiiatemp" value="${0.00}"/>
 		        			</g:if>
 		        			<g:set var="aoi30" value="${aoi30+aoiia}"/>
@@ -226,17 +227,51 @@ section.positioned {
 		        	</g:while>
 	        	</g:if>
 	        	
-    	    	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 		        	<td><g:link controller="product" action="show" id="${bean?.id}">${bean?.identifier}</g:link></td>
 		        	<td>${bean?.category} ${bean?.subcategory} ${bean?.brand} ${bean?.model} ${bean?.model_number} ${bean?.material} ${bean?.size} ${bean?.added_description} ${bean?.color}</td>
 		        	<td>${bean?.unit}</td>
 		        	<td>${bean?.item_type}</td>
 		        	<td>${bean?.type}</td>
-		        	<td>${String.format('%,.2f',aoi30)}</td>
-		        	<td>${String.format('%,.2f',aoi60)}</td>
-		        	<td>${String.format('%,.2f',aoi90)}</td>
-		        	<td>${String.format('%,.2f',aoi120)}</td>
-		        	<td>${String.format('%,.2f',aoigt120)}</td>
+						<g:set var="positive" value="${''}"/>
+		        		<g:if test="${aoi30<0}">
+			        		<g:set var="positive" value="${'negative'}"/>
+		        		</g:if>
+		        		<g:if test="${aoi30>0}">
+			        		<g:set var="positive" value="${'positive'}"/>
+		        		</g:if>
+		        	<td class="${positive}">${String.format('%,.2f',aoi30)}</td>
+						<g:set var="positive" value="${''}"/>
+		        		<g:if test="${aoi60<0}">
+			        		<g:set var="positive" value="${'negative'}"/>
+		        		</g:if>
+		        		<g:if test="${aoi60>0}">
+			        		<g:set var="positive" value="${'positive'}"/>
+		        		</g:if>
+		        	<td class="${positive}">${String.format('%,.2f',aoi60)}</td>
+						<g:set var="positive" value="${''}"/>
+		        		<g:if test="${aoi90<0}">
+			        		<g:set var="positive" value="${'negative'}"/>
+		        		</g:if>
+		        		<g:if test="${aoi90>0}">
+			        		<g:set var="positive" value="${'positive'}"/>
+		        		</g:if>
+		        	<td class="${positive}">${String.format('%,.2f',aoi90)}</td>
+						<g:set var="positive" value="${''}"/>
+		        		<g:if test="${aoi120<0}">
+			        		<g:set var="positive" value="${'negative'}"/>
+		        		</g:if>
+		        		<g:if test="${aoi120>0}">
+			        		<g:set var="positive" value="${'positive'}"/>
+		        		</g:if>
+		        	<td class="${positive}">${String.format('%,.2f',aoi120)}</td>
+						<g:set var="positive" value="${''}"/>
+		        		<g:if test="${aoigt120<0}">
+			        		<g:set var="positive" value="${'negative'}"/>
+		        		</g:if>
+		        		<g:if test="${aoigt120>0}">
+			        		<g:set var="positive" value="${'positive'}"/>
+		        		</g:if>
+		        	<td class="${positive}">${String.format('%,.2f',aoigt120)}</td>
 		    	</tr>
 	    	</g:each>
         </tbody>

@@ -18,6 +18,7 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
     def authenticateService
     def salesOrderService
     def generalMethodService
+    def auditLogService
     
 	def applicationContext
     def productService
@@ -78,6 +79,7 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
         }
 		
         if (salesOrderInstance.save(flush: true, cascade : true) && params.customer.id != "") {
+			auditLogService.so(authenticateService.userDomain(), "Created", salesOrderInstance.id) 
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'salesOrder.label', default: 'SalesOrder'), salesOrderInstance.id])}"
             redirect(action: "show", id: salesOrderInstance.id)
         }
@@ -163,6 +165,7 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
 				salesOrderInstance.netDiscount = ndr
 			}
             if (!salesOrderInstance.hasErrors() && salesOrderInstance.save(flush: true, cascade : true)) {
+				auditLogService.so(authenticateService.userDomain(), "Update", salesOrderInstance.id) 
 				flash.message = "${message(code: 'default.updated.message', args: [message(code: 'salesOrder.label', default: 'SalesOrder'), salesOrderInstance.id])}"
                 redirect(action: "show", id: salesOrderInstance.id)
             }
@@ -189,7 +192,8 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
 
         approveSalesOrder(salesOrderInstance)
         salesOrderInstance.save()
-
+		auditLogService.so(authenticateService.userDomain(), "Approve", salesOrderInstance.id) 
+		
         flash.message = "Order has been successfully approved!"
         redirect(action:'show',id:salesOrderInstance?.id)
     }
@@ -302,6 +306,7 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
 			salesOrderInstance.approvedTwoBy = ""
 			salesOrderInstance?.removeItemCosts()
 			salesOrderInstance?.save()
+			auditLogService.so(authenticateService.userDomain(), "Unapprove", salesOrderInstance.id) 
 			flash.message = "Order has been successfully unapproved!"
 		} else {		
 			flash.error = "Sales Order can't be unapproved because it has at least one Sales Delivery!"
@@ -537,7 +542,7 @@ class SalesOrderController  implements org.springframework.context.ApplicationCo
     
     def upload = {
         def salesOrderInstance = new SalesOrder()
-        def customerList= Customer.findAllByStatusInList([Customer.Status.ACTIVE,Customer.Status.BADACCOUNT]).sort{it.toString()}
+        def customerList= Customer.findAllByStatusInList([Customer.Status.ACTIVE]).sort{it.toString()}
 
         return [salesOrderInstance: salesOrderInstance, customerList:customerList, warehouseList:Warehouse.list(sort:"identifier")]
     }

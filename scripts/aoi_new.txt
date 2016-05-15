@@ -10,40 +10,40 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) 
 and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 0) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 30))
-and (b.type<>'APPROVED_INVENTORY_ADJUSTMENT' or b.qty_in>0))) group by `a`.`id`;
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 90))
+and (b.qty_in>0))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_60` AS
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 30) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 60))
-and (b.type<>'APPROVED_INVENTORY_ADJUSTMENT' or b.qty_in>0))) group by `a`.`id`;
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 90) 
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 180))
+and (b.qty_in>0))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_90` AS
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 60) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 90))
-and (b.type<>'APPROVED_INVENTORY_ADJUSTMENT' or b.qty_in>0))) group by `a`.`id`;
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 180) 
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 270))
+and (b.qty_in>0))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_120` AS
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 90) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 120))
-and (b.type<>'APPROVED_INVENTORY_ADJUSTMENT' or b.qty_in>0))) group by `a`.`id`;
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 270) 
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) <= 360))
+and (b.qty_in>0))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_gt120` AS
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`) 
-and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 120))
-and (b.type<>'APPROVED_INVENTORY_ADJUSTMENT' or b.qty_in>0))) group by `a`.`id`;
+and ((to_days(curdate()) - to_days(`b`.`date_posted`)) > 360 or b.date_posted is null))
+and (b.qty_in>0))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `aoi_ia` AS
 select `a`.`id` AS `id`,sum((coalesce(`b`.`qty_in`,0) - coalesce(`b`.`qty_out`,0))) AS `total` 
 from (`product` `a` left join `stock_card_item` `b` on(((`a`.`stock_card_id` = `b`.`stock_card_id`))
-and b.type='APPROVED_INVENTORY_ADJUSTMENT' and b.qty_in<0)) group by `a`.`id`;
+and (b.qty_in<0 or b.qty_out is not null))) where a.status='Active' group by `a`.`id`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `age_of_inventory` AS
 select `a`.`id` AS `id`,`a`.`version` AS `version`,`a`.`model_id` AS `model_id`,`a`.`type_id` AS `type_id`,
@@ -62,4 +62,4 @@ select `a`.`id` AS `id`,`a`.`version` AS `version`,`a`.`model_id` AS `model_id`,
 `a`.`color` AS `color`,`aoi_30`.`total` AS `aoi30`,`aoi_60`.`total` AS `aoi60`,`aoi_90`.`total` AS `aoi90`,
 `aoi_120`.`total` AS `aoi120`,`aoi_gt120`.`total` AS `aoigt120`,`aoi_ia`.`total` AS `aoiia` 
 from ((((((`product_list` `a` left join `aoi_ia` on((`a`.`id` = `aoi_ia`.`id`))) left join `aoi_30` on((`a`.`id` = `aoi_30`.`id`))) 
-left join `aoi_60` on((`a`.`id` = `aoi_60`.`id`))) left join `aoi_90` on((`a`.`id` = `aoi_90`.`id`))) left join `aoi_120` on((`a`.`id` = `aoi_120`.`id`))) left join `aoi_gt120` on((`a`.`id` = `aoi_gt120`.`id`))) order by `a`.`category`,`a`.`subcategory`,`a`.`brand`,`a`.`model`,`a`.`model_number`,`a`.`material`,`a`.`size`,`a`.`added_description`,`a`.`color`;
+left join `aoi_60` on((`a`.`id` = `aoi_60`.`id`))) left join `aoi_90` on((`a`.`id` = `aoi_90`.`id`))) left join `aoi_120` on((`a`.`id` = `aoi_120`.`id`))) left join `aoi_gt120` on((`a`.`id` = `aoi_gt120`.`id`))) where a.status='Active'  order by `a`.`category`,`a`.`subcategory`,`a`.`brand`,`a`.`model`,`a`.`model_number`,`a`.`material`,`a`.`size`,`a`.`added_description`,`a`.`color`;

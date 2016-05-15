@@ -159,13 +159,19 @@
           <tr class="prop">
 	        <td valign="top" class="value"><g:link controller="salesDelivery" action="unpaidList" params="['customerId':salesOrderInstance?.customer?.id]">View Unpaid Sales Delivery List</g:link></td>
 	        <td valign="top" class="name"><g:message code="customer.remainingCredit.label" default="Remaining Credit" /></td>
-	        <td valign="top" class="value">${salesOrderInstance?.customer?.getRemainingCredit()}</td>
+	        <g:set var="negative" value=""/>
+	        <g:if test="${salesOrderInstance?.customer?.getRemainingCredit()<0}">
+	        	<g:set var="negative" value="${'negative'}"/>
+	        </g:if>
+	        <td valign="top" class="value ${negative}">
+	        	<g:formatNumber number="${salesOrderInstance?.customer?.getRemainingCredit()}" format="###,##0.00" />
+	        </td>
           </tr>
           <tr class="prop">
             <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.customerCharge.label" default="Customer Charge" /></td>
        	    <g:set var="oui" value="${com.munix.CustomerCharge.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
        	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
-		    <td valign="top" class="value"><g:link controller="customerCharge" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    <td valign="top" class="value"><g:link controller="customerCharge" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeActualDue()}" format="###,##0.00" /></g:link></td>
 		    </g:if>
 		    <g:else>
 		    <td valign="top" class="value"></td>
@@ -182,7 +188,7 @@
             <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.bouncedCheck.label" default="Bounced Check" /></td>
        	    <g:set var="oui" value="${com.munix.BouncedCheck.findAllByCustomerAndStatus(salesOrderInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
        	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
-		    <td valign="top" class="value"><g:link controller="bouncedCheck" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    <td valign="top" class="value"><g:link controller="bouncedCheck" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeProjectedDue()}" format="###,##0.00" /></g:link></td>
 		    </g:if>
 		    <g:else>
 		    <td valign="top" class="value"></td>
@@ -283,7 +289,11 @@
 	        </g:each>        
           <td class="right">${i?.formatQty()}</td>
           <td class="right">${i?.formatDeliveredQty()}</td>
-          <td class="right">${i?.formatRemainingBalance()}</td>
+             <g:set var="negative" value="${''}"/>
+             <g:if test="${i?.product?.getTotalStock()<i?.computeRemainingBalance()?.intValue()}">
+             	<g:set var="negative" value="${'negative bold'}"/>
+             </g:if>
+          <td class="right ${negative}">${i?.formatRemainingBalance()}</td>
         <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
           <td class="right">${i?.formatAmount()}</td>
         </g:ifAnyGranted>
@@ -431,7 +441,11 @@
 	        </g:each>        
             <td class="right">${i?.formatQty()}</td>
             <td class="right">${i?.formatDeliveredQty()}</td>
-            <td class="right">${i?.formatRemainingBalance()}</td>
+             <g:set var="negative" value="${''}"/>
+             <g:if test="${i?.product?.getTotalStock()<i?.computeRemainingBalance()?.intValue()}">
+             	<g:set var="negative" value="${'negative bold'}"/>
+             </g:if>
+          <td class="right ${negative}">${i?.formatRemainingBalance()}</td>
         <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
             <td class="right">${i?.formatAmount()}</td>
         </g:ifAnyGranted>

@@ -1,0 +1,6 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `age_of_receivables` AS select `a`.`id` AS `customer_id`,`b`.`identifier` AS `term`,`c`.`identifier` AS `sales_agent`, a.*, `aor_30`.`total` AS `aor30`,`aor_60`.`total` AS `aor60`,`aor_90`.`total` AS `aor90`,`aor_120`.`total` AS `aor120`,`aor_gt120`.`total` AS `aorgt120` 
+from (((((((`customer` `a` left join `aor_30` on((`a`.`id` = `aor_30`.`id`))) 
+left join `aor_60` on((`a`.`id` = `aor_60`.`id`))) left join `aor_90` on((`a`.`id` = `aor_90`.`id`))) 
+left join `aor_120` on((`a`.`id` = `aor_120`.`id`))) left join `aor_gt120` on((`a`.`id` = `aor_gt120`.`id`))) 
+left join `sales_agent` `c` on((`a`.`sales_agent_id` = `c`.`id`))) join `term` `b`) 
+where (`a`.`term_id` = `b`.`id`) group by `a`.`identifier`,`a`.`name`;

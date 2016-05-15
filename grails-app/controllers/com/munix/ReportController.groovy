@@ -107,7 +107,9 @@ class ReportController {
 		where = "where 1=1"
         whereParams = []
         if(params.id){
-        	where = appendWhereQuery (params.id, "product.id", where, whereParams)
+        	def idField = "product.id"
+			if(params.idField) idField = params.idField
+        	where = appendWhereQuery (params.id, idField, where, whereParams)
         }
 		if(params.status){
     		if(params.status!=""){
@@ -158,6 +160,9 @@ class ReportController {
     	if(params.customer?.id){
     		where = appendWhereQuery (params.customer.id, "customer_id", where, whereParams)
     	}
+    	if(params.salesAgent?.id){
+    		where = appendWhereQuery (params.salesAgent.id, "sales_agent_id", where, whereParams)
+    	}
     	if(params.type?.id){
     		where = appendWhereQuery (params.type.id, "type_id", where, whereParams)
     	}
@@ -176,7 +181,6 @@ class ReportController {
 		if(params.itemType?.id){
 			where = appendWhereQuery (params.itemType.id, "item_type_id", where, whereParams)
     	}
-		println params.balance
 		if(params.balance!='null' && params.warehouse?.id){
 			if(params.warehouse.id instanceof String){
 				where += " and exists (select 1 from stock where stock.PRODUCT_ID = product.ID AND stock.WAREHOUSE_ID = ?"

@@ -199,12 +199,23 @@
                      <g:hiddenField name="${productItem.productId}remaining" value="${productItem.remainingBalance}"/>
                  </td>
                  <td>${productItem.description}</td>
-                 <td class="right">${productItem.remainingBalance}</td>
+                 <g:set var="negative" value="${''}"/>
+                 <g:if test="${productItem.totalStock<productItem.remainingBalance}">
+                 	<g:set var="negative" value="${'negative bold'}"/>
+                 </g:if>
+                 <td class="right ${negative}">${productItem.remainingBalance}</td>
                  <td class="right"><input onchange="recalc();" onblur="checkRemainingBalanceForDiscounted(${productItem.productId});" onkeyup="checkRemainingBalanceForDiscounted(${productItem.productId});" onkeypress="checkRemainingBalanceForDiscounted(${productItem.productId});" id="${productItem.productId}" class="right qty" type="text" name="deliveryItemList[${productItem.idx}].qty" value="${productItem.qty}" /></td>
                  <td class="right price">${productItem.price}</td>
                  <td class="right discountedAmount">PHP <g:formatNumber number="${productItem.amount}" format="###,##0.00" /></td>
                  <g:each in="${warehouses}" var="warehouses">
-					<td class="right">${productItem.stocks[warehouses.identifier]}</td>
+	        		<g:set var="positive" value="${''}"/>
+		        	<g:if test="${productItem.stocks[warehouses.identifier]>0}">
+		        		<g:set var="positive" value="${'positive'}"/>
+		        	</g:if> 
+		        	<g:if test="${productItem.stocks[warehouses.identifier]<0}">
+		        		<g:set var="positive" value="${'negative'}"/>
+		        	</g:if> 
+					<td class="right ${positive}">${productItem.stocks[warehouses.identifier]}</td>
                  </g:each> 
                </tr>
 
@@ -268,12 +279,23 @@
                      <g:hiddenField name="${productItem.productId}remaining" value="${productItem.remainingBalance}"/>
                  </td>
                  <td>${productItem.description}</td>
-                 <td class="right">${productItem.remainingBalance}</td>
+                 <g:set var="negative" value="${''}"/>
+                 <g:if test="${productItem.totalStock<productItem.remainingBalance}">
+                 	<g:set var="negative" value="${'negative bold'}"/>
+                 </g:if>
+                 <td class="right ${negative}">${productItem.remainingBalance}</td>
                  <td class="right"><input onchange="recalc();" onblur="checkRemainingBalanceForDiscounted(${productItem.productId});" onkeyup="checkRemainingBalanceForDiscounted(${productItem.productId});" onkeypress="checkRemainingBalanceForDiscounted(${productItem.productId});" id="${productItem.productId}" class="right qty" type="text" name="deliveryItemList[${productItem.idx}].qty" value="${productItem.qty}" /></td>
                  <td class="right price">${productItem.price}</td>
                  <td class="right netAmount">PHP <g:formatNumber number="${productItem.amount}" format="###,##0.00" /></td>
                  <g:each in="${warehouses}" var="warehouses">
-				   <td class="right">${productItem.stocks[warehouses.identifier]}</td>
+	        		<g:set var="positive" value="${''}"/>
+		        	<g:if test="${productItem.stocks[warehouses.identifier]>0}">
+		        		<g:set var="positive" value="${'positive'}"/>
+		        	</g:if> 
+		        	<g:if test="${productItem.stocks[warehouses.identifier]<0}">
+		        		<g:set var="positive" value="${'negative'}"/>
+		        	</g:if> 
+				   <td class="right ${positive}">${productItem.stocks[warehouses.identifier]}</td>
 	             </g:each> 
                </tr>
             </g:if>

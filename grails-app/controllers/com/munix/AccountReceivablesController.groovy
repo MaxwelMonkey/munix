@@ -2,7 +2,7 @@ package com.munix
 
 import groovy.sql.Sql
 
-class AccountReceivablesController {
+class AccountReceivablesController extends ReportController {
 
     def dataSource
     def customerService
@@ -10,9 +10,21 @@ class AccountReceivablesController {
     
 	def index = {
 		def model = [:]
-		def query = "SELECT * FROM age_of_receivables";
+		params.idField = "id"
+	  	buildWhere(params)
+       	if(params.city?.id){
+       		where = appendWhereQuery (params.city.id, "bus_addr_city_id", where, whereParams)
+    	}
+    	if(params.region?.id){
+    		where = appendWhereQuery (params.region.id, "region_id", where, whereParams)
+    	}
+    	if(params.status){
+    		where = appendWhereQuery (params.status, "status", where, whereParams)
+    	}
+		def query = "SELECT * FROM age_of_receivables ${where}";
         Sql sqlQuery = new Sql(dataSource)
-        def result = sqlQuery.rows(query)
+        def result = sqlQuery.rows(query, whereParams)
+        println query
         sqlQuery.close();
 		model["list"] = result
 		def df = new Date().minus(200000)

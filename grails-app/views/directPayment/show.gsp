@@ -85,6 +85,71 @@
         </tbody>
       </table>
     </div>
+    <div class="dialog">
+    <h2>Customer Account Details</h2>
+      <table>
+        <tbody>
+
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.salesDelivery.label" default="Sales Delivery" /></td>
+       	    <g:set var="oui" value="${com.munix.SalesDelivery.findAllByCustomerAndStatus(directPaymentInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="salesDelivery" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeAmountDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.term.label" default="Terms" /></td>
+	        <td valign="top" class="value">${directPaymentInstance?.customer?.term}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="salesDelivery" action="unpaidList" params="['customerId':directPaymentInstance?.customer?.id]">View Unpaid Sales Delivery List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.remainingCredit.label" default="Remaining Credit" /></td>
+	        <g:set var="negative" value=""/>
+	        <g:if test="${directPaymentInstance?.customer?.getRemainingCredit()<0}">
+	        	<g:set var="negative" value="${'negative'}"/>
+	        </g:if>
+	        <td valign="top" class="value ${negative}">
+	        	<g:formatNumber number="${directPaymentInstance?.customer?.getRemainingCredit()}" format="###,##0.00" />
+	        </td>
+          </tr>
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.customerCharge.label" default="Customer Charge" /></td>
+       	    <g:set var="oui" value="${com.munix.CustomerCharge.findAllByCustomerAndStatus(directPaymentInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="customerCharge" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeActualDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.remark.label" default="Customer Remarks" /></td>
+	        <td valign="top" class="value">${directPaymentInstance?.customer?.generalRemark}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="customerCharge" action="unpaidList" params="['customerId':directPaymentInstance?.customer?.id]">View Unpaid Customer Charge List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.billing.label" default="Billing" /></td>
+	        <td valign="top" class="value">${directPaymentInstance?.customer?.formatBillingAddress()}</td>
+          </tr>
+          <tr class="prop">
+            <td valign="top" class="name" rowspan="2"><g:message code="salesOrder.bouncedCheck.label" default="Bounced Check" /></td>
+       	    <g:set var="oui" value="${com.munix.BouncedCheck.findAllByCustomerAndStatus(directPaymentInstance?.customer, 'Unpaid')?.sort{it.date}}"/>
+       	    <g:if test="${oui.size()>0}"><g:set var="oui" value="${oui.get(0)}"/>
+		    <td valign="top" class="value"><g:link controller="bouncedCheck" action="show" id="${oui.id}"><g:formatDate date="${oui.date}"  format="MMM. dd, yyyy"/> ${oui} <g:formatNumber number="${oui?.computeProjectedDue()}" format="###,##0.00" /></g:link></td>
+		    </g:if>
+		    <g:else>
+		    <td valign="top" class="value"></td>
+		    </g:else>
+	        <td valign="top" class="name"><g:message code="customer.landline.label" default="Landline" /></td>
+	        <td valign="top" class="value">${directPaymentInstance?.customer?.landline}</td>
+          </tr>
+          <tr class="prop">
+	        <td valign="top" class="value"><g:link controller="bouncedCheck" action="unpaidList" params="['customerId':directPaymentInstance?.customer?.id]">View Unpaid Bounced Check List</g:link></td>
+	        <td valign="top" class="name"><g:message code="customer.mobile.label" default="Mobile" /></td>
+	        <td valign="top" class="value">${directPaymentInstance?.customer?.mobile}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>    
     <g:form>
     <div class="subTable">
       <h2>Payment</h2>

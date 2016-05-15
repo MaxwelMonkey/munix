@@ -269,6 +269,7 @@ class SalesDeliveryService {
             itemMap["productId"]= it.item.product.id
             itemMap["price"]= it.item.finalPrice
             itemMap["orderItemId"] = it.item.id
+            itemMap["totalStock"] = it.item.product.getTotalStock()
             itemMap["remainingBalance"] = it.item.computeRemainingBalance()?.intValue()
             itemMap["description"] = it.item?.product?.description
             itemMap["qty"] = it.item.qty.intValue()
@@ -286,6 +287,7 @@ class SalesDeliveryService {
             itemMap["productId"]= it.item.product.id
             itemMap["price"]= it.item.price
             itemMap["orderItemId"] = 0L
+            itemMap["totalStock"] = it.item.product.getTotalStock()
             itemMap["remainingBalance"] = it.item?.orderItem?.computeRemainingBalance()?.intValue()
             itemMap["description"] = it.item?.orderItem?.product?.description
             itemMap["qty"] = it.item.qty.intValue()

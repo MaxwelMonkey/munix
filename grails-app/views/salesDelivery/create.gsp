@@ -205,7 +205,11 @@
                         <g:hiddenField name="${item?.item?.product?.id}remaining" value="${item?.item?.computeRemainingBalance()?.intValue()}"/>
                     </td>
                     <td>${item?.item?.product?.description}</td>
-                    <td class="right">${item?.item?.computeRemainingBalance()?.intValue()}</td>
+		             <g:set var="negative" value="${''}"/>
+		             <g:if test="${item?.item?.product?.getTotalStock()<item?.item?.computeRemainingBalance()?.intValue()}">
+		             	<g:set var="negative" value="${'negative bold'}"/>
+		             </g:if>
+                    <td class="right ${negative}">${item?.item?.computeRemainingBalance()?.intValue()}</td>
                     <td class="right"><input onchange="recalc();" onblur="checkRemainingBalanceForDiscounted(${item?.item?.product?.id});" onkeyup="checkRemainingBalanceForDiscounted(${item?.item?.product?.id});" onkeypress="checkRemainingBalanceForDiscounted(${item?.item?.product?.id});" id="${item?.item?.product?.id}" class="right qty" type="text" name="deliveryItemList[${idx}].qty" value="${item?.item?.computeRemainingBalance()?.intValue()}" /></td>
                     <td class="right price">${item?.item?.finalPrice}</td>
                     <td class="right discountedAmount">PHP <g:formatNumber number="${item?.item?.computeAmount()}" format="###,##0.00" /></td>
@@ -279,7 +283,11 @@
                     <g:hiddenField name="${item?.item?.product?.id}remaining" value="${item?.item?.computeRemainingBalance()?.intValue()}"/>
                 </td>
                 <td>${item?.item?.product?.description}</td>
-                <td class="right">${item?.item?.computeRemainingBalance()?.intValue()}</td>
+		             <g:set var="negative" value="${''}"/>
+		             <g:if test="${item?.item?.product?.getTotalStock()<item?.item?.computeRemainingBalance()?.intValue()}">
+		             	<g:set var="negative" value="${'negative bold'}"/>
+		             </g:if>
+                    <td class="right ${negative}">${item?.item?.computeRemainingBalance()?.intValue()}</td>
                 <td class="right"><input onchange="recalc();" onblur="checkRemainingBalanceForNet(${item?.item?.product?.id});" onkeyup="checkRemainingBalanceForNet(${item?.item?.product?.id});" onkeypress="checkRemainingBalanceForNet(${item?.item?.product?.id});" id="${item?.item?.product?.id}" class="right qty" type="text" name="deliveryItemList[${idx}].qty" value="${item?.item?.computeRemainingBalance()?.intValue()}" /></td>
                 <td class="right price">${item?.item?.finalPrice}</td>
                 <td class="right netAmount">PHP <g:formatNumber number="${item?.item?.computeAmount()}" format="###,##0.00" /></td>

@@ -153,6 +153,7 @@
           <tr>
             <th>Identifier</th>
             <th>Description</th>
+            <th>Part Number</th>
 	        <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
             <th class="right">Price</th>
             </g:ifAnyGranted>
@@ -167,8 +168,9 @@
         <g:each in="${salesDeliveryInstance.items.sort{it?.product?.description}}" var="i" status="colors">
        	  <g:if test="${!i?.orderItem?.isNet && i?.qty?.intValue() > 0}">
           <tr class="${(colors % 2) == 0 ? 'odd' : 'even'}">
-            <td>${i?.product?.encodeAsHTML()}</td>
+            <td><g:link controller="product" action="show" id="${i?.product?.id}">${i?.product?.encodeAsHTML()}</g:link></td>
             <td>${i?.product?.description}</td>
+            <td>${i?.product?.partNumber}</td>
 	        <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
             <td class="right"><g:if test="${i?.price==0}">(FREE)</g:if><g:else>${i?.formatPrice()}</g:else></td>
             </g:ifAnyGranted>
@@ -184,6 +186,7 @@
         <tfoot class="total">
           <tr>
             <td><strong>Total</strong></td>
+          <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -193,11 +196,13 @@
           <td><strong>Discount</strong></td>
           <td></td>
           <td></td>
+          <td></td>
           <td class="right"><strong>${salesDeliveryInstance?.invoice?.discountGroup}</strong></td>
           <td class="right"><strong>PHP <g:formatNumber number="${salesDeliveryInstance?.computeDiscountedDiscount()}" format="###,##0.00" /></strong></td>
         </tr>
         <tr>
           <td><strong>Discounted Total</strong></td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
@@ -214,6 +219,7 @@
           <tr>
             <th>Identifier</th>
             <th>Description</th>
+            <th>Part Number</th>
 	        <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
             <th class="right">Price</th>
             </g:ifAnyGranted>
@@ -228,8 +234,9 @@
         <g:each in="${salesDeliveryInstance.items.sort{it?.product?.description}}" var="i" status="colors">
        	  <g:if test="${i?.orderItem?.isNet && i?.qty?.intValue() > 0}" >
           <tr class="${(colors % 2) == 0 ? 'odd' : 'even'}">
-            <td>${i?.product?.encodeAsHTML()}</td>
+            <td><g:link controller="product" action="show" id="${i?.product?.id}">${i?.product?.encodeAsHTML()}</g:link></td>
             <td>${i?.product?.description}</td>
+            <td>${i?.product?.partNumber}</td>
 	        <g:ifAnyGranted role = "ROLE_SALES,ROLE_ACCOUNTING">
             <td class="right"><g:if test="${i?.price==0}">(FREE)</g:if><g:else>${i?.formatPrice()}</g:else></td>
             </g:ifAnyGranted>
@@ -248,11 +255,13 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td class="right"><strong>PHP <g:formatNumber number="${salesDeliveryInstance?.computeNetItemsTotal()}" format="###,##0.00" /></strong></td>
         </tr>
         <tr>
           <td><strong>Discount</strong></td>
           <td></td>
+            <td></td>
           <td></td>
           <td class="right"><strong>${salesDeliveryInstance?.invoice?.netDiscountGroup}</strong></td>
           <td class="right"><strong>PHP <g:formatNumber number="${salesDeliveryInstance?.computeNetDiscount()}" format="###,##0.00" /></strong></td>
@@ -262,6 +271,7 @@
           <td></td>
           <td></td>
           <td></td>
+            <td></td>
           <td class="right"><strong>PHP <g:formatNumber number="${salesDeliveryInstance.computeNetTotal()}" format="###,##0.00" /></strong></td>
         </tfoot>
         </g:ifAnyGranted>

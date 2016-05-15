@@ -58,7 +58,7 @@
 		            <td class="center">${String.format('%,.0f',i?.qty)}</td>
 		            <td class="center">${i?.product?.unit}</td>
 		            <td>${i?.product?.identifier}</td>
-		            <td>${i?.product?.description}</td>
+		            <td>${i?.product?.description} ${i?.product?.partNumber}</td>
 		          </tr>
 		          </g:if>
 		        </g:each>
@@ -84,7 +84,7 @@
 		            <td class="center">${String.format('%,.0f',i?.qty)}</td>
 		            <td class="center">${i?.product?.unit}</td>
 		            <td>${i?.product?.identifier}</td>
-		            <td>${i?.product?.description}</td>
+		            <td>${i?.product?.description} ${i?.product?.partNumber}</td>
 		          </tr>
 		          </g:if>
 		        </g:each>
@@ -184,7 +184,7 @@
 		            <td class="center">${String.format('%,.0f',i?.qty)}</td>
 		            <td class="center">${i?.product?.unit}</td>
 		            <td>${i?.product?.identifier}</td>
-		            <td>${i?.product?.description}</td>
+		            <td>${i?.product?.description} ${i?.product?.partNumber}</td>
 		            <td class="right">${i.price==0?"(FREE)":String.format('%,.2f',i?.price)}</td>
 		            <td class="right">${String.format('%,.2f',i?.computeAmount())}</td>
 		          </tr>
@@ -238,7 +238,7 @@
 		            <td class="center">${String.format('%,.0f',i?.qty)}</td>
 		            <td class="center">${i?.product?.unit}</td>
 		            <td>${i?.product?.identifier}</td>
-		            <td>${i?.product?.description}</td>
+		            <td>${i?.product?.description} ${i?.product?.partNumber}</td>
 		            <td class="right">${i.price==0?"(FREE)":String.format('%,.2f',i?.price)}</td>
 		            <td class="right">${String.format('%,.2f',i?.computeAmount())}</td>
 		          </tr>
